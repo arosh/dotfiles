@@ -1,5 +1,8 @@
-[color]
-	ui = auto
 [core]
 	editor = vim
+	pager = lv
+	excludesfile = /home/sho/.gitignore
+[color]
+	branch = true
+	status = true
 
