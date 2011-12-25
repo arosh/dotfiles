@@ -27,7 +27,7 @@ else
   set backup		" keep a backup file
 endif
 set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
+" set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
@@ -101,4 +101,12 @@ set smartcase
 set ts=4 sw=4 sts=0
 set noexpandtab
 nmap <ESC><ESC> :nohlsearch<LF>
+
+" ----------
+" comment outed set ruler
+" ----------
+"set statusline=[%{&fileencoding}][\%{&fileformat}]\ %F%m%r%=<%c:%l>
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set laststatus=2
+set statusline=%F%m%r%=\ %Y\ %{&fenc}\ %{&ff}\ %l/%L\ %3p%%
 
