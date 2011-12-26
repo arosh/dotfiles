@@ -89,5 +89,5 @@ set nowrap
 " set ruler => set noruler
 " ----------
 set laststatus=2
-set statusline=%F%m%r%=\ %Y:%{&fenc}:%{&ff}\ %l/%L\ %3p%%
+set statusline=%f%m%r%=\ %Y:%{&fenc}:%{&ff}\ %l/%L\ %3p%%
 
