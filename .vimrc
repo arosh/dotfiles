@@ -7,7 +7,6 @@ else
   set backup		" keep a backup file
 endif
 set history=50		" keep 50 lines of command line history
-set noruler		" NOT show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
@@ -84,10 +83,8 @@ nmap <ESC><ESC> :nohlsearch<LF>
 set wildmenu
 set title
 set nowrap
+set noruler
 
-" ----------
-" set ruler => set noruler
-" ----------
 set laststatus=2
 set statusline=%f%m%r%=\ %Y:%{&fenc}:%{&ff}\ %l/%L\ %3p%%
 
