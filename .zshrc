@@ -1,6 +1,4 @@
-autoload -U compinit
-compinit
-
+PATH=$PATH:~/bin
 # Japanese javac option
 alias javac='javac -J-Dfile.encoding=UTF-8'
 alias java='java -Dfile.encoding=UTF-8'
@@ -52,7 +50,7 @@ setopt auto_pushd
 
 # command correct edition before each completion attempt
 #
-setopt correct
+#setopt correct
 
 # compacked complete list display
 #
@@ -140,6 +138,7 @@ esac
 alias la="ls -a"
 alias lf="ls -F"
 alias ll="ls -l"
+alias lla="ls -la"
 
 alias du="du -h"
 alias df="df -h"
