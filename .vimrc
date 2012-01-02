@@ -88,3 +88,5 @@ set noruler
 set laststatus=2
 set statusline=%f%m%r%=\ %Y:%{&fenc}:%{&ff}\ %l/%L\ %3p%%
 
+autocmd FileType * setlocal formatoptions-=r
+autocmd FileType * setlocal formatoptions-=o
