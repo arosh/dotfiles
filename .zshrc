@@ -135,6 +135,7 @@ linux*)
     ;;
 esac
 
+alias l="ls"
 alias la="ls -a"
 alias lf="ls -F"
 alias ll="ls -l"
