@@ -1,11 +1,7 @@
 set nocompatible
 set backspace=indent,eol,start
 
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file
-endif
+set backup		" keep a backup file
 set history=50		" keep 50 lines of command line history
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
@@ -36,7 +32,7 @@ if has("autocmd")
   au!
 
   " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+  " autocmd FileType text setlocal textwidth=78
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
@@ -73,6 +69,13 @@ nmap <ESC><ESC> :nohlsearch<LF>
 set wildmenu
 set title
 set nowrap
+set noruler
+set wrapscan
+set textwidth=0
+
+set showmatch
+set matchtime=1
+
 set noruler
 set wrapscan
 
