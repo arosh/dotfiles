@@ -1,7 +1,7 @@
 # users generic .zshrc file for zsh(1)
 
 ## Environment variable configuration
-#
+##
 # LANG
 #
 export LANG=ja_JP.UTF-8
@@ -21,13 +21,13 @@ colors
 case ${UID} in
 0)
     PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') %B%{${fg[red]}%}%/#%{${reset_color}%}%b "
-    PROMPT2="%B%{${fg[red]}%}%_#%{${reset_color}%}%b "
-    SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
+    PROMPT2="%B%{${fg[red]}%}%_>%{${reset_color}%}%b "
+    #SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
     ;;
 *)
     PROMPT="%{${fg[red]}%}%/%%%{${reset_color}%} "
-    PROMPT2="%{${fg[red]}%}%_%%%{${reset_color}%} "
-    SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
+    PROMPT2="%{${fg[red]}%}%_>%{${reset_color}%} "
+    #SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
     [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
         PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
     ;;
@@ -40,6 +40,9 @@ setopt auto_cd
 # auto directory pushd that you can get dirs list by cd -[tab]
 #
 setopt auto_pushd
+
+# auto_pushdで、重複したディレクトリは記録しない
+setopt pushd_ignore_dups
 
 # command correct edition before each completion attempt
 #
@@ -57,6 +60,11 @@ setopt noautoremoveslash
 #
 setopt nolistbeep
 
+# = 以降でも補完できるようにする( --prefix=/usr 等の場合)
+setopt magic_equal_subst
+
+# 補完の時に大文字小文字を区別しない(但し、大文字を打った場合は小文字に変換しない)
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 ## Keybind configuration
 #
@@ -64,9 +72,9 @@ setopt nolistbeep
 #   to end) and something additions
 #
 bindkey -e
-bindkey "^[[1~" beginning-of-line # Home gets to line head
-bindkey "^[[4~" end-of-line # End gets to line end
-bindkey "^[[3~" delete-char # Del
+# bindkey "^[[1~" beginning-of-line # Home gets to line head
+# bindkey "^[[4~" end-of-line # End gets to line end
+# bindkey "^[[3~" delete-char # Del
 
 # historical backward/forward search with linehead string binded to ^P/^N
 #
@@ -75,13 +83,12 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
-bindkey "\\ep" history-beginning-search-backward-end
-bindkey "\\en" history-beginning-search-forward-end
+# bindkey "\\ep" history-beginning-search-backward-end
+# bindkey "\\en" history-beginning-search-forward-end
 
 # reverse menu completion binded to Shift-Tab
 #
 bindkey "\e[Z" reverse-menu-complete
-
 
 ## Command history configuration
 #

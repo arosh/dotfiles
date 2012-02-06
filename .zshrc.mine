@@ -6,3 +6,15 @@ alias java='java -Dfile.encoding=UTF-8'
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 # PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
+# Ctrl-^ で cd ..
+function cdup() {
+	echo
+	cd ..
+	zle reset-prompt
+}
+zle -N cdup
+bindkey '^\^' cdup
+
+if [ -f /etc/zsh_command_not_found ]; then
+  . /etc/zsh_command_not_found
+fi
