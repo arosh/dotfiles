@@ -1,11 +1,3 @@
-PATH=$PATH:~/bin
-# Japanese javac option
-alias javac='javac -J-Dfile.encoding=UTF-8'
-alias java='java -Dfile.encoding=UTF-8'
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
 # users generic .zshrc file for zsh(1)
 
 ## Environment variable configuration
