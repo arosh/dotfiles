@@ -115,7 +115,7 @@ fpath=(${HOME}/.zsh/functions/Completion ${fpath})
 autoload -U compinit
 compinit
 
-
+# http://www.clear-code.com/blog/2011/9/5.html
 ## 補完侯補をメニューから選択する。
 ### select=2: 補完候補を一覧から選択する。
 ###           ただし、補完候補が2つ以上なければすぐに補完する。
@@ -128,6 +128,35 @@ zstyle ':completion:*:default' menu select=2
 # 補完の時に大文字小文字を区別しない(但し、大文字を打った場合は小文字に変換しない)
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
+
+## 補完方法の設定。指定した順番に実行する。
+### _oldlist 前回の補完結果を再利用する。
+### _complete: 補完する。
+### _match: globを展開しないで候補の一覧から補完する。
+### _history: ヒストリのコマンドも補完候補とする。
+### _ignored: 補完候補にださないと指定したものも補完候補とする。
+### _approximate: 似ている補完候補も補完候補とする。
+### _prefix: カーソル以降を無視してカーソル位置までで補完する。
+#zstyle ':completion:*' completer _oldlist _complete _match _history _ignored _approximate _prefix
+
+
+## 補完候補をキャッシュする。
+#zstyle ':completion:*' use-cache yes
+## 詳細な情報を使う。
+#zstyle ':completion:*' verbose yes
+## sudo時にはsudo用のパスも使う。
+#zstyle ':completion:sudo:*' environ PATH="$SUDO_PATH:$PATH"
+
+## カーソル位置で補完する。
+#setopt complete_in_word
+## globを展開しないで候補の一覧から補完する。
+#setopt glob_complete
+## 補完時にヒストリを自動的に展開する。
+#setopt hist_expand
+## 補完候補がないときなどにビープ音を鳴らさない。
+#setopt no_beep
+## 辞書順ではなく数字順に並べる。
+#setopt numeric_glob_sort
 
 ## zsh editor
 #
@@ -169,6 +198,15 @@ alias lla="ls -la"
 
 #alias su="su -l"
 
+alias rm="rm -i"
+alias mv="mv -i"
+alias cp="cp -i"
+
+## ページャーを使いやすくする。
+### grep -r def *.rb L -> grep -r def *.rb |& lv
+alias -g L="|& $PAGER"
+## grepを使いやすくする。
+alias -g G='| grep'
 
 ## terminal configuration
 #
