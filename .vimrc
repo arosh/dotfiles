@@ -78,6 +78,7 @@ set matchtime=1
 
 set noruler
 set wrapscan
+set backupdir=$HOME/.vimbackup
 
 set laststatus=2
 set statusline=%f%m%r%=\ %Y:%{&fenc}:%{&ff}\ %l/%L\ %3p%%
