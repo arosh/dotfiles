@@ -71,10 +71,10 @@ setopt list_types
 unsetopt promptcr
 
 # ワイルドカードとかの拡張
-setopt extended_glob
+#setopt extended_glob
 
 # 数式展開とかしてくれるらしい
-setopt prompt_subst
+#setopt prompt_subst
 
 ## Keybind configuration
 #
@@ -137,37 +137,26 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 ### _ignored: 補完候補にださないと指定したものも補完候補とする。
 ### _approximate: 似ている補完候補も補完候補とする。
 ### _prefix: カーソル以降を無視してカーソル位置までで補完する。
-zstyle ':completion:*' completer _oldlist _complete _match _history _ignored _approximate _prefix
+#zstyle ':completion:*' completer _oldlist _complete _match _history _ignored _approximate _prefix
 
 
 ## 補完候補をキャッシュする。
-zstyle ':completion:*' use-cache yes
+#zstyle ':completion:*' use-cache yes
 ## 詳細な情報を使う。
-zstyle ':completion:*' verbose yes
+#zstyle ':completion:*' verbose yes
 ## sudo時にはsudo用のパスも使う。
 #zstyle ':completion:sudo:*' environ PATH="$SUDO_PATH:$PATH"
 
 ## カーソル位置で補完する。
 setopt complete_in_word
 ## globを展開しないで候補の一覧から補完する。
-setopt glob_complete
+#setopt glob_complete
 ## 補完時にヒストリを自動的に展開する。
-setopt hist_expand
+#setopt hist_expand
 ## 補完候補がないときなどにビープ音を鳴らさない。
 #setopt no_beep
 ## 辞書順ではなく数字順に並べる。
 setopt numeric_glob_sort
-
-## zsh editor
-#
-# autoload zed
-
-
-## Prediction configuration
-#
-#autoload predict-on
-#predict-off
-
 
 ## Alias configuration
 #

@@ -1,7 +1,6 @@
 set nocompatible
 set backspace=indent,eol,start
 
-set backup		" keep a backup file
 set history=50		" keep 50 lines of command line history
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
@@ -76,12 +75,11 @@ set textwidth=0
 set showmatch
 set matchtime=1
 
-set noruler
-set wrapscan
+set backup
 set backupdir=$HOME/.vimbackup
 
 set laststatus=2
-set statusline=%f%m%r%=\ %Y:%{&fenc}:%{&ff}\ %l/%L\ %3p%%
+set statusline=%f%m%r%=\ %Y:%{&fenc}:%{&ff}\ %l/%L\ %p%%
 
 autocmd FileType * setlocal formatoptions-=r
 autocmd FileType * setlocal formatoptions-=o
