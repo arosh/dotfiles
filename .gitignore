@@ -32,8 +32,6 @@ tramp
 
 .*
 !.gitignore
-!.vimrc
-!.vim/
 # Windows image file caches
 Thumbs.db 
 

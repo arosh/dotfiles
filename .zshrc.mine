@@ -39,22 +39,26 @@ else
     alias lv="$PAGER"
 fi
 
-## 実行中のコマンドとユーザ名とホスト名とカレントディレクトリを表示。
-update_title() {
-    local command_line=
-    typeset -a command_line
-    command_line=${(z)2}
-    local command=
-    if [ ${(t)command_line} = "array-local" ]; then
-        command="$command_line[1]"
-    else
-        command="$2"
-    fi
-    print -n -P "\e]2;"
-    # echo -n "(${command})"
-    print -n -P "%n@%m:%~\a"
-}
-## X環境上でだけウィンドウタイトルを変える。
-if [ -n "$DISPLAY" ]; then
-    preexec_functions=($preexec_functions update_title)
+#http://d.hatena.ne.jp/mollifier/20100317/p1
+if which pbcopy >/dev/null 2>&1 ; then 
+    # Mac  
+    alias -g C='| pbcopy'
+elif which xsel >/dev/null 2>&1 ; then 
+    # Linux
+    alias -g C='| xsel --input --clipboard'
+elif which putclip >/dev/null 2>&1 ; then 
+    # Cygwin 
+    alias -g C='| putclip'
 fi
+
+# VCS settings
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '(%s)-[%b]'
+zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+RPROMPT="%1(v|%F{yellow}%1v%f|)"
+
