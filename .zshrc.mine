@@ -1,10 +1,4 @@
 PATH=$PATH:~/bin
-# Japanese javac option
-alias javac='javac -J-Dfile.encoding=UTF-8'
-alias java='java -Dfile.encoding=UTF-8'
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # Ctrl-^ で cd ..
 function cdup() {
@@ -42,13 +36,13 @@ fi
 #http://d.hatena.ne.jp/mollifier/20100317/p1
 if which pbcopy >/dev/null 2>&1 ; then 
     # Mac  
-    alias -g C='| pbcopy'
+    alias -g @C='| pbcopy'
 elif which xsel >/dev/null 2>&1 ; then 
     # Linux
-    alias -g C='| xsel --input --clipboard'
+    alias -g @C='| xsel --input --clipboard'
 elif which putclip >/dev/null 2>&1 ; then 
     # Cygwin 
-    alias -g C='| putclip'
+    alias -g @C='| putclip'
 fi
 
 # VCS settings
