@@ -56,6 +56,12 @@ setopt noautoremoveslash
 #
 setopt nolistbeep
 
+# 複数リダイレクト
+setopt multios
+
+# correct無効
+unsetopt correct
+
 # = 以降でも補完できるようにする( --prefix=/usr 等の場合)
 setopt magic_equal_subst
 
@@ -67,10 +73,13 @@ setopt list_types
 unsetopt promptcr
 
 # ワイルドカードとかの拡張
-#setopt extended_glob
+setopt extended_glob
 
 # 数式展開とかしてくれるらしい
-#setopt prompt_subst
+setopt prompt_subst
+
+# 右プロンプトが邪魔になったら消す
+setopt transient_rprompt
 
 ## Keybind configuration
 #
@@ -109,6 +118,9 @@ fpath=(${HOME}/.zsh/functions/Completion ${fpath})
 autoload -U compinit
 compinit
 
+# あいまい補完で、補完+リスト表示
+unsetopt list_ambiguous
+
 # http://www.clear-code.com/blog/2011/9/5.html
 ## 補完侯補をメニューから選択する。
 ### select=2: 補完候補を一覧から選択する。
@@ -135,7 +147,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 
 ## 補完候補をキャッシュする。
-#zstyle ':completion:*' use-cache yes
+zstyle ':completion:*' use-cache yes
 ## 詳細な情報を使う。
 #zstyle ':completion:*' verbose yes
 ## sudo時にはsudo用のパスも使う。
@@ -156,7 +168,9 @@ setopt numeric_glob_sort
 #
 # expand aliases before completing
 #
-setopt complete_aliases     # aliased ls needs if file/dir completions work
+#setopt complete_aliases     # aliased ls needs if file/dir completions work
+# alias のオプションを補完 on なのか off なのかよくわからん。。。
+unsetopt complete_aliases
 
 #alias where="command -v"
 #alias j="jobs -l"
@@ -172,14 +186,13 @@ esac
 
 alias l="ls"
 alias la="ls -a"
-alias lf="ls -F"
-alias ll="ls -l"
-alias lla="ls -la"
-
-#alias du="du -h"
-#alias df="df -h"
+alias ll="ls -lh"
+alias lla="ls -lah"
 
 #alias su="su -l"
+
+# rm * を確認する
+setopt rm_star_wait
 
 ## ページャーを使いやすくする。
 ### grep -r def *.rb L -> grep -r def *.rb |& lv

@@ -12,3 +12,4 @@
 	br = branch
 	mg = merge
 	st = status
+	cm = commit
