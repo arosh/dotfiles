@@ -77,6 +77,9 @@ set noruler
 set wrapscan
 set textwidth=0
 
+set showmatch
+set matchtime=0
+
 set backup
 set backupdir=$HOME/.vimbackup
 

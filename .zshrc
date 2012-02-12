@@ -33,6 +33,8 @@ case ${UID} in
     ;;
 esac
 
+### opt 関係 ###
+
 # auto change directory
 #
 setopt auto_cd
@@ -43,10 +45,6 @@ setopt auto_pushd
 
 # auto_pushdで、重複したディレクトリは記録しない
 setopt pushd_ignore_dups
-
-# compacked complete list display
-#
-setopt list_packed
 
 # no remove postfix slash of command line
 #
@@ -62,21 +60,12 @@ setopt multios
 # correct無効
 unsetopt correct
 
-# = 以降でも補完できるようにする( --prefix=/usr 等の場合)
-setopt magic_equal_subst
-
 # ファイル候補の後ろに、種別を表す記号(ls -Fと同じ)
 setopt list_types
 
 # http://www-utheal.phys.s.u-tokyo.ac.jp/~yuasa/wiki/index.php/zsh%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
 # 改行コードのない出力も一応表示
 unsetopt promptcr
-
-# ワイルドカードとかの拡張
-setopt extended_glob
-
-# 数式展開とかしてくれるらしい
-setopt prompt_subst
 
 # 右プロンプトが邪魔になったら消す
 setopt transient_rprompt
@@ -118,8 +107,21 @@ fpath=(${HOME}/.zsh/functions/Completion ${fpath})
 autoload -U compinit
 compinit
 
+# compacked complete list display
+#
+setopt list_packed
+
+# ワイルドカードとかの拡張
+setopt extended_glob
+
+# 数式展開とかしてくれるらしい
+setopt prompt_subst
+
 # あいまい補完で、補完+リスト表示
 unsetopt list_ambiguous
+
+# = 以降でも補完できるようにする( --prefix=/usr 等の場合)
+setopt magic_equal_subst
 
 # http://www.clear-code.com/blog/2011/9/5.html
 ## 補完侯補をメニューから選択する。

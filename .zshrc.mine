@@ -45,6 +45,15 @@ elif which putclip >/dev/null 2>&1 ; then
     alias -g @C='| putclip'
 fi
 
+function func_clip() {
+  if [ $# = 1 ]; then
+	  cat $* @C
+  else
+	  echo "number of argments must be 1."
+  fi
+}
+alias clip=func_clip
+
 # VCS settings
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%s)-[%b]'
