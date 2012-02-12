@@ -77,14 +77,30 @@ set noruler
 set wrapscan
 set textwidth=0
 
-set showmatch
-set matchtime=1
-
 set backup
 set backupdir=$HOME/.vimbackup
 
 set laststatus=2
 set statusline=%f%m%r%=\ %Y:%{&fenc}:%{&ff}\ %l/%L\ %p%%
 
+set termencoding=utf-8
+set encoding=utf-8
+set fileencoding=utf-8
+
+" □とか○の文字があってもカーソル位置がずれないようにする
+if exists('&ambiwidth')
+  set ambiwidth=double
+endif
+
+"改行コード
+set fileformats=unix,dos,mac
+
 autocmd FileType * setlocal formatoptions-=r
 autocmd FileType * setlocal formatoptions-=o
+
+autocmd BufNewFile,BufRead *.sbt set filetype=scala
+autocmd BufNewFile,BufRead *.ru set filetype=ruby
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+
+source ~/.vimrc.neocomplcache
+source ~/.vimrc.neobundle
