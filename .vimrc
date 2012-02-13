@@ -70,6 +70,8 @@ set smartcase
 set ts=4 sw=4 sts=0
 set noexpandtab
 nmap <ESC><ESC> :nohlsearch<LF>
+" imap <C-C> <ESC>
+
 set wildmenu
 set title
 set nowrap

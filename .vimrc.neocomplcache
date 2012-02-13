@@ -73,3 +73,28 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+
+let g:neocomplcache_max_list=1000
+
+" ==================
+"  clang_complete
+" *osx -- /usr/lib/clang
+" ==================
+" use neocomplcache & clang_complete
+" add neocomplcache option
+let g:neocomplcache_force_overwrite_completefunc=1
+
+" add clang_complete option
+let g:clang_complete_auto=1
+"let g:clang_use_library   = 1
+"let g:clang_library_path  = '/usr/share/clang'
+"let g:clang_user_options  = '2>/dev/null || exit 0'
+
+" let g:neocomplcache_clang_libraly_path='/usr/lib/clang'
+
+let g:neocomplcache_clang_user_options =
+	\ '-I /usr/local/Cellar/boost/1.48.0/include '.
+	\ '-I /usr/include/c++/v1 '.
+	\ '-I /usr/include/ '.
+	\ '-fms-extensions -fgnu-runtime '.
+	\ '-include malloc.h '

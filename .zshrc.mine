@@ -1,5 +1,3 @@
-PATH=$PATH:~/bin
-
 # Ctrl-^ で cd ..
 function cdup() {
 	echo

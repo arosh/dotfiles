@@ -192,6 +192,7 @@ alias ll="ls -lh"
 alias lla="ls -lah"
 
 #alias su="su -l"
+alias rmdir="rm -rf"
 
 # rm * を確認する
 setopt rm_star_wait
