@@ -98,3 +98,5 @@ let g:neocomplcache_clang_user_options =
 	\ '-I /usr/include/ '.
 	\ '-fms-extensions -fgnu-runtime '.
 	\ '-include malloc.h '
+
+set completeopt=menuone
