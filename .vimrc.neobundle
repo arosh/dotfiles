@@ -13,5 +13,6 @@ NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/thinca/vim-quickrun.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache-clang_complete.git'
 NeoBundle 'git://github.com/Rip-Rip/clang_complete.git'
+NeoBundle 'git://github.com/Shougo/unite.vim.git'
 
 filetype plugin indent on

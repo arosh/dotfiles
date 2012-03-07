@@ -70,7 +70,6 @@ set smartcase
 set ts=4 sw=4 sts=0
 set noexpandtab
 nmap <ESC><ESC> :nohlsearch<LF>
-" imap <C-C> <ESC>
 
 set wildmenu
 set title
@@ -100,9 +99,11 @@ endif
 "改行コード
 set fileformats=unix,dos,mac
 
+" コメント行の継続を無効化
 autocmd FileType * setlocal formatoptions-=r
 autocmd FileType * setlocal formatoptions-=o
 
+" ファイルタイプの指定
 autocmd BufNewFile,BufRead *.sbt set filetype=scala
 autocmd BufNewFile,BufRead *.ru set filetype=ruby
 autocmd BufNewFile,BufRead *.md set filetype=markdown

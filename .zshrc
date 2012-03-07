@@ -11,25 +11,24 @@ case ${UID} in
     ;;
 esac
 
-
 ## Default shell configuration
-#
-# set prompt
-#
 autoload colors
 colors
+
+MAIN_COLOR=${fg[red]}
+CHANGE_COLOR=${fg[green]}
 
 # /home/name/ => %/
 case ${UID} in
 0)
-    PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') %B%{${fg[green]}%}%/#%{${reset_color}%}%b "
-    PROMPT2="%B%{${fg[green]}%}%_>%{${reset_color}%}%b "
+    PROMPT="%{$CHANGE_COLOR%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') %B%{$MAIN_COLOR%}%/#%{${reset_color}%}%b "
+    PROMPT2="%B%{$MAIN_COLOR%}%_>%{${reset_color}%}%b "
     ;;
 *)
-	PROMPT="%{${fg[green]}%}%/%%%{${reset_color}%} "
-    PROMPT2="%{${fg[green]}%}%_%%%{${reset_color}%} "
+	PROMPT="%{$MAIN_COLOR%}%/%%%{${reset_color}%} "
+    PROMPT2="%{$MAIN_COLOR%}%_%%%{${reset_color}%} "
     [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-        PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
+        PROMPT="%{$CHANGE_COLOR%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
     ;;
 esac
 
@@ -88,10 +87,6 @@ bindkey "^n" history-beginning-search-forward-end
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
 
-# reverse menu completion binded to Shift-Tab
-#
-# bindkey "\e[Z" reverse-menu-complete
-
 ## Command history configuration
 #
 HISTFILE=${HOME}/.zsh_history
@@ -102,13 +97,11 @@ setopt share_history        # share command history data
 
 
 ## Completion configuration
-#
 fpath=(${HOME}/.zsh/functions/Completion ${fpath})
 autoload -U compinit
 compinit
 
-# compacked complete list display
-#
+# ls した時に詰めて表示
 setopt list_packed
 
 # ワイルドカードとかの拡張
@@ -190,64 +183,21 @@ alias l="ls"
 alias la="ls -a"
 alias ll="ls -lh"
 alias lla="ls -lah"
-
-#alias su="su -l"
 alias rmdir="rm -rf"
+
+alias grep="grep --color=auto"
+
+# 環境変数を解除
+alias su="su -l"
 
 # rm * を確認する
 setopt rm_star_wait
 
 ## ページャーを使いやすくする。
 ### grep -r def *.rb L -> grep -r def *.rb |& lv
-alias -g @L="|& $PAGER"
+# alias -g @L="|& $PAGER"
 ## grepを使いやすくする。
-alias -g @G='| grep'
-
-## terminal configuration
-
-case "${TERM}" in
-screen)
-    TERM=xterm
-    ;;
-esac
-
-case "${TERM}" in
-xterm|xterm-color|xterm-256color)
-    export LSCOLORS=exfxcxdxbxegedabagacad
-    export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-    zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-    ;;
-kterm-color)
-    stty erase '^H'
-    export LSCOLORS=exfxcxdxbxegedabagacad
-    export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-    zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-    ;;
-kterm)
-    stty erase '^H'
-    ;;
-cons25)
-    unset LANG
-    export LSCOLORS=ExFxCxdxBxegedabagacad
-    export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-    zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
-    ;;
-jfbterm-color)
-    export LSCOLORS=gxFxCxdxBxegedabagacad
-    export LS_COLORS='di=01;36:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-    zstyle ':completion:*' list-colors 'di=;36;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
-    ;;
-esac
-
-# set terminal title including current directory
-case "${TERM}" in
-xterm|xterm-color|xterm-256color|kterm|kterm-color)
-    precmd() {
-        echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
-    }
-    ;;
-esac
-
+# alias -g @G='| grep'
 
 ## load user .zshrc configuration file
 #
