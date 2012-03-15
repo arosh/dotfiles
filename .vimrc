@@ -67,8 +67,10 @@ augroup END
 set number
 set ignorecase
 set smartcase
-set ts=4 sw=4 sts=0
-set noexpandtab
+"set ts=4 sw=4 sts=0
+"set noexpandtab
+set ts=4 sw=2 sts=0
+set expandtab
 nmap <ESC><ESC> :nohlsearch<LF>
 
 set wildmenu
@@ -104,6 +106,7 @@ autocmd FileType * setlocal formatoptions-=r
 autocmd FileType * setlocal formatoptions-=o
 
 " ファイルタイプの指定
+autocmd BufNewFile,BufRead *.scala set filetype=scala
 autocmd BufNewFile,BufRead *.sbt set filetype=scala
 autocmd BufNewFile,BufRead *.ru set filetype=ruby
 autocmd BufNewFile,BufRead *.md set filetype=markdown

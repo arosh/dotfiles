@@ -16,7 +16,7 @@ autoload colors
 colors
 
 MAIN_COLOR=${fg[red]}
-CHANGE_COLOR=${fg[green]}
+CHANGE_COLOR=${fg[cyan]}
 
 # /home/name/ => %/
 case ${UID} in
@@ -90,8 +90,8 @@ bindkey '^S' history-incremental-pattern-search-forward
 ## Command history configuration
 #
 HISTFILE=${HOME}/.zsh_history
-HISTSIZE=50000
-SAVEHIST=50000
+HISTSIZE=50000 # メモリ上に保存
+SAVEHIST=50000 # ファイルに保存
 setopt hist_ignore_dups     # ignore duplication command history list
 setopt share_history        # share command history data
 

@@ -13,3 +13,4 @@
 	mg = merge
 	st = status
 	cm = commit
+	ch = checkout
