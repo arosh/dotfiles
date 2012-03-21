@@ -172,10 +172,10 @@ unsetopt complete_aliases
 
 case "${OSTYPE}" in
 freebsd*|darwin*)
-    alias ls="ls -G -w"
+    alias ls="ls -G -w -p"
     ;;
 linux*)
-    alias ls="ls --color"
+    alias ls="ls --color -p"
     ;;
 esac
 
@@ -184,6 +184,8 @@ alias la="ls -a"
 alias ll="ls -lh"
 alias lla="ls -lah"
 alias rmdir="rm -rf"
+
+alias cp="cp -i"
 
 alias grep="grep --color=auto"
 
