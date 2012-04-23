@@ -25,7 +25,7 @@ case ${UID} in
     PROMPT2="%B%{$MAIN_COLOR%}%_>%{${reset_color}%}%b "
     ;;
 *)
-	PROMPT="%{$MAIN_COLOR%}%/%%%{${reset_color}%} "
+    PROMPT="%{$MAIN_COLOR%}%/%%%{${reset_color}%} "
     PROMPT2="%{$MAIN_COLOR%}%_%%%{${reset_color}%} "
     [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
         PROMPT="%{$CHANGE_COLOR%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
@@ -124,7 +124,7 @@ zstyle ':completion:*:default' menu select=2
 
 ## 補完候補に色を付ける。
 ### "": 空文字列はデフォルト値を使うという意味。
-#zstyle ':completion:*:default' list-colors ""
+zstyle ':completion:*:default' list-colors ""
 
 # 補完の時に大文字小文字を区別しない(但し、大文字を打った場合は小文字に変換しない)
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -186,6 +186,7 @@ alias lla="ls -lah"
 alias rmdir="rm -rf"
 
 alias cp="cp -i"
+alias mv="mv -i"
 
 alias grep="grep --color=auto"
 

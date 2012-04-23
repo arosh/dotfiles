@@ -1,4 +1,5 @@
 PATH=/usr/local/bin:/usr/bin:~/bin:$PATH
+PATH=~/play20:$PATH
 
 NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
 
@@ -10,7 +11,7 @@ alias java='java -Dfile.encoding=UTF-8'
 # PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
-alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+# alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
 alias mongodev='mongod run --config /usr/local/Cellar/mongodb/2.0.3-x86_64/mongod.conf'

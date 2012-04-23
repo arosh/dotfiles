@@ -1,16 +1,16 @@
 [core]
-	editor = vim
-	pager = lv -c
-	excludesfile = ~/.gitignore
+  editor = vim
+  pager = lv -c
+  excludesfile = ~/.gitignore
 [color]
-	ui = auto
+  ui = auto
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 [difftool]
-	prompt = false
+  prompt = false
 [alias]
-	br = branch
-	mg = merge
-	st = status
-	cm = commit
-	ch = checkout
+  br = branch
+  mg = merge
+  st = status
+  cm = commit
+  chk = checkout

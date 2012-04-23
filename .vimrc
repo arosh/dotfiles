@@ -69,12 +69,12 @@ set ignorecase
 set smartcase
 "set ts=4 sw=4 sts=0
 "set noexpandtab
-set ts=4 sw=2 sts=0
+set ts=4 sw=2 sts=2
 set expandtab
 nmap <ESC><ESC> :nohlsearch<LF>
 
 set wildmenu
-set title
+" set title
 set nowrap
 set noruler
 set wrapscan
