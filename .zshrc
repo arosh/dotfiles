@@ -193,6 +193,9 @@ alias grep="grep --color=auto"
 # 環境変数を解除
 alias su="su -l"
 
+alias du="du -hs"
+alias df="df -h"
+
 # rm * を確認する
 setopt rm_star_wait
 
