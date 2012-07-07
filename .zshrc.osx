@@ -8,10 +8,9 @@ alias scalac='scalac -J-Dfile.encoding=UTF-8 -deprecation'
 alias scala='scala -Dfile.encoding=UTF-8 -deprecation'
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
-# alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+alias vimdiff='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim -d "$@"'
 
 alias mongodev='mongod run --config /usr/local/etc/mongod.conf'

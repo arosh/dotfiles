@@ -71,8 +71,7 @@ set smartcase
 "set noexpandtab
 set ts=4 sw=2 sts=2
 set expandtab
-nmap <ESC><ESC> :nohlsearch<LF>
-
+nmap <ESC><ESC> :nohlsearch<CR>
 set wildmenu
 " set title
 set nowrap
@@ -113,3 +112,4 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 source ~/.vimrc.neocomplcache
 source ~/.vimrc.neobundle
+source ~/.vimrc.unite
