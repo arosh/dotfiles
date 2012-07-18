@@ -1,11 +1,3 @@
-set nocompatible
-set backspace=indent,eol,start
-
-set history=50		" keep 50 lines of command line history
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
-
-" In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
 endif
@@ -64,29 +56,40 @@ augroup MyXML
   autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
+
+set nocompatible
+set backspace=indent,eol,start
+set history=50
+
+" view
+" set title
 set number
-set ignorecase
-set smartcase
 "set ts=4 sw=4 sts=0
 "set noexpandtab
 set ts=4 sw=2 sts=2
 set expandtab
-nmap <ESC><ESC> :nohlsearch<CR>
+set showcmd
 set wildmenu
-" set title
 set nowrap
 set noruler
-set wrapscan
+" 自動折り返し
 set textwidth=0
-
 set showmatch
 set matchtime=0
+set laststatus=2
+set statusline=%f%m%r%=\ %Y:%{&fenc}:%{&ff}\ %l/%L\ %p%%
+
+" search
+set incsearch
+set ignorecase
+set smartcase
+nmap <ESC><ESC> :nohlsearch<CR>
+set wrapscan
+
 
 set backup
 set backupdir=$HOME/.vimbackup
 
-set laststatus=2
-set statusline=%f%m%r%=\ %Y:%{&fenc}:%{&ff}\ %l/%L\ %p%%
 
 set termencoding=utf-8
 set encoding=utf-8
