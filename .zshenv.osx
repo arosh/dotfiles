@@ -6,8 +6,8 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # Japanese javac option
 alias javac='javac -J-Dfile.encoding=UTF-8'
 alias java='java -Dfile.encoding=UTF-8'
-alias scalac='scalac -J-Dfile.encoding=UTF-8 -deprecation'
-alias scala='scala -Dfile.encoding=UTF-8 -deprecation'
+alias scalac='scalac -J-Dfile.encoding=UTF-8 -deprecation -unchecked -explaintypes'
+alias scala='scala -Dfile.encoding=UTF-8 -deprecation -unchecked -explaintypes'
 
 # Vim
 export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim

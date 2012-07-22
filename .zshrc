@@ -27,7 +27,7 @@ case ${UID} in
 *)
     PROMPT="%{$MAIN_COLOR%}%/%%%{${reset_color}%} "
     PROMPT2="%{$MAIN_COLOR%}%_%%%{${reset_color}%} "
-    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
         PROMPT="%{$CHANGE_COLOR%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
     ;;
 esac
@@ -90,9 +90,9 @@ bindkey '^S' history-incremental-pattern-search-forward
 ## Command history configuration
 #
 HISTFILE=${HOME}/.zsh_history
-HISTSIZE=50000 # メモリ上に保存
-SAVEHIST=50000 # ファイルに保存
-setopt hist_ignore_dups     # ignore duplication command history list
+HISTSIZE=500000 # メモリ上に保存
+SAVEHIST=500000 # ファイルに保存
+setopt hist_ignore_dups     # 重複した履歴を保存しない
 setopt share_history        # share command history data
 
 
@@ -188,7 +188,10 @@ alias rmdir="rm -rf"
 alias cp="cp -i"
 alias mv="mv -i"
 
-alias grep="grep --color=auto"
+# E: 拡張正規表現
+# R: ディレクトリを再帰的に検索
+# n: 行番号を表示
+alias grep="grep --color=auto -ERn"
 
 # 環境変数を解除
 alias su="su -l"

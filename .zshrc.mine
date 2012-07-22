@@ -8,7 +8,7 @@ zle -N cdup
 bindkey '^\^' cdup
 
 if [ -f /etc/zsh_command_not_found ]; then
-  . /etc/zsh_command_not_found
+  source /etc/zsh_command_not_found
 fi
 
 # http://www.clear-code.com/blog/2011/9/5.html
@@ -32,14 +32,14 @@ else
 fi
 
 #http://d.hatena.ne.jp/mollifier/20100317/p1
-if which pbcopy >/dev/null 2>&1 ; then 
-    # Mac  
+if which pbcopy >/dev/null 2>&1 ; then
+    # Mac
     alias -g @C='| pbcopy'
-elif which xsel >/dev/null 2>&1 ; then 
+elif which xsel >/dev/null 2>&1 ; then
     # Linux
     alias -g @C='| xsel --input --clipboard'
-elif which putclip >/dev/null 2>&1 ; then 
-    # Cygwin 
+elif which putclip >/dev/null 2>&1 ; then
+    # Cygwin
     alias -g @C='| putclip'
 fi
 
@@ -63,3 +63,28 @@ precmd () {
 }
 RPROMPT="%1(v|%F{yellow}%1v%f|)"
 
+# extract http://d.hatena.ne.jp/jeneshicc/20110215/1297778049
+extract () {
+  if [ -f $1 ] ; then
+      case $1 in
+          *.tar.bz2)   tar xvjf $1    ;;
+          *.tar.gz)    tar xvzf $1    ;;
+          *.tar.xz)    tar xvJf $1    ;;
+          *.bz2)       bunzip2 $1     ;;
+          *.rar)       unrar x $1     ;;
+          *.gz)        gunzip $1      ;;
+          *.tar)       tar xvf $1     ;;
+          *.tbz2)      tar xvjf $1    ;;
+          *.tgz)       tar xvzf $1    ;;
+          *.zip)       unzip $1       ;;
+          *.Z)         uncompress $1  ;;
+          *.7z)        7z x $1        ;;
+          *.lzma)      lzma -dv $1    ;;
+          *.xz)        xz -dv $1      ;;
+          *)           echo "don't know how to extract '$1'..." ;;
+      esac
+  else
+      echo "'$1' is not a valid file!"
+  fi
+}
+alias ex='extract'

@@ -1,13 +1,7 @@
-if has('mouse')
-  set mouse=a
-endif
+set mouse=a
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
+syntax on
+set hlsearch
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -37,7 +31,7 @@ if has("autocmd")
 
 else
 
-  set autoindent		" always set autoindenting on
+  set autoindent  " always set autoindenting on
 
 endif " has("autocmd")
 
@@ -46,7 +40,7 @@ endif " has("autocmd")
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+        \ | wincmd p | diffthis
 endif
 
 " XMLの閉じタグ設定
@@ -56,6 +50,12 @@ augroup MyXML
   autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
+" コンマの後に自動的にスペースを挿入
+inoremap , ,<Space>
+" 保存時に行末の空白を除去する
+autocmd BufWritePre * :%s/\s\+$//ge
+" 保存時にtabをスペースに変換する
+"autocmd BufWritePre * :%s/\t/  /ge
 
 set nocompatible
 set backspace=indent,eol,start
@@ -86,10 +86,9 @@ set smartcase
 nmap <ESC><ESC> :nohlsearch<CR>
 set wrapscan
 
-
-set backup
-set backupdir=$HOME/.vimbackup
-
+set nobackup
+" 変更されたら自動で再読み込み
+set autoread
 
 set termencoding=utf-8
 set encoding=utf-8
@@ -115,4 +114,4 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 source ~/.vimrc.neocomplcache
 source ~/.vimrc.neobundle
-source ~/.vimrc.unite
+source ~/.vimrc.misc

@@ -9,7 +9,7 @@ if has('vim_starting')
 endif
 
 NeoBundle 'git://github.com/Shougo/vimproc.git'
-NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
+"NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache-clang_complete.git'
@@ -18,5 +18,8 @@ NeoBundle 'git://github.com/Rip-Rip/clang_complete.git'
 NeoBundle 'git://github.com/thinca/vim-quickrun.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
 NeoBundle 'git://github.com/thinca/vim-ref.git'
+
+" ctagsをインストールすること！（Macな人はHomebrewから）
+NeoBundle 'git://github.com/vim-scripts/taglist.vim.git'
 
 filetype plugin indent on
