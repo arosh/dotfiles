@@ -51,7 +51,7 @@ augroup MyXML
 augroup END
 
 " コンマの後に自動的にスペースを挿入
-inoremap , ,<Space>
+"inoremap , ,<Space>
 " 保存時に行末の空白を除去する
 autocmd BufWritePre * :%s/\s\+$//ge
 " 保存時にtabをスペースに変換する
@@ -83,7 +83,7 @@ set statusline=%f%m%r%=\ %Y:%{&fenc}:%{&ff}\ %l/%L\ %p%%
 set incsearch
 set ignorecase
 set smartcase
-nmap <ESC><ESC> :nohlsearch<CR>
+nmap <ESC><ESC> :<C-u>nohlsearch<CR>
 set wrapscan
 
 set nobackup

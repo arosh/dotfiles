@@ -1,16 +1,3 @@
-# users generic .zshrc file for zsh(1)
-
-## Environment variable configuration
-##
-# LANG
-#
-export LANG=ja_JP.UTF-8
-case ${UID} in
-0)
-    LANG=C
-    ;;
-esac
-
 ## Default shell configuration
 autoload colors
 colors
@@ -57,7 +44,7 @@ setopt nolistbeep
 setopt multios
 
 # correct無効
-unsetopt correct
+#unsetopt correct
 
 # ファイル候補の後ろに、種別を表す記号(ls -Fと同じ)
 setopt list_types
@@ -111,7 +98,7 @@ setopt extended_glob
 setopt prompt_subst
 
 # あいまい補完で、補完+リスト表示
-unsetopt list_ambiguous
+#unsetopt list_ambiguous
 
 # = 以降でも補完できるようにする( --prefix=/usr 等の場合)
 setopt magic_equal_subst
@@ -124,7 +111,10 @@ zstyle ':completion:*:default' menu select=2
 
 ## 補完候補に色を付ける。
 ### "": 空文字列はデフォルト値を使うという意味。
-zstyle ':completion:*:default' list-colors ""
+#zstyle ':completion:*:default' list-colors ""
+#zstyle ':completion:*' list-colors \
+#  $(dircolors -b | sed -e "s/'//" -e "s/^LS_COLORS=//" | head -n 1 | tr : ' ')
+
 
 # 補完の時に大文字小文字を区別しない(但し、大文字を打った場合は小文字に変換しない)
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -191,12 +181,13 @@ alias mv="mv -i"
 # E: 拡張正規表現
 # R: ディレクトリを再帰的に検索
 # n: 行番号を表示
-alias grep="grep --color=auto -ERn"
+alias grep="grep --color=auto -n"
 
 # 環境変数を解除
 alias su="su -l"
 
-alias du="du -hs"
+#alias du="du -hs"
+alias du="du -h"
 alias df="df -h"
 
 # rm * を確認する
@@ -208,6 +199,15 @@ setopt rm_star_wait
 ## grepを使いやすくする。
 # alias -g @G='| grep'
 
-## load user .zshrc configuration file
-#
+# lsの色付け設定
+
+case "${TERM}" in
+xterm|xterm-color|xterm-256color)
+  export LSCOLORS=exfxcxdxbxegedabagacad
+  export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+  zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+  ;;
+esac
+
+# 追加の設定を読み込む
 [ -f ${HOME}/.zshrc.mine ] && source ${HOME}/.zshrc.mine

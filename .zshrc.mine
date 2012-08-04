@@ -61,7 +61,7 @@ precmd () {
     LANG=en_US.UTF-8 vcs_info
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
-RPROMPT="%1(v|%F{yellow}%1v%f|)"
+export RPROMPT="%1(v|%F{yellow}%1v%f|)"
 
 # extract http://d.hatena.ne.jp/jeneshicc/20110215/1297778049
 extract () {

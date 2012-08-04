@@ -14,6 +14,7 @@ NeoBundle 'git://github.com/Shougo/vimproc.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache-clang_complete.git'
 NeoBundle 'git://github.com/Rip-Rip/clang_complete.git'
+"NeoBundle 'git://github.com/Shougo/vinarise.git'
 
 NeoBundle 'git://github.com/thinca/vim-quickrun.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'

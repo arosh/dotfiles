@@ -1,5 +1,5 @@
-PATH=/usr/local/bin:/usr/bin:~/bin:$PATH
-NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
+export PATH=/usr/local/bin:~/bin:$PATH
+export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -19,3 +19,5 @@ alias vimdiff='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim 
 alias mongodev='mongod run --config /usr/local/etc/mongod.conf'
 # image converter for TeX
 alias ebb='/Applications/UpTeX.app/teTeX/bin/ebb'
+# byobu
+export BYOBU_PREFIX=$(brew --prefix)
