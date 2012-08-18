@@ -111,6 +111,10 @@ autocmd BufNewFile,BufRead *.scala set filetype=scala
 autocmd BufNewFile,BufRead *.sbt set filetype=scala
 autocmd BufNewFile,BufRead *.ru set filetype=ruby
 autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.pde set filetype=java
+
+" i_Ctrl-Aを無効にする (:help insert-indexを参照)
+imap <C-a> a
 
 source ~/.vimrc.neocomplcache
 source ~/.vimrc.neobundle

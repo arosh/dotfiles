@@ -32,22 +32,37 @@ else
 fi
 
 #http://d.hatena.ne.jp/mollifier/20100317/p1
-if which pbcopy >/dev/null 2>&1 ; then
-    # Mac
-    alias -g @C='| pbcopy'
-elif which xsel >/dev/null 2>&1 ; then
-    # Linux
-    alias -g @C='| xsel --input --clipboard'
-elif which putclip >/dev/null 2>&1 ; then
-    # Cygwin
-    alias -g @C='| putclip'
-fi
+#if which pbcopy >/dev/null 2>&1 ; then
+#    # Mac
+#    alias -g @C='| pbcopy'
+#elif which xsel >/dev/null 2>&1 ; then
+#    # Linux
+#    alias -g @C='| xsel --input --clipboard'
+#elif which putclip >/dev/null 2>&1 ; then
+#    # Cygwin
+#    alias -g @C='| putclip'
+#fi
+#
+#function func_clip() {
+#  if [ $# = 1 ]; then
+#	  cat $* @C
+#  else
+#	  echo "number of argments must be 1."
+#  fi
+#}
+#alias clip=func_clip
 
-function func_clip() {
-  if [ $# = 1 ]; then
-	  cat $* @C
-  else
-	  echo "number of argments must be 1."
+
+func_clip() {
+  if which pbcopy >/dev/null 2>&1 ; then
+    # Mac
+    cat $1 | pbcopy
+  elif which xsel >/dev/null 2>&1 ; then
+    # Linux
+    cat $1 | xsel --input --clipboard
+  elif which putclip >/dev/null 2>&1 ; then
+    # Cygwin
+    cat $1 | putclip
   fi
 }
 alias clip=func_clip
@@ -76,7 +91,7 @@ extract () {
           *.tar)       tar xvf $1     ;;
           *.tbz2)      tar xvjf $1    ;;
           *.tgz)       tar xvzf $1    ;;
-          *.zip)       unzip $1       ;;
+          *.zip)       unzip $1 -d ${1%.zip}  ;;
           *.Z)         uncompress $1  ;;
           *.7z)        7z x $1        ;;
           *.lzma)      lzma -dv $1    ;;

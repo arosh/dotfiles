@@ -71,8 +71,8 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
 
-bindkey '^R' history-incremental-pattern-search-backward
-bindkey '^S' history-incremental-pattern-search-forward
+#bindkey '^R' history-incremental-pattern-search-backward
+#bindkey '^S' history-incremental-pattern-search-forward
 
 ## Command history configuration
 #
@@ -181,7 +181,9 @@ alias mv="mv -i"
 # E: 拡張正規表現
 # R: ディレクトリを再帰的に検索
 # n: 行番号を表示
-alias grep="grep --color=auto -n"
+alias grep="grep --color=auto"
+alias egrep="grep -E"
+alias fgrep="grep -F"
 
 # 環境変数を解除
 alias su="su -l"
@@ -206,6 +208,10 @@ xterm|xterm-color|xterm-256color)
   export LSCOLORS=exfxcxdxbxegedabagacad
   export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
   zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+  #export LSCOLORS=gxfxcxdxbxegedabagacad
+  #export LSCOLORS=gxfxxxxxcxxxxxxxxxgxgx
+  #export LS_COLORS='di=01;36:ln=01;35:ex=01;32'
+  #zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'ex=32'
   ;;
 esac
 
