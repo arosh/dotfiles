@@ -79,7 +79,7 @@ bindkey "^n" history-beginning-search-forward-end
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=500000 # メモリ上に保存
 SAVEHIST=500000 # ファイルに保存
-setopt hist_ignore_dups     # 重複した履歴を保存しない
+setopt hist_ignore_dups     # 重複した履歴を保存しない (直前のものと同じ時だけ)
 setopt share_history        # share command history data
 
 
@@ -137,6 +137,9 @@ zstyle ':completion:*' use-cache yes
 #zstyle ':completion:*' verbose yes
 ## sudo時にはsudo用のパスも使う。
 #zstyle ':completion:sudo:*' environ PATH="$SUDO_PATH:$PATH"
+# ↓ほかのバージョン
+#zstyle ':completion:*:sudo:*' \
+#  command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 
 ## カーソル位置で補完する。
 setopt complete_in_word
@@ -170,9 +173,10 @@ linux*)
 esac
 
 alias l="ls"
-alias la="ls -a"
-alias ll="ls -lh"
-alias lla="ls -lah"
+# 隠しファイルは表示するが、./ ../ は表示しない
+alias la="ls -A"
+alias ll="ls -lah"
+alias lla="ll"
 alias rmdir="rm -rf"
 
 alias cp="cp -i"

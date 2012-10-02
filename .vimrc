@@ -74,6 +74,11 @@ set nowrap
 set noruler
 " 自動折り返し
 set textwidth=0
+" set textwidth=80
+" if exists('&colorcolumn')
+"   set colorcolumn=+1
+" endif
+
 set showmatch
 set matchtime=0
 set laststatus=2
@@ -89,6 +94,8 @@ set wrapscan
 set nobackup
 " 変更されたら自動で再読み込み
 set autoread
+" vim終了後コンソール画面復元
+set restorescreen
 
 set termencoding=utf-8
 set encoding=utf-8
@@ -113,9 +120,24 @@ autocmd BufNewFile,BufRead *.ru set filetype=ruby
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.pde set filetype=java
 
+" HTML向けの「ファイル名の上でgf もどるときはCtrl+^」に関する設定
+autocmd FileType html setlocal includeexpr=substitute(v:fname,'^\\/','','') | setlocal path+=;/
+
+" rubyが重い…
+" let g:ruby_path = ""
+
 " i_Ctrl-Aを無効にする (:help insert-indexを参照)
 imap <C-a> a
 
-source ~/.vimrc.neocomplcache
-source ~/.vimrc.neobundle
-source ~/.vimrc.misc
+" http://www.slideshare.net/tsukkee/vim5-vimrc
+if filereadable(expand('~/.vimrc.neocomplcache'))
+  source ~/.vimrc.neocomplcache
+endif
+
+if filereadable(expand('~/.vimrc.neobundle'))
+  source ~/.vimrc.neobundle
+endif
+
+if filereadable(expand('~/.vimrc.misc'))
+  source ~/.vimrc.misc
+endif

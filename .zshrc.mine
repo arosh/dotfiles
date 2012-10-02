@@ -7,6 +7,7 @@ function cdup() {
 zle -N cdup
 bindkey '^\^' cdup
 
+# not foundのとき、apt-getを推薦したりする
 if [ -f /etc/zsh_command_not_found ]; then
   source /etc/zsh_command_not_found
 fi
@@ -52,20 +53,25 @@ fi
 #}
 #alias clip=func_clip
 
-
-func_clip() {
-  if which pbcopy >/dev/null 2>&1 ; then
-    # Mac
-    cat $1 | pbcopy
-  elif which xsel >/dev/null 2>&1 ; then
-    # Linux
-    cat $1 | xsel --input --clipboard
-  elif which putclip >/dev/null 2>&1 ; then
-    # Cygwin
-    cat $1 | putclip
+# ファイルの内容をクリップボードにコピー
+clip() {
+  # $1がファイルのとき
+  if [ -f $1 ] ; then
+    if which pbcopy >/dev/null 2>&1 ; then
+      # Mac
+      cat $1 | pbcopy
+    elif which xsel >/dev/null 2>&1 ; then
+      # Linux
+      cat $1 | xsel --input --clipboard
+    elif which putclip >/dev/null 2>&1 ; then
+      # Cygwin
+      cat $1 | putclip
+    fi
+  else
+    echo "'$1' is not a valid file!"
   fi
 }
-alias clip=func_clip
+# alias clip=func_clip
 
 # VCS settings
 autoload -Uz vcs_info
@@ -78,8 +84,9 @@ precmd () {
 }
 export RPROMPT="%1(v|%F{yellow}%1v%f|)"
 
+# 怠惰な解凍コマンド
 # extract http://d.hatena.ne.jp/jeneshicc/20110215/1297778049
-extract () {
+ex () {
   if [ -f $1 ] ; then
       case $1 in
           *.tar.bz2)   tar xvjf $1    ;;
@@ -102,4 +109,4 @@ extract () {
       echo "'$1' is not a valid file!"
   fi
 }
-alias ex='extract'
+# alias ex='extract'

@@ -1,7 +1,9 @@
 " taglist
 let Tlist_Exit_OnlyWindow = 1
-nnoremap <silent> <Leader>t :<C-u>Tlist<CR>
+" nnoremap <silent> <Leader>t :<C-u>Tlist<CR>
 "inoremap <silent> <Leader>t <ESC>:<C-u>Tlist<CR>
+nnoremap <silent> <Leader>t :<C-u>Unite outline<CR>
+nnoremap <silent> <Leader>b :<C-u>Unite buffer<CR>
 
 " unite
 let g:unite_enable_start_insert=1

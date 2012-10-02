@@ -24,3 +24,6 @@ alias mongodev='mongod run --config /usr/local/etc/mongod.conf'
 alias ebb='/Applications/UpTeX.app/teTeX/bin/ebb'
 # byobu
 export BYOBU_PREFIX=$(brew --prefix)
+
+alias brwe='brew'
+alias rspec='rspec -c -fd'
