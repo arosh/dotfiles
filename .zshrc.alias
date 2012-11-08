@@ -1,0 +1,42 @@
+# BSD系とGNU系でlsのオプションが違う
+case "${OSTYPE}" in
+freebsd*|darwin*)
+    alias ls="ls -G -w -p"
+    ;;
+linux*)
+    alias ls="ls --color -p"
+    ;;
+esac
+
+alias l="ls"
+# 隠しファイルは表示するが、./ ../ は表示しない
+alias la="ls -A"
+alias ll="ls -lAh"
+alias lla="ll"
+
+alias rmdir="rm -rf"
+alias cp="cp -i"
+alias mv="mv -i"
+
+# E: 拡張正規表現
+# R: ディレクトリを再帰的に検索
+# n: 行番号を表示
+alias grep="grep --color=auto"
+alias egrep="grep -E"
+alias fgrep="grep -F"
+
+#alias where="command -v"
+#alias j="jobs -l"
+
+# 環境変数を解除
+alias su="su -l"
+
+#alias du="du -hs"
+alias du="du -h"
+alias df="df -h"
+
+## ページャーを使いやすくする。
+### grep -r def *.rb L -> grep -r def *.rb |& lv
+# alias -g @L="|& $PAGER"
+## grepを使いやすくする。
+# alias -g @G='| grep'

@@ -1,5 +1,5 @@
-# homebrew
-export PATH=/usr/local/bin:~/bin:$PATH
+# homebrew & cabal
+export PATH=$HOME/.cabal/bin:/usr/local/bin:~/bin:$PATH
 
 # rbenv + rubybuild
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -22,8 +22,6 @@ export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
 alias mongodev='mongod run --config /usr/local/etc/mongod.conf'
 # image converter for TeX
 alias ebb='/Applications/UpTeX.app/teTeX/bin/ebb'
-# byobu
-export BYOBU_PREFIX=$(brew --prefix)
 
 alias brwe='brew'
 alias rspec='rspec -c -fd'

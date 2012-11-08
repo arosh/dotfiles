@@ -1,8 +1,8 @@
 # Ctrl-^ で cd ..
 function cdup() {
-	echo
-	cd ..
-	zle reset-prompt
+  echo
+  cd ..
+  zle reset-prompt
 }
 zle -N cdup
 bindkey '^\^' cdup
@@ -21,7 +21,6 @@ else
     export PAGER="less"
 fi
 
-
 if [ "$PAGER" = "lv" ]; then
     ## -c: ANSIエスケープシーケンスの色付けなどを有効にする。
     ## -l: 1行が長くと折り返されていても1行として扱う。
@@ -32,27 +31,7 @@ else
     alias lv="$PAGER"
 fi
 
-#http://d.hatena.ne.jp/mollifier/20100317/p1
-#if which pbcopy >/dev/null 2>&1 ; then
-#    # Mac
-#    alias -g @C='| pbcopy'
-#elif which xsel >/dev/null 2>&1 ; then
-#    # Linux
-#    alias -g @C='| xsel --input --clipboard'
-#elif which putclip >/dev/null 2>&1 ; then
-#    # Cygwin
-#    alias -g @C='| putclip'
-#fi
-#
-#function func_clip() {
-#  if [ $# = 1 ]; then
-#	  cat $* @C
-#  else
-#	  echo "number of argments must be 1."
-#  fi
-#}
-#alias clip=func_clip
-
+# http://d.hatena.ne.jp/mollifier/20100317/p1
 # ファイルの内容をクリップボードにコピー
 clip() {
   # $1がファイルのとき
@@ -71,12 +50,13 @@ clip() {
     echo "'$1' is not a valid file!"
   fi
 }
-# alias clip=func_clip
 
-# VCS settings
+# VCSのブランチ名を表示
+# http://d.hatena.ne.jp/mollifier/20090814/p1
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%s)-[%b]'
 zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+# svn用の設定？
 precmd () {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
@@ -89,24 +69,31 @@ export RPROMPT="%1(v|%F{yellow}%1v%f|)"
 ex () {
   if [ -f $1 ] ; then
       case $1 in
-          *.tar.bz2)   tar xvjf $1    ;;
-          *.tar.gz)    tar xvzf $1    ;;
-          *.tar.xz)    tar xvJf $1    ;;
-          *.bz2)       bunzip2 $1     ;;
-          *.rar)       unrar x $1     ;;
-          *.gz)        gunzip $1      ;;
-          *.tar)       tar xvf $1     ;;
-          *.tbz2)      tar xvjf $1    ;;
-          *.tgz)       tar xvzf $1    ;;
-          *.zip)       unzip $1 -d ${1%.zip}  ;;
-          *.Z)         uncompress $1  ;;
-          *.7z)        7z x $1        ;;
-          *.lzma)      lzma -dv $1    ;;
-          *.xz)        xz -dv $1      ;;
-          *)           echo "don't know how to extract '$1'..." ;;
+          *.zip)          unzip $1 -d ${1%.zip}  ;;
+          *.tar.gz|*.tgz) tar xvzf $1    ;;
+          *.tar.bz2)      tar xvjf $1    ;;
+          *.tar.xz)       tar xvJf $1    ;;
+          *.bz2)          bunzip2 $1     ;;
+          *.rar)          unrar x $1     ;;
+          *.gz)           gunzip $1      ;;
+          *.tar)          tar xvf $1     ;;
+          *.tbz2)         tar xvjf $1    ;;
+          *.Z)            uncompress $1  ;;
+          *.7z)           7z x $1        ;;
+          *.lzma)         lzma -dv $1    ;;
+          *.xz)           xz -dv $1      ;;
+          *.lzh)          lha e $1       ;;
+          *)              echo "don't know how to extract '$1'..." ;;
       esac
   else
       echo "'$1' is not a valid file!"
   fi
 }
-# alias ex='extract'
+
+# ターミナルで256色表示できているか確認
+function 256colortest() {
+    local code
+    for code in {0..255}; do
+        echo -e "\e[38;05;${code}m $code: Test"
+    done
+}
