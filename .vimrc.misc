@@ -21,4 +21,4 @@ function! s:unite_my_settings()
 endfunction
 
 " vim-ref
-let g:ref_user_vimproc = 1
+let g:ref_user_vimproc = 1 " vimprocを使用する

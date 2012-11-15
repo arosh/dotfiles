@@ -25,3 +25,5 @@ alias ebb='/Applications/UpTeX.app/teTeX/bin/ebb'
 
 alias brwe='brew'
 alias rspec='rspec -c -fd'
+
+export GNUTERM=x11

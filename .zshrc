@@ -72,8 +72,8 @@ bindkey "^n" history-beginning-search-forward-end
 ## Command history configuration
 #
 HISTFILE=${HOME}/.zsh_history
-HISTSIZE=10000 # メモリ上に保存
-SAVEHIST=10000 # ファイルに保存
+HISTSIZE=50000 # メモリ上に保存
+SAVEHIST=50000 # ファイルに保存
 setopt hist_ignore_dups     # 重複した履歴を保存しない (直前のものと同じ時だけ)
 setopt share_history        # share command history data
 setopt extended_history     # 履歴ファイルに時刻を記録
@@ -129,3 +129,5 @@ unsetopt complete_aliases
 # `uname` を使う？
 [ -f ${HOME}/.zshrc.mine ] && source ${HOME}/.zshrc.mine
 [ -f ${HOME}/.zshrc.alias ] && source ${HOME}/.zshrc.alias
+# http://mimosa-pudica.net/zsh-incremental.html
+# [ -f ${HOME}/incr-0.2.zsh ] && source ${HOME}/incr-0.2.zsh
