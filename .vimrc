@@ -5,7 +5,12 @@ set hlsearch
 
 filetype plugin indent on
 
-" カーソル位置を復元する設定は消しました
+" カーソル位置を復元する設定
+autocmd BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
+
 
 " XMLの閉じタグ設定
 augroup MyXML
