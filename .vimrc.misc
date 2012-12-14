@@ -1,20 +1,36 @@
 " taglist
-let Tlist_Exit_OnlyWindow = 1
+" タグリストウィンドウの閉じる設定を特別視しない
+" let Tlist_Exit_OnlyWindow = 1
 " nnoremap <silent> <Leader>t :<C-u>Tlist<CR>
 "inoremap <silent> <Leader>t <ESC>:<C-u>Tlist<CR>
+
+" outline.vim
 nnoremap <silent> <Leader>t :<C-u>Unite outline<CR>
 nnoremap <silent> <Leader>b :<C-u>Unite buffer<CR>
 
 " unite
+" 挿入モードで開始
 let g:unite_enable_start_insert=1
 "map <silent> <Leader>f :Unite file<CR>
+" ファイルを開く
 nnoremap <silent> <Leader>f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 "inoremap <silent> <Leader>f <ESC>:<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 
+" 常用セット
+nnoremap <silent> <Leader>e :<C-u>Unite buffer file_mru<CR>
+
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+
+" Uniteのバッファ内専用の設定
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
   " 単語単位からパス単位で削除するように変更
-  "imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
   " ESCキーを2回押すと終了する
   nmap <silent><buffer> <ESC><ESC> q
   imap <silent><buffer> <ESC><ESC> <ESC>q

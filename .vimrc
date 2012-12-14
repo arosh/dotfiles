@@ -1,3 +1,38 @@
+" imapは再帰的に展開される
+" inoremapは再帰的には展開されない
+
+" <C-u>はコマンドバッファを削除する
+" 123<コマンド>で、コマンドが123回実行されないように
+" http://d.hatena.ne.jp/abulia/20110502/1304334367
+
+" マクロは q -> アルファベット1文字 で記録開始
+" q で記録終了
+" @アルファベットで呼び出し
+
+" ``  直前の行(マーク)へ戻る
+" マーク
+" Ctrl-o  より古いマークへジャンプ
+" Ctrl-i  より新しいマークへジャンプ
+" ma  マークaを設定(a～z)
+" `a  マークaにジャンプ
+" 'a  マークaの行頭にジャンプ
+" :marks  マーク一覧
+
+" ctagsの使い方
+" :!ctags -R でカレントディレクトリ以下の全てのファイルについてタグ生成
+" Ctrl+] でジャンプ
+" 戻るときは Ctrl-o か Ctrl-t
+" Ctrl-oはjumplistで動く
+" Ctrl-tはtags stackで動く
+
+" make関係
+" :makeでmakeする
+" :cnでエラー先にジャンプ, :ccでエラーを再確認
+
+" surround.vim
+" d[delete]+s[surround]+[消したいもの]
+" c[change]+s[surround]+[before]+[after]
+
 set mouse=a " マウス機能を有効にする(Terminal.appでは使用不可)
 
 syntax on
@@ -15,6 +50,7 @@ autocmd BufReadPost *
 " XMLの閉じタグ設定
 augroup MyXML
   autocmd!
+  " <buffer>を付けると、他のbufferでは無効になる(バッファローカル)
   autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
   autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
 augroup END
@@ -39,14 +75,15 @@ set ts=4 sw=2 sts=2
 set expandtab
 set showcmd
 set wildmenu
-set nowrap " 長い文字列は折り返して表示するのを無効にする
 set textwidth=0 " 自動折り返しを無効にする
 
-" 80文字付近にバーを表示する設定
-" set textwidth=80
-" if exists('&colorcolumn')
-"   set colorcolumn=+1
-" endif
+" set nowrap " 長い文字列は折り返して表示するのを無効にする
+set wrap " 長い文字列は折り返して表示
+" 折り返された文字列にも移動できるようにする
+nnoremap j gj
+nnoremap k gk
+" nnoremap <Down> gj
+" nnoremap <Up> gk
 
 set showmatch
 set matchtime=0
@@ -57,14 +94,14 @@ set statusline=%f%m%r%=\ %Y:%{&fenc}:%{&ff}\ %l/%L\ %p%%
 set incsearch
 set ignorecase
 set smartcase
-nmap <ESC><ESC> :<C-u>nohlsearch<CR>
-set wrapscan " 自動で折り返さない
+nnoremap <ESC><ESC> :<C-u>nohlsearch<CR>
+set wrapscan " 下まで行ったら、上に戻って検索する
 
 set nobackup
 " 変更されたら自動で再読み込み
 set autoread
-" vim終了後コンソール画面復元
-set restorescreen
+" vim終了後コンソール画面復元 デフォルトでオン
+" set restorescreen
 
 set termencoding=utf-8
 set encoding=utf-8
@@ -96,7 +133,7 @@ autocmd FileType html setlocal includeexpr=substitute(v:fname,'^\\/','','') | se
 " rubyが重い…
 " let g:ruby_path = ""
 
-" i_Ctrl-Aを無効にする (:help insert-indexを参照)
+" i_Ctrl-Aを無効にする (:help insert-indexを参照) 直前の文字列を入力する
 imap <C-a> a
 
 " http://www.slideshare.net/tsukkee/vim5-vimrc
@@ -111,3 +148,5 @@ endif
 if filereadable(expand('~/.vimrc.misc'))
   source ~/.vimrc.misc
 endif
+
+" 分割画面の入れ替えはCtrl+W xで、直前のウィンドウと入れ替え

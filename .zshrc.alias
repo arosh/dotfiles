@@ -21,6 +21,8 @@ alias mv="mv -i"
 # E: 拡張正規表現
 # R: ディレクトリを再帰的に検索
 # n: 行番号を表示
+# i: 大文字小文字を無視
+# alias grep="grep --color=auto -i"
 alias grep="grep --color=auto"
 alias egrep="grep -E"
 alias fgrep="grep -F"

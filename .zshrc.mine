@@ -97,3 +97,6 @@ function 256colortest() {
         echo -e "\e[38;05;${code}m $code: Test"
     done
 }
+
+# https://github.com/zsh-users/zsh-completions
+# fpath=($HOME/git/zsh-completions/src $fpath)
