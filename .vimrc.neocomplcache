@@ -80,11 +80,11 @@ let g:neocomplcache_max_list=2000
 " let g:neocomplcache_force_overwrite_completefunc=1
 
 " add clang_complete option
-"let g:clang_complete_auto = 1
-"let g:clang_use_library   = 0
-"let g:clang_exec="実行ファイルへのパス"
+let g:clang_complete_auto = 1
+let g:clang_use_library   = 0
+let g:clang_exec='/usr/bin/clang'
 "let g:clang_library_path  = '/usr/share/clang'
-"let g:clang_user_options  = '2>/dev/null || exit 0'
+let g:clang_user_options  = '2>/dev/null || exit 0'
 
 " let g:neocomplcache_clang_libraly_path='/usr/lib/clang'
 

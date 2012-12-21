@@ -4,15 +4,17 @@
 filetype off
 
 if has('vim_starting')
-  set runtimepath+=~/.vim/neobundle.vim/
-  call neobundle#rc(expand('~/.vim/.bundle'))
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
+call neobundle#rc(expand('~/.vim/bundle'))
 
 NeoBundle 'git://github.com/Shougo/vimproc.git'
 "NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
+" いらない子になりました
 " NeoBundle 'git://github.com/Shougo/neocomplcache-clang_complete.git'
+" 遅延ロードを使う？
 NeoBundle 'git://github.com/Rip-Rip/clang_complete.git'
 " NeoBundle 'git://github.com/Shougo/vinarise.git'
 

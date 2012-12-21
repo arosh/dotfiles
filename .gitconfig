@@ -16,3 +16,5 @@
   chk = checkout
   co = checkout
   graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+[credential]
+	helper = cache --timeout=3600
