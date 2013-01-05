@@ -80,11 +80,13 @@ let g:neocomplcache_max_list=2000
 " let g:neocomplcache_force_overwrite_completefunc=1
 
 " add clang_complete option
-let g:clang_complete_auto = 1
-let g:clang_use_library   = 0
-let g:clang_exec='/usr/bin/clang'
-"let g:clang_library_path  = '/usr/share/clang'
-let g:clang_user_options  = '2>/dev/null || exit 0'
+" let g:clang_complete_auto = 1
+" let g:clang_use_library   = 1
+" let g:clang_exec='/usr/bin/clang'
+" let g:clang_library_path  = '/usr/share/clang'
+" let g:clang_user_options  = '2>/dev/null || exit 0'
+" let g:clang_user_options  = '|| exit 0'
+" let g:clang_close_preview = 1
 
 " let g:neocomplcache_clang_libraly_path='/usr/lib/clang'
 
@@ -101,7 +103,7 @@ set completeopt=menuone
 let g:neocomplcache_force_overwrite_completefunc=1
 
 if !exists("g:neocomplcache_force_omni_patterns")
-    let g:neocomplcache_force_omni_patterns = {}
+  let g:neocomplcache_force_omni_patterns = {}
 endif
 
 " omnifunc が呼び出される場合の正規表現パターンを設定しておく
