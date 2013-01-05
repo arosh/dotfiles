@@ -14,8 +14,9 @@ NeoBundle 'git://github.com/Shougo/vimproc.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 " いらない子になりました
 " NeoBundle 'git://github.com/Shougo/neocomplcache-clang_complete.git'
-" 遅延ロードを使う？
-NeoBundle 'git://github.com/Rip-Rip/clang_complete.git'
+" 遅延ロードを使う
+" NeoBundle 'git://github.com/Rip-Rip/clang_complete.git'
+NeoBundleLazy 'git://github.com/Rip-Rip/clang_complete.git'
 " NeoBundle 'git://github.com/Shougo/vinarise.git'
 
 NeoBundle 'git://github.com/thinca/vim-quickrun.git'
