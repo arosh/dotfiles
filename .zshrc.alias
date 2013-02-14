@@ -1,4 +1,6 @@
 # BSD系とGNU系でlsのオプションが違う
+# p: ディレクトリの後ろに/を付ける
+# w: スクリーンの幅に合わせて良い感じに出力
 case "${OSTYPE}" in
 freebsd*|darwin*)
     alias ls="ls -G -w -p"
@@ -9,8 +11,9 @@ linux*)
 esac
 
 alias l="ls"
-# 隠しファイルは表示するが、./ ../ は表示しない
+# A: 隠しファイルは表示するが、./ ../ は表示しない
 alias la="ls -A"
+# h: ファイルサイズを良い感じに表示する
 alias ll="ls -lAh"
 alias lla="ll"
 
@@ -42,3 +45,9 @@ alias df="df -h"
 # alias -g @L="|& $PAGER"
 ## grepを使いやすくする。
 # alias -g @G='| grep'
+
+# vim -g
+alias gvim="vim -g"
+
+# 同様の補完を提供する
+compdef mosh=ssh
