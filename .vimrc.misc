@@ -36,5 +36,12 @@ function! s:unite_my_settings()
   imap <silent><buffer> <ESC><ESC> <ESC>q
 endfunction
 
+" http://d.hatena.ne.jp/thinca/20110413/1302623603
+" デフォルトでは ignorecase と smartcase を使う
+" call unite#set_buffer_name_option('default', 'ignorecase', 1)
+" call unite#set_buffer_name_option('default', 'smartcase', 1)
+" ファイル選択時は smartcase を使わない
+" call unite#set_buffer_name_option('files', 'smartcase', 0)
+
 " vim-ref
 let g:ref_user_vimproc = 1 " vimprocを使用する

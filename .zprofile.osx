@@ -1,5 +1,6 @@
 # homebrew & cabal & npm
 export PATH=/usr/local/share/npm/bin:$HOME/.cabal/bin:$HOME/bin:/usr/local/bin:$PATH
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages:${PYTHONPATH:-}
 
 # rbenv + rubybuild
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -27,4 +28,6 @@ alias ebb='/Applications/UpTeX.app/teTeX/bin/ebb'
 alias brwe='brew'
 alias rspec='rspec -c -fd'
 
-export GNUTERM=x11
+# export GNUTERM=x11
+# export GNUTERM=aqua
+export BYOBU_PREFIX=$(brew --prefix)

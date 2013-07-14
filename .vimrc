@@ -109,9 +109,9 @@ set fileencoding=utf-8
 
 " □とか○の文字があってもカーソル位置がずれないようにする
 " なぜか効かない@Terminal.app
-if exists('&ambiwidth')
-  set ambiwidth=double
-endif
+" if exists('&ambiwidth')
+"   set ambiwidth=double
+" endif
 
 "改行コード
 set fileformats=unix,dos,mac
