@@ -82,6 +82,7 @@ setopt hist_ignore_space    # スペースで始まるコマンド行はヒス�
 
 ## Completion configuration
 # fpath=(${HOME}/.zsh/functions/Completion ${fpath}) # 自作補完ファイル
+
 autoload -Uz compinit
 compinit
 
@@ -131,3 +132,7 @@ unsetopt complete_aliases
 [ -f ${HOME}/.zshrc.alias ] && source ${HOME}/.zshrc.alias
 # http://mimosa-pudica.net/zsh-incremental.html
 # [ -f ${HOME}/incr-0.2.zsh ] && source ${HOME}/incr-0.2.zsh
+
+# zsh-completionsを使う
+# fpath=(/usr/local/share/zsh-completions $fpath)
+# compinit

@@ -23,11 +23,12 @@ export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
 # 不要になったらしい
 # alias mongodev='mongod run --config /usr/local/etc/mongod.conf'
 # image converter for TeX
-alias ebb='/Applications/UpTeX.app/teTeX/bin/ebb'
+# alias ebb='/Applications/UpTeX.app/teTeX/bin/ebb'
 
 alias brwe='brew'
-alias rspec='rspec -c -fd'
+# formatをdocumentationに設定
+alias rspec='rspec --color -f d'
 
-# export GNUTERM=x11
+export GNUTERM=x11
 # export GNUTERM=aqua
 export BYOBU_PREFIX=$(brew --prefix)

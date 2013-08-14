@@ -40,21 +40,11 @@ export GREP_OPTIONS="-FIr --color=auto"
 #alias where="command -v"
 #alias j="jobs -l"
 
-# 環境変数を解除
+# l: 環境変数を解除
 alias su="su -l"
 
 #alias du="du -hs"
 alias du="du -h"
 alias df="df -h"
 
-## ページャーを使いやすくする。
-### grep -r def *.rb L -> grep -r def *.rb |& lv
-# alias -g @L="|& $PAGER"
-## grepを使いやすくする。
-# alias -g @G='| grep'
-
-# vim -g
-alias gvim="vim -g"
-
-# 同様の補完を提供する
-compdef mosh=ssh
+# compdef: 同様の補完を提供する
