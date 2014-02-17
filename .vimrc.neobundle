@@ -8,27 +8,21 @@ if has('vim_starting')
 endif
 call neobundle#rc(expand('~/.vim/bundle'))
 
-NeoBundle 'git://github.com/Shougo/vimproc.git'
-"NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 
-NeoBundle 'git://github.com/Shougo/neocomplcache.git'
-" いらない子になりました
-" NeoBundle 'git://github.com/Shougo/neocomplcache-clang_complete.git'
-" 遅延ロードを使う
-" NeoBundle 'git://github.com/Rip-Rip/clang_complete.git'
-NeoBundleLazy 'git://github.com/Rip-Rip/clang_complete.git'
-" NeoBundle 'git://github.com/Shougo/vinarise.git'
+NeoBundleLazy 'vim-jp/cpp-vim', { 'autoload': { 'filetypes': ['c', 'cpp'] } }
 
-NeoBundle 'git://github.com/thinca/vim-quickrun.git'
-NeoBundle 'git://github.com/Shougo/unite.vim.git'
-" NeoBundle 'git://github.com/thinca/vim-ref.git'
-NeoBundle 'git://github.com/tpope/vim-rails.git'
+NeoBundle 'Shougo/vimproc'
+" NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplete'
+NeoBundleLazy 'Rip-Rip/clang_complete', { 'autoload': { 'filetypes': ['c', 'cpp'] } }
+NeoBundle 'Shougo/vinarise'
 
-" ctagsをインストールすること！（Macな人はHomebrewから）
-" NeoBundle 'git://github.com/vim-scripts/taglist.vim.git'
-NeoBundle 'git://github.com/Shougo/unite-outline.git'
+" NeoBundle 'thinca/vim-quickrun'
+" NeoBundle 'thinca/vim-ref'
+" NeoBundle 'tpope/vim-rails'
 
-" カラースキーム
-NeoBundle 'git://github.com/altercation/vim-colors-solarized.git'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite-outline', { 'depends': ['Shougo/unite.vim'] }
 
 filetype plugin indent on
+NeoBundleCheck
