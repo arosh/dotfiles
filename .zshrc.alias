@@ -31,14 +31,7 @@ alias mv="mv -i"
 # c: マッチした行数
 # w: 単語単位で検索
 # I: --binary-files=without-matchと等価
-# alias grep="grep --color=auto -i"
-export GREP_OPTIONS="-FIr --color=auto"
-#alias grep="grep --color=auto"
-#alias egrep="grep -E"
-#alias fgrep="grep -F"
-
-#alias where="command -v"
-#alias j="jobs -l"
+# export GREP_OPTIONS="-FIr --color=auto"
 
 # l: 環境変数を解除
 alias su="su -l"
