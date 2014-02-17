@@ -1,3 +1,47 @@
+.*
+!.gitignore
+
+
+### OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must ends with two \r.
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+
+### Linux
+*~
+
+
+### Windows
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+
+### Archove
+
 # It's better to unpack these files and commit the raw source because
 # git has its own built in compression methods.
 *.7z
@@ -6,8 +50,10 @@
 *.zip
 *.gz
 *.bzip
+*.bz2
 *.xz
 *.lzma
+*.cab
 
 #packing-only formats
 *.iso
@@ -20,35 +66,42 @@
 *.egg
 *.deb
 *.rpm
+*.msi
+*.msm
+*.msp
 
+
+### Vim
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+
+### Emacs
+
+# -*- mode: gitignore; -*-
 *~
 \#*\#
 /.emacs.desktop
 /.emacs.desktop.lock
-.elc
+*.elc
 auto-save-list
 tramp
 .\#*
 
-.*
-!.gitignore
-# Windows image file caches
-Thumbs.db 
+# Org-mode
+.org-id-locations
+*_archive
 
-# Folder config file
-Desktop.ini
+# flymake-mode
+*_flymake.*
 
-.*.sw[a-z]
-*.un~
-Session.vim
+# eshell files
+/eshell/history
+/eshell/lastdir
 
-# OSX
-.DS_Store
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
+# elpa packages
+/elpa/
