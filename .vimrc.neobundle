@@ -17,8 +17,6 @@ NeoBundle 'Shougo/neocomplete'
 NeoBundleLazy 'Rip-Rip/clang_complete', { 'autoload': { 'filetypes': ['c', 'cpp'] } }
 NeoBundle 'Shougo/vinarise'
 
-" NeoBundle 'thinca/vim-quickrun'
-" NeoBundle 'thinca/vim-ref'
 " NeoBundle 'tpope/vim-rails'
 
 NeoBundle 'Shougo/unite.vim'

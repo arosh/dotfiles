@@ -49,16 +49,13 @@ autocmd BufReadPost *
   \ endif
 
 
-" XMLの閉じタグ設定
-augroup MyXML
+augroup XmlTagAutoClose
   autocmd!
   " <buffer>を付けると、他のbufferでは無効になる(バッファローカル)
   autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
   autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
-" コンマの後に自動的にスペースを挿入
-"inoremap , ,<Space>
 " 保存時に行末の空白を除去する
 " autocmd BufWritePre * :%s/\s\+$//ge
 " 保存時にtabをスペースに変換する
@@ -69,23 +66,18 @@ set backspace=indent,eol,start
 set history=1000 " デフォルト値は20
 
 " view
-" set title
+set title
 set number
-"set ts=4 sw=4 sts=0
-"set noexpandtab
 set ts=4 sw=2 sts=2
 set expandtab
 set showcmd
 set wildmenu
-set textwidth=0 " 自動折り返しを無効にする
 
-" set nowrap " 長い文字列は折り返して表示するのを無効にする
 set wrap " 長い文字列は折り返して表示
+
 " 折り返された文字列にも移動できるようにする
 nnoremap j gj
 nnoremap k gk
-" nnoremap <Down> gj
-" nnoremap <Up> gk
 
 set showmatch
 set matchtime=0
@@ -113,6 +105,9 @@ endif
 "改行コード
 set fileformats=unix,dos,mac
 
+" 指定した文字数で自動で改行する機能を無効にする
+set textwidth=0
+
 " コメント行の継続を無効化
 autocmd FileType * setlocal formatoptions-=r
 autocmd FileType * setlocal formatoptions-=o
@@ -127,7 +122,7 @@ autocmd BufNewFile,BufRead *.pde set filetype=java
 " HTML向けの「ファイル名の上でgf もどるときはCtrl+^」に関する設定
 autocmd FileType html setlocal includeexpr=substitute(v:fname,'^\\/','','') | setlocal path+=;/
 
-" i_Ctrl-Aを無効にする (:help insert-indexを参照) 直前の文字列を入力する
+" i_Ctrl-Aを無効にする (:help insert-indexを参照) 直前に入力した文字列を入力する
 inoremap <C-a> a
 
 " http://www.slideshare.net/tsukkee/vim5-vimrc

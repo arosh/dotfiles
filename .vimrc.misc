@@ -1,23 +1,9 @@
-" taglist
-" タグリストウィンドウの閉じる設定を特別視しない
-" let Tlist_Exit_OnlyWindow = 1
-" nnoremap <silent> <Leader>t :<C-u>Tlist<CR>
-"inoremap <silent> <Leader>t <ESC>:<C-u>Tlist<CR>
-
-" outline.vim
-nnoremap <silent> <Leader>t :<C-u>Unite outline<CR>
-nnoremap <silent> <Leader>b :<C-u>Unite buffer<CR>
-
 " unite
 " 挿入モードで開始
 let g:unite_enable_start_insert=1
 "map <silent> <Leader>f :Unite file<CR>
 " ファイルを開く
 nnoremap <silent> <Leader>f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-"inoremap <silent> <Leader>f <ESC>:<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-
-" 常用セット
-nnoremap <silent> <Leader>e :<C-u>Unite buffer file_mru<CR>
 
 " ウィンドウを分割して開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
@@ -43,5 +29,5 @@ endfunction
 " ファイル選択時は smartcase を使わない
 " call unite#set_buffer_name_option('files', 'smartcase', 0)
 
-" vim-ref
-let g:ref_user_vimproc = 1 " vimprocを使用する
+" outline.vim
+nnoremap <silent> <Leader>t :<C-u>Unite outline<CR>
