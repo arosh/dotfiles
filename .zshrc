@@ -61,6 +61,7 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
+bindkey "[Z" reverse-menu-complete  # Shift-Tabで補完候補を逆順する (Ctrl+v Shift+Tabで入力した)
 
 # 補完関連
 autoload -Uz compinit
@@ -74,8 +75,6 @@ setopt magic_equal_subst # --prefix=/usr 等で=以降でも補完できるよ�
 ### select=2: 補完候補を一覧から選択する。
 ###           ただし、補完候補が2つ以上なければすぐに補完する。
 zstyle ':completion:*:default' menu select=2
-
-bindkey "[Z" reverse-menu-complete  # Shift-Tabで補完候補を逆順する (Ctrl+v Shift+Tabで入力した)
 
 # 補完の時に大文字小文字を区別しない(但し、大文字を打った場合は小文字に変換しない)
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'

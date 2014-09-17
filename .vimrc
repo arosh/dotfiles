@@ -68,7 +68,9 @@ set history=1000 " デフォルト値は20
 " view
 set title
 set number
-set ts=4 sw=2 sts=2
+set tabstop=2     " 既に入力されているTab文字を空白何文字分として表示するか？
+set shiftwidth=2  " オートインデントや >> or << で入力される文字数
+set softtabstop=2 " Tabキーを入力したとき、何文字分入力するか？ (0にするとtabstopと同じ数値になるが、backspaceをおした時の挙動がイマイチ)
 set expandtab
 set showcmd
 set wildmenu

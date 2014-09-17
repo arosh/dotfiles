@@ -2,10 +2,12 @@
   editor = vim
   pager = lv -c
   excludesfile = /Users/arosh/.gitignore
-  autocrlf = input
+  autocrlf = false
 [merge]
-	tool = vimdiff
-	ff = false
+  tool = vimdiff
+  ff = false
+[pull]
+  rebase = true
 [color]
   ui = auto
 [alias]
@@ -14,13 +16,15 @@
   co = checkout
   graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
 [user]
-	name = Sho Iizuka
-	email = sho.i518@gmail.com
+  name = Sho Iizuka
+  email = sho.i518@gmail.com
 [credential]
-	helper = cache
+  helper = cache
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[push]
+  default = simple

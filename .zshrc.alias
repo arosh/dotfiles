@@ -33,7 +33,7 @@ alias mv="mv -i"
 # I: --binary-files=without-matchと等価
 # export GREP_OPTIONS="-FIr --color=auto"
 
-# l: 環境変数を解除
+# l: 環境変数を解除(-と一緒)
 alias su="su -l"
 
 #alias du="du -hs"
