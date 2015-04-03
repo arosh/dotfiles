@@ -3,7 +3,7 @@ export PATH=~/bin:~/opt/gnu/bin:/usr/texbin:/usr/local/bin:$PATH
 
 # python library path
 # export PYTHONPATH=/Library/Python/2.7/site-packages:$PYTHONPATH
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+# export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 
 # rbenv + rubybuild
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

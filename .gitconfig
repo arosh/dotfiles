@@ -7,7 +7,7 @@
   tool = vimdiff
   ff = false
 [pull]
-  rebase = true
+  rebase = true # mergeをno-ffにするとpullでもマージコミットが作られてしまうので、それは阻止する
 [color]
   ui = auto
 [alias]
