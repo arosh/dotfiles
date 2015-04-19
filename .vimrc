@@ -90,7 +90,7 @@ let g:neocomplete#sources#include#patterns = {
 set nu                  " number
 syntax on
 filetype plugin indent on
-set ts=2 sw=2 sts=2 et  " tabstop shiftwidth softtabstop expandtab
+set ts=2 sw=0 sts=-1 et " tabstop shiftwidth softtabstop expandtab
 set is hls ic           " incsearch hlsearch ignorecase
 set sm mat=0            " showmatch matchtime=0
 set bs=indent,eol,start
