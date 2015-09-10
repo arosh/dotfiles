@@ -1,9 +1,11 @@
 " ---------- NeoBundle Scripts ----------
 " Note: Skip initialization for vim-tiny or vim-small.
-if !1 | finish | endif
+if 0 | endif
 
 if has('vim_starting')
-  set nocompatible               " Be iMproved
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
 
   " Required:
   set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -16,7 +18,8 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/neocomplete.vim'
-" NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
 
 call neobundle#end()
 
@@ -85,6 +88,34 @@ let g:neocomplete#sources#include#patterns = {
       \ 'c':    '^\s*#\s*include',
       \ }
 " ---------- End NeoComplete Scripts ----------
+
+" ---------- Unite Scripts ----------
+" 挿入モードで開始
+let g:unite_enable_start_insert=1
+" <C-u> : 繰り返し指定の数字 (5xで5文字消えるみたいなやつ) をリセットする
+" ファイルがあるディレクトリでファイラを開く (開いていない時はカレントディレクトリ)
+nnoremap <silent> <Leader>f :<C-u>UniteWithBufferDir file<CR>
+" 最近使ったファイルを開く
+nnoremap <silent> <Leader>r :<C-u>Unite file_mru<CR>
+
+" Uniteのバッファ内専用の設定
+autocmd FileType unite call s:unite_keymap()
+function! s:unite_keymap()
+  " <Plug>を使うときには[in]noremapではなく[in]mapを使う
+  " <silent> : コマンドをコマンドラインに出力しない
+  " <buffer> : バッファローカルなキーマッピングにする
+  " <expr> : 式を評価した文字列にマップする
+
+  " 単語単位からパス単位で削除するように変更
+  imap <silent><buffer> <C-w> <Plug>(unite_delete_backward_path)
+  " ESCキーを2回押すと終了する
+  imap <silent><buffer> <ESC> <Plug>(unite_exit)
+  " ウィンドウを分割して開く
+  inoremap <silent><buffer><expr> <C-J> unite#do_action('split')
+  " ウィンドウを縦に分割して開く
+  inoremap <silent><buffer><expr> <C-K> unite#do_action('vsplit')
+endfunction
+" ---------- End Unite Scripts ----------
 
 " ---------- User Scripts ----------
 set nu                  " number

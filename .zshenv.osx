@@ -1,5 +1,5 @@
 # homebrew & cabal & npm
-export PATH=~/bin:~/opt/gnu/bin:/usr/texbin:/usr/local/bin:$PATH
+export PATH=~/bin:/usr/texbin:/usr/local/bin:/usr/sbin:$PATH
 
 # python library path
 # export PYTHONPATH=/Library/Python/2.7/site-packages:$PYTHONPATH
