@@ -91,12 +91,14 @@ let g:neocomplete#sources#include#patterns = {
 
 " ---------- Unite Scripts ----------
 " 挿入モードで開始
-let g:unite_enable_start_insert=1
+" let g:unite_enable_start_insert=1
 " <C-u> : 繰り返し指定の数字 (5xで5文字消えるみたいなやつ) をリセットする
 " ファイルがあるディレクトリでファイラを開く (開いていない時はカレントディレクトリ)
 nnoremap <silent> <Leader>f :<C-u>UniteWithBufferDir file<CR>
 " 最近使ったファイルを開く
 nnoremap <silent> <Leader>r :<C-u>Unite file_mru<CR>
+" タブ一覧を開く
+nnoremap <silent> <Leader>t :<C-u>Unite tab<CR>
 
 " Uniteのバッファ内専用の設定
 autocmd FileType unite call s:unite_keymap()
@@ -109,11 +111,13 @@ function! s:unite_keymap()
   " 単語単位からパス単位で削除するように変更
   imap <silent><buffer> <C-w> <Plug>(unite_delete_backward_path)
   " ESCキーを2回押すと終了する
-  imap <silent><buffer> <ESC> <Plug>(unite_exit)
+  " imap <silent><buffer> <ESC> <Plug>(unite_exit)
   " ウィンドウを分割して開く
   inoremap <silent><buffer><expr> <C-J> unite#do_action('split')
   " ウィンドウを縦に分割して開く
   inoremap <silent><buffer><expr> <C-K> unite#do_action('vsplit')
+  " 新しいタブに開く
+  inoremap <silent><buffer><expr> <C-T> unite#do_action('tabopen')
 endfunction
 " ---------- End Unite Scripts ----------
 
