@@ -71,22 +71,24 @@ let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-if has("mac")
-  let g:neocomplete#sources#include#paths = {
-        \ 'cpp': '.,/Library/Developer/CommandLineTools/usr/include/c++/v1,/usr/local/include,/usr/include',
-        \ 'c':   '.,/usr/local/include,/usr/include',
-        \ }
-elseif has("unix")
-  let g:neocomplete#sources#include#paths = {
-        \ 'cpp': '.,/usr/include/c++/4.9,/usr/local/include,/usr/include',
-        \ 'c':    '.,/usr/local/include,/usr/include',
-        \ }
-endif
+" includeはneoincludeに分離されたっぽい？
 
-let g:neocomplete#sources#include#patterns = {
-      \ 'cpp':  '^\s*#\s*include',
-      \ 'c':    '^\s*#\s*include',
-      \ }
+" if has("mac")
+"   let g:neocomplete#sources#include#paths = {
+"         \ 'cpp': '.,/Library/Developer/CommandLineTools/usr/include/c++/v1,/usr/local/include,/usr/include',
+"         \ 'c':   '.,/usr/local/include,/usr/include',
+"         \ }
+" elseif has("unix")
+"   let g:neocomplete#sources#include#paths = {
+"         \ 'cpp': '.,/usr/include/c++/4.9,/usr/local/include,/usr/include',
+"         \ 'c':    '.,/usr/local/include,/usr/include',
+"         \ }
+" endif
+
+" let g:neocomplete#sources#include#patterns = {
+"       \ 'cpp':  '^\s*#\s*include',
+"       \ 'c':    '^\s*#\s*include',
+"       \ }
 " ---------- End NeoComplete Scripts ----------
 
 " ---------- Unite Scripts ----------
@@ -97,8 +99,6 @@ let g:unite_enable_start_insert=1
 nnoremap <silent> <Leader>f :<C-u>UniteWithBufferDir file<CR>
 " 最近使ったファイルを開く
 nnoremap <silent> <Leader>r :<C-u>Unite file_mru<CR>
-" タブ一覧を開く
-nnoremap <silent> <Leader>t :<C-u>Unite tab<CR>
 
 " Uniteのバッファ内専用の設定
 autocmd FileType unite call s:unite_keymap()
@@ -110,14 +110,12 @@ function! s:unite_keymap()
 
   " 単語単位からパス単位で削除するように変更
   imap <silent><buffer> <C-w> <Plug>(unite_delete_backward_path)
-  " ESCキーを2回押すと終了する
+  " ESCキーを押すと終了する
   nmap <silent><buffer> <ESC> <Plug>(unite_exit)
   " ウィンドウを分割して開く
   inoremap <silent><buffer><expr> <C-J> unite#do_action('split')
   " ウィンドウを縦に分割して開く
   inoremap <silent><buffer><expr> <C-K> unite#do_action('vsplit')
-  " 新しいタブに開く
-  inoremap <silent><buffer><expr> <C-T> unite#do_action('tabopen')
 endfunction
 " ---------- End Unite Scripts ----------
 
