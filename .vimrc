@@ -114,6 +114,9 @@ autocmd FileType unite nmap <silent><buffer> <ESC> <Plug>(unite_exit)
 autocmd FileType unite inoremap <silent><buffer><expr> <C-J> unite#do_action('split')
 " ウィンドウを縦に分割して開く
 autocmd FileType unite inoremap <silent><buffer><expr> <C-K> unite#do_action('vsplit')
+
+" enable mru in /mnt
+let g:neomru#file_mru_ignore_pattern = substitute(g:neomru#file_mru_ignore_pattern, '|\/mnt\/\\', '', '')
 " ---------- End Unite Scripts ----------
 
 " ---------- User Scripts ----------
