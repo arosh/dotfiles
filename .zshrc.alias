@@ -32,12 +32,3 @@ alias mv="mv -i"
 # w: 単語単位で検索
 # I: --binary-files=without-matchと等価
 # export GREP_OPTIONS="-FIr --color=auto"
-
-# l: 環境変数を解除(-と一緒)
-alias su="su -l"
-
-#alias du="du -hs"
-alias du="du -h"
-alias df="df -h"
-
-# compdef: 同様の補完を提供する

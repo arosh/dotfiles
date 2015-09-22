@@ -101,22 +101,19 @@ nnoremap <silent> <Leader>f :<C-u>UniteWithBufferDir file<CR>
 nnoremap <silent> <Leader>r :<C-u>Unite file_mru<CR>
 
 " Uniteのバッファ内専用の設定
-autocmd FileType unite call s:unite_keymap()
-function! s:unite_keymap()
-  " <Plug>を使うときには[in]noremapではなく[in]mapを使う
-  " <silent> : コマンドをコマンドラインに出力しない
-  " <buffer> : バッファローカルなキーマッピングにする
-  " <expr> : 式を評価した文字列にマップする
+" <Plug>を使うときには[in]noremapではなく[in]mapを使う
+" <silent> : コマンドをコマンドラインに出力しない
+" <buffer> : バッファローカルなキーマッピングにする
+" <expr> : 式を評価した文字列にマップする
 
-  " 単語単位からパス単位で削除するように変更
-  imap <silent><buffer> <C-w> <Plug>(unite_delete_backward_path)
-  " ESCキーを押すと終了する
-  nmap <silent><buffer> <ESC> <Plug>(unite_exit)
-  " ウィンドウを分割して開く
-  inoremap <silent><buffer><expr> <C-J> unite#do_action('split')
-  " ウィンドウを縦に分割して開く
-  inoremap <silent><buffer><expr> <C-K> unite#do_action('vsplit')
-endfunction
+" 単語単位からパス単位で削除するように変更
+autocmd FileType unite imap <silent><buffer> <C-w> <Plug>(unite_delete_backward_path)
+" ESCキーを押すと終了する
+autocmd FileType unite nmap <silent><buffer> <ESC> <Plug>(unite_exit)
+" ウィンドウを分割して開く
+autocmd FileType unite inoremap <silent><buffer><expr> <C-J> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+autocmd FileType unite inoremap <silent><buffer><expr> <C-K> unite#do_action('vsplit')
 " ---------- End Unite Scripts ----------
 
 " ---------- User Scripts ----------
@@ -134,7 +131,7 @@ set stl=%(%r\ %)%f%(\ %m%)%=%(%{&ff}\ \|\ %)%(%{&fenc}\ \|\ %)%(%{&ft}\ \|\ %)%(
 set completeopt=menuone
 
 " http://qiita.com/s_of_p/items/b61e4c3a0c7ee279848a
-augroup vimrcEx
+augroup reopen
   autocmd!
   autocmd BufReadPost *
         \ if line("'\"") > 1 && line("'\"") <= line("$") |
