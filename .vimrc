@@ -20,6 +20,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'tpope/vim-rails'
 
 call neobundle#end()
 
@@ -93,10 +94,13 @@ let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\
 
 " ---------- Unite Scripts ----------
 " 挿入モードで開始
-let g:unite_enable_start_insert=1
+call unite#custom#profile('default', 'context', { 'start_insert' : 1 })
+" 1行目がスキップされないようにする
+let g:unite_enable_auto_select = 0
 " <C-u> : 繰り返し指定の数字 (5xで5文字消えるみたいなやつ) をリセットする
 " ファイルがあるディレクトリでファイラを開く (開いていない時はカレントディレクトリ)
-nnoremap <silent> <Leader>f :<C-u>UniteWithBufferDir file<CR>
+" directoryのデフォルトアクションになるべく合わせた
+nnoremap <silent> <Leader>f :<C-u>UniteWithBufferDir file file/new directory/new -hide-source-names<CR>
 " 最近使ったファイルを開く
 nnoremap <silent> <Leader>r :<C-u>Unite file_mru<CR>
 
