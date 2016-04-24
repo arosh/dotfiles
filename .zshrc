@@ -41,8 +41,9 @@ setopt transient_rprompt # 右プロンプトが邪魔になったら消す
 setopt multios           # 複数リダイレクトを有効にする
 setopt list_packed       # ls した時に詰めて表示
 
-# zshは，最終行が\nで終わらない時に，Unixの約束に従って最終行が表示されない仕様であるが，
-# さすがに不便なので，表示するようにする。
+# Unix規約では，シェルから呼び出したコマンドは\nを最後に出力しなければならないが，
+# 出力しなかった場合には最終行は出力されない。
+# この仕様はさすがに不便なので，\nで終わらなかったとしても表示するようにする。
 # http://wiki.fdiary.net/zsh/?FAQ%40zsh%A5%B9%A5%EC#l1
 unsetopt promptcr
 

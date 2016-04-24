@@ -16,11 +16,20 @@ call neobundle#begin(expand('~/.vim/bundle'))
 
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
-
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'tpope/vim-rails'
+NeoBundle 'plasticboy/vim-markdown'
+" NeoBundle 'tpope/vim-rails'
 
 call neobundle#end()
 
@@ -55,7 +64,7 @@ function! s:my_cr_function()
 endfunction
 
 " <BS>: close popup and delete backword char.
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr> <BS> neocomplete#smart_close_popup()."\<C-h>"
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -122,6 +131,11 @@ autocmd FileType unite inoremap <silent><buffer><expr> <C-K> unite#do_action('vs
 " enable mru in /mnt
 let g:neomru#file_mru_ignore_pattern = substitute(g:neomru#file_mru_ignore_pattern, '|\/mnt\/\\', '', '')
 " ---------- End Unite Scripts ----------
+
+" ---------- Vim-Markdown Scripts ----------
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_no_default_key_mappings = 1
+" ---------- End Vim-Markdown Scripts ----------
 
 " ---------- User Scripts ----------
 set nu                  " number
