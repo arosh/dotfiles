@@ -1,6 +1,6 @@
 # 運用ルール
-# zshenvには，呼び出したプログラムから参照される必要のある設定のみを記述する
-# それ以外はzshrcに記述する
+# zshenvには，基本的には環境変数のみ書く。rbenvのように「zshenvに書け」と書いてある設定も書く。
+# それ以外はzshrcに記述する。
 # MacのZshにはPATHの内容をメチャクチャにする設定が書かれているので注意
 # (brew info zshを参照)
 #
@@ -54,7 +54,7 @@ bindkey -e # emacs kaybind
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=50000 # メモリ上に保存
 SAVEHIST=50000 # ファイルに保存
-setopt share_history
+setopt share_history        # 同時に起動したzshの間でヒストリを共有する
 setopt hist_ignore_all_dups # 重複した履歴を保存しない
 setopt hist_ignore_space    # スペースで始まるコマンド行はヒストリに記録しない
 
