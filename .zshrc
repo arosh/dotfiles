@@ -14,16 +14,10 @@ unalias sl
 # disable alias rm='nocorrect rm -i'
 unalias rm
 
-# Use "Mac OS X Everywhere" for `pbcopy`
-clip() {
-  cat $1 | pbcopy
-}
-
 ### modules/history/init.zsh ###
 HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
 HISTSIZE=100000 # 10000 is too small
 SAVEHIST=100000
-unalias history-stat
 
 ### modules/directory/init.zsh ###
 setopt MULTIOS              # Write to multiple descriptors.
@@ -47,6 +41,11 @@ function cdup() {
 }
 zle -N cdup
 bindkey '^\^' cdup
+
+# Use `pbcopy` in modules/utility/init.zsh
+clip() {
+  cat $1 | pbcopy
+}
 
 if [[ -s "${ZDOTDIR:-$HOME}/.zshrc.vcs_info" ]]; then
   source "${ZDOTDIR:-$HOME}/.zshrc.vcs_info"
