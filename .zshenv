@@ -11,12 +11,12 @@ fi
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
-# Set the list of directories that Zsh searches for programs.
-path=(/usr/local/bin $path)
+# http://qiita.com/mollifier/items/42ae46ff4140251290a7
+path=(/usr/local/bin(N-/) $path)
 
 if [[ $HOST = "h25is123.naist.jp" ]]; then
   # homebrewのインストール先
-  path=(/private/var/netboot/Users/Shared/sho-ii/homebrew/bin $path)
+  path=(/private/var/netboot/Users/Shared/sho-ii/homebrew/bin(N-/) $path)
   # homebrew-caskのインストール先
   export HOMEBREW_CASK_OPTS="--caskroom=/Users/Shared/sho-ii/homebrew-cask"
 fi
