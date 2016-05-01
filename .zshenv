@@ -14,7 +14,7 @@ typeset -gU cdpath fpath mailpath path
 # http://qiita.com/mollifier/items/42ae46ff4140251290a7
 path=(/usr/local/bin(N-/) $path)
 
-if [[ $HOST = "h25is123.naist.jp" ]]; then
+if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   # homebrewのインストール先
   path=(/private/var/netboot/Users/Shared/sho-ii/homebrew/bin(N-/) $path)
   # homebrew-caskのインストール先
