@@ -19,7 +19,7 @@ fi
 typeset -gU cdpath fpath mailpath path
 
 # http://qiita.com/mollifier/items/42ae46ff4140251290a7
-path=(/usr/local/bin(N-/) $path)
+path=($HOME/bin(N-/) /usr/local/bin(N-/) /usr/sbin(N-/) /sbin(N-/) $path)
 
 if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   # homebrewのインストール先
@@ -34,7 +34,6 @@ export GOPATH=$HOME/.go
 #
 # modules/utility/init.zsh
 #
-
 # https://github.com/sorin-ionescu/prezto/issues/622
 unsetopt CORRECT
 

@@ -28,9 +28,12 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'vim-jp/vim-cpp'
-" NeoBundle 'tpope/vim-rails'
+NeoBundleLazy 'vim-jp/vim-cpp', {
+\   'autoload': { 'filetypes': ['cpp'] }
+\ }
+NeoBundleLazy 'plasticboy/vim-markdown', {
+\   'autoload': { 'filetypes': ['markdown'] }
+\ }
 
 call neobundle#end()
 
