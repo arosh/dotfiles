@@ -32,8 +32,6 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'prompt' \
-  'ssh' \
-  'history-substring-search' \
   'archive' \
   'command-not-found'
 

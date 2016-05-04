@@ -65,6 +65,13 @@ alias rmdir="${aliases[rm]:-rm} -rf"
 # --prefix=の後などでも補完を有効にする
 setopt MAGIC_EQUAL_SUBST
 
+# Ctrl-PとCtrl-Nで前方一致検索
+autoload -Uz history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^p" history-beginning-search-backward-end
+bindkey "^n" history-beginning-search-forward-end
+
 # Ctrl-^ で cd ..
 # https://github.com/arael/configs/blob/master/zshrc.prezto#L140
 function cdup() {
@@ -89,6 +96,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zshrc.vcs_info" ]]; then
   source "${ZDOTDIR:-$HOME}/.zshrc.vcs_info"
 fi
 
+#
+# zcoredump
+#
 # https://github.com/sorin-ionescu/prezto/blob/master/runcoms/zlogin
 # Execute code that does not affect the current session in the background.
 {
