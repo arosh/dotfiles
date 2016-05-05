@@ -8,8 +8,9 @@ fi
 #
 # Language
 #
+# https://fumiyas.github.io/2013/12/15/test.sh-advent-calendar.html
 if [[ -z "$LANG" ]]; then
-  export LANG='ja_JP.UTF-8'
+  export LANG="ja_JP.UTF-8"
 fi
 
 #
@@ -29,7 +30,9 @@ if [[ "$HOST" = "h25is123.naist.jp" ]]; then
 fi
 
 # http://qiita.com/yuku_t/items/c7ab1b1519825cc2c06f
-export GOPATH=$HOME/.go
+if [[ -z "$GOPATH" ]]; then
+  export GOPATH="$HOME/.go"
+fi
 
 #
 # modules/utility/init.zsh
