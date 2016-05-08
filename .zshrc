@@ -26,7 +26,7 @@ if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   # homebrewのインストール先
   path=(/private/var/netboot/Users/Shared/sho-ii/homebrew/bin(N-/) $path)
   # homebrew-caskのインストール先
-  export HOMEBREW_CASK_OPTS="--caskroom=/Users/Shared/sho-ii/homebrew-cask"
+  export HOMEBREW_CASK_OPTS="--caskroom=/private/var/netboot/Users/Shared/sho-ii/homebrew-cask"
 fi
 
 # http://qiita.com/yuku_t/items/c7ab1b1519825cc2c06f
@@ -97,6 +97,13 @@ clip() {
 #
 if [[ -s "${ZDOTDIR:-$HOME}/.zshrc.vcs_info" ]]; then
   source "${ZDOTDIR:-$HOME}/.zshrc.vcs_info"
+fi
+
+#
+# https://github.com/rupa/z
+#
+if [[ -s "`brew --prefix`/etc/profile.d/z.sh" ]]; then
+  source "`brew --prefix`/etc/profile.d/z.sh"
 fi
 
 #
