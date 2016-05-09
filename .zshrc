@@ -46,6 +46,12 @@ unalias sl
 # disable alias rm='nocorrect rm -i'
 unalias rm
 
+# disable alias l='ls -1A'
+alias l='ll'
+
+alias lla=la
+alias rmdir="${aliases[rm]:-rm} -rf"
+
 #
 # modules/history/init.zsh
 #
@@ -62,8 +68,6 @@ setopt EXTENDED_GLOB        # Use extended globbing syntax.
 #
 # User Settings
 #
-alias lla=la
-alias rmdir="${aliases[rm]:-rm} -rf"
 
 # --prefix=の後などでも補完を有効にする
 setopt MAGIC_EQUAL_SUBST
