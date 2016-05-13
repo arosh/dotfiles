@@ -106,8 +106,12 @@ fi
 #
 # https://github.com/rupa/z
 #
-if [[ -s "`brew --prefix`/etc/profile.d/z.sh" ]]; then
-  source "`brew --prefix`/etc/profile.d/z.sh"
+# Check if a program exists from a Bash script
+# http://stackoverflow.com/q/592620
+if command -v brew >/dev/null 2>&1; then
+  if [[ -s "`brew --prefix`/etc/profile.d/z.sh" ]]; then
+    source "`brew --prefix`/etc/profile.d/z.sh"
+  fi
 fi
 
 #
