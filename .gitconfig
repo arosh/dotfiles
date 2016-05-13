@@ -1,6 +1,5 @@
 [core]
   editor = vim
-  pager = lv -c
   excludesfile = ~/.gitignore
 [merge]
   tool = vimdiff
@@ -23,4 +22,6 @@
 [url "git@github.com:"]
   # GitHubには公開鍵認証で接続する (httpsではなくsshで接続する)
   # http://qiita.com/nysalor/items/f779898eb88c1ce7be12
-	pushinsteadof = https://github.com/
+  pushinsteadof = https://github.com/
+[include]
+  path = ~/.gitconfig.local
