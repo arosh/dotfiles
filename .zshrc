@@ -25,6 +25,8 @@ path=($HOME/bin(N-/) /usr/local/bin(N-/) /usr/sbin(N-/) /sbin(N-/) $path)
 if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   # homebrewのインストール先
   path=(/private/var/netboot/Users/Shared/sho-ii/homebrew/bin(N-/) $path)
+  # homebrewが使用するtmp (`brew --prefix`と同一の物理ドライブを指定する)
+  export HOMEBREW_TEMP="/private/var/netboot/Users/Shared/sho-ii/tmp"
   # homebrew-caskのインストール先
   export HOMEBREW_CASK_OPTS="--caskroom=/private/var/netboot/Users/Shared/sho-ii/homebrew-cask"
 fi
@@ -103,14 +105,17 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zshrc.vcs_info" ]]; then
   source "${ZDOTDIR:-$HOME}/.zshrc.vcs_info"
 fi
 
-#
-# https://github.com/rupa/z
-#
 # Check if a program exists from a Bash script
 # http://stackoverflow.com/q/592620
 if command -v brew >/dev/null 2>&1; then
+  # https://github.com/rupa/z
   if [[ -s "`brew --prefix`/etc/profile.d/z.sh" ]]; then
     source "`brew --prefix`/etc/profile.d/z.sh"
+  fi
+
+  # brew info byobu
+  if command -v byobu >/dev/null 2>&1; then
+    export BYOBU_PREFIX=$(brew --prefix)
   fi
 fi
 
