@@ -31,9 +31,11 @@ if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   export HOMEBREW_CASK_OPTS="--caskroom=/private/var/netboot/Users/Shared/sho-ii/homebrew-cask"
 fi
 
-# http://qiita.com/yuku_t/items/c7ab1b1519825cc2c06f
 if [[ -z "$GOPATH" ]]; then
-  export GOPATH="$HOME/.go"
+  if command -v go >/dev/null 2>&1; then
+    # http://qiita.com/yuku_t/items/c7ab1b1519825cc2c06f
+    export GOPATH="$HOME/.go"
+  fi
 fi
 
 #
@@ -70,9 +72,6 @@ setopt EXTENDED_GLOB        # Use extended globbing syntax.
 #
 # User Settings
 #
-
-# --prefix=の後などでも補完を有効にする
-setopt MAGIC_EQUAL_SUBST
 
 # Ctrl-PとCtrl-Nで前方一致検索
 autoload -Uz history-search-end
