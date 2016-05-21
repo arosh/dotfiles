@@ -31,13 +31,6 @@ if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   export HOMEBREW_CASK_OPTS="--caskroom=/private/var/netboot/Users/Shared/sho-ii/homebrew-cask"
 fi
 
-if [[ -z "$GOPATH" ]]; then
-  if command -v go >/dev/null 2>&1; then
-    # http://qiita.com/yuku_t/items/c7ab1b1519825cc2c06f
-    export GOPATH="$HOME/.go"
-  fi
-fi
-
 #
 # modules/utility/init.zsh
 #
@@ -98,6 +91,21 @@ clip() {
 }
 
 #
+# MacTeX
+#
+path=(/Library/TeX/texbin(N-/) $path)
+
+#
+# Go
+#
+if [[ -z "$GOPATH" ]]; then
+  if command -v go >/dev/null 2>&1; then
+    # http://qiita.com/yuku_t/items/c7ab1b1519825cc2c06f
+    export GOPATH="$HOME/.go"
+  fi
+fi
+
+#
 # vcs_info
 #
 if [[ -s "${ZDOTDIR:-$HOME}/.zshrc.vcs_info" ]]; then
@@ -107,6 +115,7 @@ fi
 # Check if a program exists from a Bash script
 # http://stackoverflow.com/q/592620
 if command -v brew >/dev/null 2>&1; then
+  # brew info z
   # https://github.com/rupa/z
   if [[ -s "`brew --prefix`/etc/profile.d/z.sh" ]]; then
     source "`brew --prefix`/etc/profile.d/z.sh"
