@@ -13,6 +13,7 @@
   br = branch
   st = status
   co = checkout
+  graph = log --graph --decorate --all
 [credential]
   # パスワードを15分間キャッシュする
   # http://qiita.com/usamik26/items/c655abcaeee02ea59695
