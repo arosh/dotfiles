@@ -25,6 +25,7 @@ path=($HOME/bin(N-/) /usr/local/bin(N-/) /usr/sbin(N-/) /sbin(N-/) $path)
 if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   # homebrewのインストール先
   path=(/private/var/netboot/Users/Shared/sho-ii/homebrew/bin(N-/) $path)
+  manpath=(`brew --prefix`/share/man(N-/) $manpath)
   # homebrewが使用するtmp (`brew --prefix`と同一の物理ドライブを指定する)
   export HOMEBREW_TEMP="/private/var/netboot/Users/Shared/sho-ii/tmp"
   # homebrew-caskのインストール先
