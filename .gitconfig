@@ -21,7 +21,8 @@
 [push]
   default = simple
 [url "git@github.com:"]
-  # GitHubには公開鍵認証で接続する (httpsではなくsshで接続する)
+  # GitHubにはhttpsではなくssh (gitプロトコル) で接続する
+  # (公開鍵認証を行う)
   # http://qiita.com/nysalor/items/f779898eb88c1ce7be12
   pushinsteadof = https://github.com/
 [include]
