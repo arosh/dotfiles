@@ -24,12 +24,22 @@ path=($HOME/bin(N-/) /usr/local/bin(N-/) /usr/sbin(N-/) /sbin(N-/) $path)
 
 if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   # homebrewのインストール先
-  path=(/private/var/netboot/Users/Shared/sho-ii/homebrew/bin(N-/) $path)
+  LOCAL=/private/var/netboot/Users/Shared/sho-ii
+  path=(${LOCAL}/homebrew/bin(N-/) $path)
   manpath=(`brew --prefix`/share/man(N-/) $manpath)
+
   # homebrewが使用するtmp (`brew --prefix`と同一の物理ドライブを指定する)
-  export HOMEBREW_TEMP="/private/var/netboot/Users/Shared/sho-ii/tmp"
+  export HOMEBREW_TEMP="${LOCAL}/tmp"
   # homebrew-caskのインストール先
-  export HOMEBREW_CASK_OPTS="--caskroom=/private/var/netboot/Users/Shared/sho-ii/homebrew-cask"
+  export HOMEBREW_CASK_OPTS="--caskroom=${LOCAL}/homebrew-cask"
+
+  # http://d.hatena.ne.jp/yascentur/20111111/1321015289
+  # [ -z "$c_include_path" ] && typeset -T C_INCLUDE_PATH c_include_path
+  # [ -z "$library_path" ] && typeset -T LIBRARY_PATH library_path
+  # [ -z "$pythonpath" ] && typeset -T PYTHONPATH pythonpath
+  # c_include_path=(`brew --prefix`/include $c_include_path)
+  # library_path=(`brew --prefix`/lib $library_path)
+  # pythonpath=(${LOCAL}/opt/newt/lib/python3.5/site-packages $pythonpath)
 fi
 
 #
