@@ -1,11 +1,4 @@
 #
-# Prezto
-#
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-#
 # Language
 #
 # https://fumiyas.github.io/2013/12/15/test.sh-advent-calendar.html
@@ -40,6 +33,30 @@ if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   # c_include_path=(`brew --prefix`/include $c_include_path)
   # library_path=(`brew --prefix`/lib $library_path)
   # pythonpath=(${LOCAL}/opt/newt/lib/python3.5/site-packages $pythonpath)
+fi
+
+#
+# MacTeX
+#
+path=(/Library/TeX/texbin(N-/) $path)
+
+#
+# Go
+#
+if command -v go >/dev/null 2>&1; then
+  if [[ -z "$GOPATH" ]]; then
+    # http://qiita.com/yuku_t/items/c7ab1b1519825cc2c06f
+    export GOPATH="$HOME/.go"
+  fi
+
+  path=($GOPATH/bin(N-/) $path)
+fi
+
+#
+# Prezto
+#
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
 #
@@ -100,23 +117,6 @@ bindkey '^\^' cdup
 clip() {
   cat $1 | pbcopy
 }
-
-#
-# MacTeX
-#
-path=(/Library/TeX/texbin(N-/) $path)
-
-#
-# Go
-#
-if command -v go >/dev/null 2>&1; then
-  if [[ -z "$GOPATH" ]]; then
-    # http://qiita.com/yuku_t/items/c7ab1b1519825cc2c06f
-    export GOPATH="$HOME/.go"
-  fi
-
-  path=($GOPATH/bin(N-/) $path)
-fi
 
 #
 # vcs_info
