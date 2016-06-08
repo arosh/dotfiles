@@ -43,7 +43,7 @@ path=(/Library/TeX/texbin(N-/) $path)
 #
 # Go
 #
-if command -v go >/dev/null 2>&1; then
+if (( $+commands[go] )); then
   if [[ -z "$GOPATH" ]]; then
     # http://qiita.com/yuku_t/items/c7ab1b1519825cc2c06f
     export GOPATH="$HOME/.go"
@@ -74,8 +74,12 @@ unalias rm
 # disable alias l='ls -1A'
 alias l='ll'
 
-alias lla=la
+alias lla='la'
 alias rmdir="${aliases[rm]:-rm} -rf"
+
+if (( $+commands[vim] )); then
+  alias view='${aliases[vim]:-vim} -R'
+fi
 
 #
 # modules/history/init.zsh
@@ -125,9 +129,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zshrc.vcs_info" ]]; then
   source "${ZDOTDIR:-$HOME}/.zshrc.vcs_info"
 fi
 
-# Check if a program exists from a Bash script
+# Check if a program exists from a Zsh script
 # http://stackoverflow.com/q/592620
-if command -v brew >/dev/null 2>&1; then
+# See .zprezto/modules/utility/init.zsh
+if (( $+commands[brew] )); then
   # brew info z
   # https://github.com/rupa/z
   if [[ -s "`brew --prefix`/etc/profile.d/z.sh" ]]; then
@@ -135,7 +140,7 @@ if command -v brew >/dev/null 2>&1; then
   fi
 
   # brew info byobu
-  if command -v byobu >/dev/null 2>&1; then
+  if (( $+commands[byobu] )); then
     export BYOBU_PREFIX=$(brew --prefix)
   fi
 fi
