@@ -10,6 +10,7 @@ fi
 # Paths
 #
 # Ensure path arrays do not contain duplicates.
+# http://zsh.sourceforge.net/Doc/Release/Shell-Builtin-Commands.html
 typeset -gU cdpath fpath mailpath path
 
 # http://qiita.com/mollifier/items/42ae46ff4140251290a7
@@ -25,14 +26,6 @@ if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   export HOMEBREW_TEMP="${LOCAL}/tmp"
   # homebrew-caskのインストール先
   export HOMEBREW_CASK_OPTS="--caskroom=${LOCAL}/homebrew-cask --appdir=${HOME}/Applications --binarydir=${HOME}/bin"
-
-  # http://d.hatena.ne.jp/yascentur/20111111/1321015289
-  # [ -z "$c_include_path" ] && typeset -T C_INCLUDE_PATH c_include_path
-  # [ -z "$library_path" ] && typeset -T LIBRARY_PATH library_path
-  # [ -z "$pythonpath" ] && typeset -T PYTHONPATH pythonpath
-  # c_include_path=(`brew --prefix`/include $c_include_path)
-  # library_path=(`brew --prefix`/lib $library_path)
-  # pythonpath=(${LOCAL}/opt/newt/lib/python3.5/site-packages $pythonpath)
 fi
 
 #
@@ -50,6 +43,31 @@ if (( $+commands[go] )); then
   fi
 
   path=($GOPATH/bin(N-/) $path)
+fi
+
+# Check if a program exists from a Zsh script
+# http://stackoverflow.com/q/592620
+# See .zprezto/modules/utility/init.zsh
+if (( $+commands[brew] )); then
+  # brew info z
+  # https://github.com/rupa/z
+  if [[ -s "`brew --prefix`/etc/profile.d/z.sh" ]]; then
+    source "`brew --prefix`/etc/profile.d/z.sh"
+  fi
+
+  # brew info byobu
+  if (( $+commands[byobu] )); then
+    export BYOBU_PREFIX=$(brew --prefix)
+  fi
+fi
+
+#
+# Modules
+#
+if [[ -z "$modulepath" ]]; then
+  # http://d.hatena.ne.jp/yascentur/20111111/1321015289
+  typeset -T MODULEPATH modulepath
+  modulepath=($HOME/.modulefiles(N-/) $modulepath)
 fi
 
 #
@@ -127,22 +145,6 @@ clip() {
 #
 if [[ -s "${ZDOTDIR:-$HOME}/.zshrc.vcs_info" ]]; then
   source "${ZDOTDIR:-$HOME}/.zshrc.vcs_info"
-fi
-
-# Check if a program exists from a Zsh script
-# http://stackoverflow.com/q/592620
-# See .zprezto/modules/utility/init.zsh
-if (( $+commands[brew] )); then
-  # brew info z
-  # https://github.com/rupa/z
-  if [[ -s "`brew --prefix`/etc/profile.d/z.sh" ]]; then
-    source "`brew --prefix`/etc/profile.d/z.sh"
-  fi
-
-  # brew info byobu
-  if (( $+commands[byobu] )); then
-    export BYOBU_PREFIX=$(brew --prefix)
-  fi
 fi
 
 #
