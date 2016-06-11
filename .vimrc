@@ -36,7 +36,7 @@ endif
 " ---------- End Dein Scripts ----------
 
 " ---------- NeoComplete Scripts ----------
-if dein#check_install(['Shougo/neocomplete.vim'])
+if !dein#check_install(['Shougo/neocomplete.vim'])
   " Use neocomplete.
   let g:neocomplete#enable_at_startup = 1
   " Use smartcase.
