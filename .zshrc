@@ -20,7 +20,6 @@ if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   # homebrewのインストール先
   LOCAL=/private/var/netboot/Users/Shared/sho-ii
   path=(${LOCAL}/homebrew/bin(N-/) $path)
-  manpath=(`brew --prefix`/share/man(N-/) $manpath)
 
   # homebrewが使用するtmp (`brew --prefix`と同一の物理ドライブを指定する)
   export HOMEBREW_TEMP="${LOCAL}/tmp"
@@ -49,6 +48,13 @@ fi
 # http://stackoverflow.com/q/592620
 # See .zprezto/modules/utility/init.zsh
 if (( $+commands[brew] )); then
+  # MANPATH
+  # http://qiita.com/mollifier/items/2dc274244ac698bb943b
+  if [[ -z "$MANPATH" ]]; then
+    export MANPATH=:
+  fi
+  manpath=(`brew --prefix`/share/man(N-/) $manpath)
+
   # brew info z
   # https://github.com/rupa/z
   if [[ -s "`brew --prefix`/etc/profile.d/z.sh" ]]; then

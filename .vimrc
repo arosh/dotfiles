@@ -58,7 +58,8 @@ if !dein#check_install(['Shougo/neocomplete.vim'])
     return neocomplete#close_popup() . "\<CR>"
   endfunction
 
-  " <BS>: close popup and delete backword char.
+  " <C-h>, <BS>: close popup and delete backword char.
+  inoremap <expr> <C-h> neocomplete#smart_close_popup()."\<C-h>"
   inoremap <expr> <BS> neocomplete#smart_close_popup()."\<C-h>"
 
   " Enable omni completion.
@@ -75,7 +76,7 @@ if !dein#check_install(['Shougo/neocomplete.vim'])
   let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
   let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-endif " dein#check_install(['Shougo/neocomplete.vim'])
+endif " !dein#check_install(['Shougo/neocomplete.vim'])
 " ---------- End NeoComplete Scripts ----------
 
 " ---------- Unite Scripts ----------
