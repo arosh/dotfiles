@@ -97,14 +97,17 @@ nnoremap <silent> <Leader>r :<C-u>Unite file_mru<CR>
 " <buffer> : バッファローカルなキーマッピングにする
 " <expr> : 式を評価した文字列にマップする
 
-" 単語単位からパス単位で削除するように変更
-autocmd FileType unite imap <silent><buffer> <C-w> <Plug>(unite_delete_backward_path)
-" ESCキーを押すと終了する
-autocmd FileType unite nmap <silent><buffer> <ESC> <Plug>(unite_exit)
-" ウィンドウを分割して開く
-autocmd FileType unite inoremap <silent><buffer><expr> <C-J> unite#do_action('split')
-" ウィンドウを縦に分割して開く
-autocmd FileType unite inoremap <silent><buffer><expr> <C-K> unite#do_action('vsplit')
+augroup unite
+  autocmd!
+  " 単語単位からパス単位で削除するように変更
+  autocmd FileType unite imap <silent><buffer> <C-w> <Plug>(unite_delete_backward_path)
+  " ESCキーを押すと終了する
+  autocmd FileType unite nmap <silent><buffer> <ESC> <Plug>(unite_exit)
+  " ウィンドウを分割して開く
+  autocmd FileType unite inoremap <silent><buffer><expr> <C-J> unite#do_action('split')
+  " ウィンドウを縦に分割して開く
+  autocmd FileType unite inoremap <silent><buffer><expr> <C-K> unite#do_action('vsplit')
+augroup END
 
 " enable mru in /mnt
 let g:neomru#file_mru_ignore_pattern = substitute(g:neomru#file_mru_ignore_pattern, '|\/mnt\/\\', '', '')
