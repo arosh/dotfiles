@@ -122,14 +122,16 @@ let g:vim_markdown_no_default_key_mappings = 1
 set nu                  " number
 syntax on
 filetype plugin indent on
-set ts=2 sw=0 sts=-1 et " tabstop shiftwidth softtabstop expandtab
-set is hls ic           " incsearch hlsearch ignorecase
-set sm mat=0            " showmatch matchtime=0
-set bs=indent,eol,start
-set fencs=ucs-bom,utf-8,iso-2022-jp,sjis,cp932,euc-jp,cp20932
-set ffs=unix,dos,mac
+" When 'sts' is negative, the value of 'shiftwidth' is used.
+set tabstop=2 shiftwidth=0 softtabstop=-1 expandtab
+set incsearch hlsearch ignorecase
+set showmatch matchtime=0
+set backspace=indent,eol,start
+" http://magicant.txt-nifty.com/main/2009/03/vim-modeline-fi.html
+set fileencodings=ucs-bom,utf-8,iso-2022-jp,sjis,cp932,euc-jp,cp20932
+set fileformats=unix,dos,mac
 set ls=2
-set stl=%(%r\ %)%f%(\ %m%)%=%(%{&ff}\ \|\ %)%(%{&fenc}\ \|\ %)%(%{&ft}\ \|\ %)%(%p%%\ \|\ %)%(%l/%L:%c\ %)
+set statusline=%(%r\ %)%f%(\ %m%)%=%(%{&ff}\ \|\ %)%(%{&fenc}\ \|\ %)%(%{&ft}\ \|\ %)%(%p%%\ \|\ %)%(%l/%L:%c\ %)
 set completeopt=menuone
 
 " http://qiita.com/s_of_p/items/b61e4c3a0c7ee279848a
@@ -143,6 +145,6 @@ augroup vimrc
   " コメント行の継続を無効化
   autocmd FileType * setlocal formatoptions-=ro
   " Makefile
-  autocmd FileType make setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=0
+  autocmd FileType make setlocal noexpandtab tabstop=4
 augroup END
 " ---------- End User Scripts ----------
