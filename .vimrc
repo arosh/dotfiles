@@ -133,14 +133,16 @@ set stl=%(%r\ %)%f%(\ %m%)%=%(%{&ff}\ \|\ %)%(%{&fenc}\ \|\ %)%(%{&ft}\ \|\ %)%(
 set completeopt=menuone
 
 " http://qiita.com/s_of_p/items/b61e4c3a0c7ee279848a
-augroup reopen
+" http://thinca.hatenablog.com/entry/20100205/1265307642
+augroup vimrc
   autocmd!
   autocmd BufReadPost *
         \ if line("'\"") > 1 && line("'\"") <= line("$") |
         \   exe "normal! g`\"" |
         \ endif
+  " コメント行の継続を無効化
+  autocmd FileType * setlocal formatoptions-=ro
+  " Makefile
+  autocmd FileType make setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=0
 augroup END
-
-" コメント行の継続を無効化
-autocmd FileType * setlocal formatoptions-=ro
 " ---------- End User Scripts ----------
