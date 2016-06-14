@@ -122,7 +122,8 @@ let g:vim_markdown_no_default_key_mappings = 1
 set nu                  " number
 syntax on
 filetype plugin indent on
-" When 'sts' is negative, the value of 'shiftwidth' is used.
+" When 'shiftwidth' is zero, the value of 'ts' will be used.
+" When 'softtabstop' is negative, the value of 'shiftwidth' will be used.
 set tabstop=2 shiftwidth=0 softtabstop=-1 expandtab
 set incsearch hlsearch ignorecase
 set showmatch matchtime=0
