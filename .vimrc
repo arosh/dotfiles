@@ -58,9 +58,10 @@ if !dein#check_install(['Shougo/neocomplete.vim'])
     return neocomplete#close_popup() . "\<CR>"
   endfunction
 
-  " <C-h>, <BS>: close popup and delete backword char.
-  inoremap <expr> <C-h> neocomplete#smart_close_popup()."\<C-h>"
+  " <BS>, <C-h> : close popup and delete backword char.
   inoremap <expr> <BS> neocomplete#smart_close_popup()."\<C-h>"
+  " In some environment, this line causes error.
+  " inoremap <expr> <C-h> neocomplete#smart_close_popup()."\<C-h>"
 
   " Enable omni completion.
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
