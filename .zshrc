@@ -105,6 +105,12 @@ if (( $+commands[vim] )); then
   alias view='${aliases[vim]:-vim} -R'
 fi
 
+# diff-highlight
+# http://qiita.com/takyam/items/d6afacc7934de9b0e85e
+if (( $+commands[git] )); then
+  # path=($(dirname `which git`)/$(dirname $(readlink `which git`))/../share/git-core/contrib/diff-highlight(N-/) $path)
+fi
+
 #
 # modules/history/init.zsh
 #

@@ -25,5 +25,12 @@
   # (公開鍵認証を行う)
   # http://qiita.com/nysalor/items/f779898eb88c1ce7be12
   pushinsteadof = https://github.com/
+# http://qiita.com/takyam/items/d6afacc7934de9b0e85e
+[diff]
+  # compactionHeuristic = true
+[pager]
+  # log = diff-highlight | less
+  # show = diff-highlight | less
+  # diff = diff-highlight | less
 [include]
   path = ~/.gitconfig.local
