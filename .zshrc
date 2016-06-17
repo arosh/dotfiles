@@ -11,7 +11,7 @@ fi
 #
 # Ensure path arrays do not contain duplicates.
 # http://zsh.sourceforge.net/Doc/Release/Shell-Builtin-Commands.html
-typeset -gU cdpath fpath mailpath path
+typeset -gU cdpath fpath mailpath path manpath
 
 # http://qiita.com/mollifier/items/42ae46ff4140251290a7
 path=($HOME/bin(N-/) /usr/local/bin(N-/) /usr/sbin(N-/) /sbin(N-/) $path)
@@ -50,8 +50,9 @@ fi
 if (( $+commands[brew] )); then
   # MANPATH
   # http://qiita.com/mollifier/items/2dc274244ac698bb943b
+  # https://linuxjm.osdn.jp/html/man-db/man1/manpath.1.html
   if [[ -z "$MANPATH" ]]; then
-    export MANPATH=:
+    export MANPATH=`manpath`
   fi
   manpath=(`brew --prefix`/share/man(N-/) $manpath)
 
