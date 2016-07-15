@@ -11,7 +11,7 @@ fi
 #
 # Ensure path arrays do not contain duplicates.
 # http://zsh.sourceforge.net/Doc/Release/Shell-Builtin-Commands.html
-typeset -gU cdpath fpath mailpath path manpath
+typeset -gU path fpath manpath
 
 # http://qiita.com/mollifier/items/42ae46ff4140251290a7
 path=($HOME/bin(N-/) /usr/local/bin(N-/) /usr/sbin(N-/) /sbin(N-/) $path)
@@ -61,20 +61,17 @@ if (( $+commands[brew] )); then
   if [[ -s "`brew --prefix`/etc/profile.d/z.sh" ]]; then
     source "`brew --prefix`/etc/profile.d/z.sh"
   fi
-
-  # brew info byobu
-  if (( $+commands[byobu] )); then
-    export BYOBU_PREFIX=$(brew --prefix)
-  fi
 fi
 
 #
 # Modules
 #
-if [[ -z "$modulepath" ]]; then
-  # http://d.hatena.ne.jp/yascentur/20111111/1321015289
-  typeset -T MODULEPATH modulepath
-  modulepath=($HOME/.modulefiles(N-/) $modulepath)
+if (( $+commands[modules] )); then
+  if [[ -z "$modulepath" ]]; then
+    # http://d.hatena.ne.jp/yascentur/20111111/1321015289
+    typeset -T MODULEPATH modulepath
+    modulepath=($HOME/.modulefiles(N-/) $modulepath)
+  fi
 fi
 
 #
