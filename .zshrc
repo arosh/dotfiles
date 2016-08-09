@@ -24,7 +24,7 @@ if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   # homebrewが使用するtmp (`brew --prefix`と同一の物理ドライブを指定する)
   export HOMEBREW_TEMP="${LOCAL}/tmp"
   # homebrew-caskのインストール先
-  export HOMEBREW_CASK_OPTS="--caskroom=${LOCAL}/homebrew-cask --appdir=${HOME}/Applications --binarydir=${HOME}/bin"
+  export HOMEBREW_CASK_OPTS="--caskroom=${LOCAL}/homebrew-cask --appdir=${HOME}/Applications"
 fi
 
 #
