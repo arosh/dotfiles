@@ -27,6 +27,11 @@ if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   export HOMEBREW_CASK_OPTS="--caskroom=${LOCAL}/homebrew-cask --appdir=${HOME}/Applications"
 fi
 
+if [[ -d "/opt/homebrew-cask/Caskroom" ]]; then
+  export HOMEBREW_CASK_OPTS="--caskroom=/opt/homebrew-cask/Caskroom"
+fi
+
+
 #
 # MacTeX
 #
