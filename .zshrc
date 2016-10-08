@@ -9,9 +9,14 @@ fi
 #
 # Paths
 #
+
+# http://d.hatena.ne.jp/yascentur/20111111/1321015289
+[ -z "$cpath" ] && typeset -T CPATH cpath
+[ -z "$modulepath" ] && typeset -T MODULEPATH modulepath
+
 # Ensure path arrays do not contain duplicates.
 # http://zsh.sourceforge.net/Doc/Release/Shell-Builtin-Commands.html
-typeset -gU path fpath manpath
+typeset -gU path fpath manpath cpath modulepath
 
 # http://qiita.com/mollifier/items/42ae46ff4140251290a7
 path=($HOME/bin(N-/) /usr/local/bin(N-/) /usr/sbin(N-/) /sbin(N-/) $path)
@@ -72,11 +77,7 @@ fi
 # Modules
 #
 if (( $+commands[modules] )); then
-  if [[ -z "$modulepath" ]]; then
-    # http://d.hatena.ne.jp/yascentur/20111111/1321015289
-    typeset -T MODULEPATH modulepath
-    modulepath=($HOME/.modulefiles(N-/) $modulepath)
-  fi
+  modulepath=($HOME/.modulefiles(N-/) $modulepath)
 fi
 
 #
