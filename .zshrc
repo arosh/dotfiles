@@ -11,7 +11,13 @@ fi
 #
 
 # http://d.hatena.ne.jp/yascentur/20111111/1321015289
+export CPATH
 [ -z "$cpath" ] && typeset -T CPATH cpath
+export LD_LIBRARY_PATH
+[ -z "$ld_library_path" ] && typeset -T LD_LIBRARY_PATH ld_library_path
+export LIBRARY_PATH
+[ -z "$library_path" ] && typeset -T LIBRARY_PATH library_path
+export MODULEPATH
 [ -z "$modulepath" ] && typeset -T MODULEPATH modulepath
 
 # Ensure path arrays do not contain duplicates.
@@ -25,6 +31,9 @@ if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   # homebrewのインストール先
   LOCAL=/private/var/netboot/Users/Shared/sho-ii
   path=(${LOCAL}/homebrew/bin(N-/) $path)
+  cpath=(${LOCAL}/homebrew/include(N-/) $cpath)
+  library_path=(${LOCAL}/homebrew/lib(N-/) $library_path)
+  ld_library_path=(${LOCAL}/homebrew/lib(N-/) $ld_library_path)
 
   # homebrewが使用するtmp (`brew --prefix`と同一の物理ドライブを指定する)
   export HOMEBREW_TEMP="${LOCAL}/tmp"
