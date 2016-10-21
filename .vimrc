@@ -55,13 +55,12 @@ if !dein#check_install(['Shougo/neocomplete.vim'])
   " <CR>: close popup and save indent.
   inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
   function! s:my_cr_function()
-    return neocomplete#close_popup() . "\<CR>"
+    return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
   endfunction
 
-  " <BS>, <C-h> : close popup and delete backword char.
+  " <C-h>, <BS>: close popup and delete backword char.
+  inoremap <expr> <C-h> neocomplete#smart_close_popup()."\<C-h>"
   inoremap <expr> <BS> neocomplete#smart_close_popup()."\<C-h>"
-  " In some environment, this line causes error.
-  " inoremap <expr> <C-h> neocomplete#smart_close_popup()."\<C-h>"
 
   " Enable omni completion.
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -149,4 +148,13 @@ augroup vimrc
   " Makefile
   autocmd FileType make setlocal noexpandtab tabstop=4
 augroup END
+
+if hostname() == "bda1node05.naist.jp"
+  " http://vimblog.hatenablog.com/entry/vimrc_key_mapping
+  " http://ysmt.blog21.fc2.com/blog-entry-257.html
+  " ^? みたいな文字は Ctrl+V -> BackSpace
+  " ^H みたいな文字は Ctrl+V -> Ctrl+H
+  noremap  
+  noremap!  
+endif
 " ---------- End User Scripts ----------
