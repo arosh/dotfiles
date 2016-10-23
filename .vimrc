@@ -36,7 +36,7 @@ endif
 " ---------- End Dein Scripts ----------
 
 " ---------- NeoComplete Scripts ----------
-if !dein#check_install(['Shougo/neocomplete.vim'])
+if !dein#check_install(['Shougo/neocomplete.vim']) && has('lua')
   " Use neocomplete.
   let g:neocomplete#enable_at_startup = 1
   " Use smartcase.
@@ -76,7 +76,7 @@ if !dein#check_install(['Shougo/neocomplete.vim'])
   let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
   let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-endif " !dein#check_install(['Shougo/neocomplete.vim'])
+endif " !dein#check_install(['Shougo/neocomplete.vim']) && has('lua')
 " ---------- End NeoComplete Scripts ----------
 
 " ---------- Unite Scripts ----------
@@ -149,7 +149,8 @@ augroup vimrc
   autocmd FileType make setlocal noexpandtab tabstop=4
 augroup END
 
-if hostname() == "bda1node05.naist.jp"
+" http://thinca.hatenablog.com/entry/20100201/1265009821
+if hostname() =~# 'bda1node\d\{2\}\.naist\.jp'
   " http://vimblog.hatenablog.com/entry/vimrc_key_mapping
   " http://ysmt.blog21.fc2.com/blog-entry-257.html
   " ^? みたいな文字は Ctrl+V -> BackSpace
