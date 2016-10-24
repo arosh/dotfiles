@@ -36,7 +36,7 @@ endif
 " ---------- End Dein Scripts ----------
 
 " ---------- NeoComplete Scripts ----------
-if !dein#check_install(['Shougo/neocomplete.vim']) && has('lua')
+if has('lua')
   " Use neocomplete.
   let g:neocomplete#enable_at_startup = 1
   " Use smartcase.
@@ -76,7 +76,7 @@ if !dein#check_install(['Shougo/neocomplete.vim']) && has('lua')
   let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
   let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-endif " !dein#check_install(['Shougo/neocomplete.vim']) && has('lua')
+endif " has('lua')
 " ---------- End NeoComplete Scripts ----------
 
 " ---------- Unite Scripts ----------
@@ -119,7 +119,7 @@ let g:vim_markdown_no_default_key_mappings = 1
 " ---------- End Vim-Markdown Scripts ----------
 
 " ---------- User Scripts ----------
-set nu                  " number
+set number
 syntax on
 filetype plugin indent on
 " When 'shiftwidth' is zero, the value of 'ts' will be used.
@@ -131,7 +131,7 @@ set backspace=indent,eol,start
 " http://magicant.txt-nifty.com/main/2009/03/vim-modeline-fi.html
 set fileencodings=ucs-bom,utf-8,iso-2022-jp,sjis,cp932,euc-jp,cp20932
 set fileformats=unix,dos,mac
-set ls=2
+set laststatus=2
 set statusline=%(%r\ %)%f%(\ %m%)%=%(%{&ff}\ \|\ %)%(%{&fenc}\ \|\ %)%(%{&ft}\ \|\ %)%(%p%%\ \|\ %)%(%l/%L:%c\ %)
 set completeopt=menuone
 
