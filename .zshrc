@@ -22,7 +22,7 @@ export MODULEPATH
 
 # Ensure path arrays do not contain duplicates.
 # http://zsh.sourceforge.net/Doc/Release/Shell-Builtin-Commands.html
-typeset -gU path fpath manpath cpath modulepath
+typeset -gU path fpath manpath cpath ld_library_path library_path modulepath
 
 # http://qiita.com/mollifier/items/42ae46ff4140251290a7
 path=($HOME/bin(N-/) /usr/local/bin(N-/) /usr/sbin(N-/) /sbin(N-/) $path)
@@ -30,10 +30,12 @@ path=($HOME/bin(N-/) /usr/local/bin(N-/) /usr/sbin(N-/) /sbin(N-/) $path)
 if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   # homebrewのインストール先
   LOCAL=/private/var/netboot/Users/Shared/sho-ii
-  path=(${LOCAL}/homebrew/bin(N-/) $path)
-  cpath=(${LOCAL}/homebrew/include(N-/) $cpath)
-  library_path=(${LOCAL}/homebrew/lib(N-/) $library_path)
-  ld_library_path=(${LOCAL}/homebrew/lib(N-/) $ld_library_path)
+  # $HOME/binは最初にする
+  path=($HOME/bin(N-/) ${LOCAL}/homebrew/bin(N-/) $path)
+  # RStanのインストール時に悪影響があったので，一旦無効化
+  # cpath=(${LOCAL}/homebrew/include(N-/) $cpath)
+  # library_path=(${LOCAL}/homebrew/lib(N-/) $library_path)
+  # ld_library_path=(${LOCAL}/homebrew/lib(N-/) $ld_library_path)
 
   # homebrewが使用するtmp (`brew --prefix`と同一の物理ドライブを指定する)
   export HOMEBREW_TEMP="${LOCAL}/tmp"
@@ -85,7 +87,10 @@ fi
 #
 # Modules
 #
-if (( $+commands[modules] )); then
+# http://d.hatena.ne.jp/earth2001y/20130205/modules
+# http://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script
+# なぜか $+commands[module] が反応しない
+if command -v module >/dev/null 2>&1; then
   modulepath=($HOME/.modulefiles(N-/) $modulepath)
 fi
 

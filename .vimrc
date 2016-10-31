@@ -150,7 +150,7 @@ augroup vimrc
 augroup END
 
 " http://thinca.hatenablog.com/entry/20100201/1265009821
-if hostname() =~# 'bda1node\d\{2\}\.naist\.jp'
+if hostname() =~# '\(bda1node\d\{2\}\|tesla\d\|grid-dev\d\)\.naist\.jp'
   " http://vimblog.hatenablog.com/entry/vimrc_key_mapping
   " http://ysmt.blog21.fc2.com/blog-entry-257.html
   " ^? みたいな文字は Ctrl+V -> BackSpace
