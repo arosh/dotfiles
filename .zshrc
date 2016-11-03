@@ -47,7 +47,6 @@ if [[ -d "/opt/homebrew-cask/Caskroom" ]]; then
   export HOMEBREW_CASK_OPTS="--caskroom=/opt/homebrew-cask/Caskroom"
 fi
 
-
 #
 # MacTeX
 #
@@ -87,10 +86,10 @@ fi
 #
 # Modules
 #
-# http://d.hatena.ne.jp/earth2001y/20130205/modules
+# moduleはコマンドではなくシェル関数なので $+commands[module] は使えない
 # http://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script
-# なぜか $+commands[module] が反応しない
 if command -v module >/dev/null 2>&1; then
+  # http://d.hatena.ne.jp/earth2001y/20130205/modules
   modulepath=($HOME/.modulefiles(N-/) $modulepath)
 fi
 
