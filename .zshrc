@@ -122,6 +122,12 @@ if (( $+commands[vim] )); then
   alias view='${aliases[vim]:-vim} -R'
 fi
 
+# http://qiita.com/delphinus/items/b04752bb5b64e6cc4ea9
+# -i: ignorecase smartcase
+# -M: verbose prompt
+# -R: ANSI color escape sequences will be displayed
+export LESS='-i -M -R'
+
 # diff-highlight
 # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
 if (( $+commands[git] )); then
