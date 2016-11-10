@@ -84,6 +84,11 @@ if (( $+commands[brew] )); then
 fi
 
 #
+# brew info pyenv
+#
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+#
 # Modules
 #
 # moduleはコマンドではなくシェル関数なので $+commands[module] は使えない
