@@ -86,7 +86,9 @@ fi
 #
 # brew info pyenv
 #
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if command -v pyenv >/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
 #
 # Modules
