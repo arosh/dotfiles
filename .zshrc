@@ -41,6 +41,8 @@ if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   export HOMEBREW_TEMP="${LOCAL}/tmp"
   # homebrew-caskのインストール先
   export HOMEBREW_CASK_OPTS="--caskroom=${LOCAL}/homebrew-cask --appdir=${HOME}/Applications"
+  # brew info pyenv
+  export PYENV_ROOT=/private/var/netboot/Users/Shared/sho-ii/homebrew/var/pyenv
 fi
 
 if [[ -d "/opt/homebrew-cask/Caskroom" ]]; then
