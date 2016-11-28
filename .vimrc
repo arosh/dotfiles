@@ -110,7 +110,7 @@ augroup unite
 augroup END
 
 " enable mru in /mnt
-let g:neomru#file_mru_ignore_pattern = substitute(g:neomru#file_mru_ignore_pattern, '|\/mnt\/\\', '', '')
+" let g:neomru#file_mru_ignore_pattern = substitute(g:neomru#file_mru_ignore_pattern, '|\/mnt\/\\', '', '')
 " ---------- End Unite Scripts ----------
 
 " ---------- Vim-Markdown Scripts ----------
