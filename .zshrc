@@ -88,8 +88,16 @@ fi
 #
 # brew info pyenv
 #
-if command -v pyenv >/dev/null 2>&1; then
+if (( $+commands[pyenv] )); then
   eval "$(pyenv init -)"
+fi
+
+#
+# brew cask info google-cloud-sdk
+#
+if [[ -d "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc" ]]; then
+  source "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+  source "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 fi
 
 #
