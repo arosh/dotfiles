@@ -36,20 +36,10 @@ if [[ -d "/opt/homebrew-cask/Caskroom" ]]; then
 fi
 
 #
-# MacTeX
+# Prezto
 #
-path=(/Library/TeX/texbin(N-/) $path)
-
-#
-# Go
-#
-if (( $+commands[go] )); then
-  if [[ -z "$GOPATH" ]]; then
-    # http://qiita.com/yuku_t/items/c7ab1b1519825cc2c06f
-    export GOPATH="$HOME/.go"
-  fi
-
-  path=($GOPATH/bin(N-/) $path)
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
 # Check if a program exists from a Zsh script
@@ -69,6 +59,23 @@ if (( $+commands[brew] )); then
   if [[ -s "`brew --prefix`/etc/profile.d/z.sh" ]]; then
     source "`brew --prefix`/etc/profile.d/z.sh"
   fi
+fi
+
+#
+# MacTeX
+#
+path=(/Library/TeX/texbin(N-/) $path)
+
+#
+# Go
+#
+if (( $+commands[go] )); then
+  if [[ -z "$GOPATH" ]]; then
+    # http://qiita.com/yuku_t/items/c7ab1b1519825cc2c06f
+    export GOPATH="$HOME/.go"
+  fi
+
+  path=($GOPATH/bin(N-/) $path)
 fi
 
 #
@@ -94,13 +101,6 @@ fi
 if command -v module >/dev/null 2>&1; then
   # http://d.hatena.ne.jp/earth2001y/20130205/modules
   modulepath=($HOME/.modulefiles(N-/) $modulepath)
-fi
-
-#
-# Prezto
-#
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
 #
@@ -133,9 +133,9 @@ export LESS='-i -M -R'
 
 # diff-highlight
 # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
-if (( $+commands[git] )); then
-  # path=($(dirname `which git`)/$(dirname $(readlink `which git`))/../share/git-core/contrib/diff-highlight(N-/) $path)
-fi
+# if (( $+commands[git] )); then
+#   path=($(dirname `which git`)/$(dirname $(readlink `which git`))/../share/git-core/contrib/diff-highlight(N-/) $path)
+# fi
 
 #
 # modules/history/init.zsh
