@@ -28,21 +28,7 @@ typeset -gU path fpath manpath cpath ld_library_path library_path modulepath
 path=($HOME/bin(N-/) /usr/local/bin(N-/) /usr/sbin(N-/) /sbin(N-/) $path)
 
 if [[ "$HOST" = "h25is123.naist.jp" ]]; then
-  # homebrewのインストール先
-  LOCAL=/private/var/netboot/Users/Shared/sho-ii
-  # $HOME/binは最初にする
-  path=($HOME/bin(N-/) ${LOCAL}/homebrew/bin(N-/) $path)
-  # RStanのインストール時に悪影響があったので，一旦無効化
-  # cpath=(${LOCAL}/homebrew/include(N-/) $cpath)
-  # library_path=(${LOCAL}/homebrew/lib(N-/) $library_path)
-  # ld_library_path=(${LOCAL}/homebrew/lib(N-/) $ld_library_path)
-
-  # homebrewが使用するtmp (`brew --prefix`と同一の物理ドライブを指定する)
-  export HOMEBREW_TEMP="${LOCAL}/tmp"
-  # homebrew-caskのインストール先
-  export HOMEBREW_CASK_OPTS="--caskroom=${LOCAL}/homebrew-cask --appdir=${HOME}/Applications"
-  # brew info pyenv
-  export PYENV_ROOT=/private/var/netboot/Users/Shared/sho-ii/homebrew/var/pyenv
+  source "${ZDOTDIR:-$HOME}/.zshrc.h25is123"
 fi
 
 if [[ -d "/opt/homebrew-cask/Caskroom" ]]; then
