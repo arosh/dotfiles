@@ -148,6 +148,8 @@ augroup vimrc
   autocmd FileType * setlocal formatoptions-=ro
   " Makefile
   autocmd FileType make setlocal noexpandtab tabstop=4
+  " Golang
+  autocmd FileType go setlocal noexpandtab tabstop=4
 augroup END
 
 " http://d.hatena.ne.jp/seuzo/20090309/12365250901

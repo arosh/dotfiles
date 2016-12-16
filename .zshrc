@@ -72,7 +72,7 @@ path=(/Library/TeX/texbin(N-/) $path)
 if (( $+commands[go] )); then
   if [[ -z "$GOPATH" ]]; then
     # http://qiita.com/yuku_t/items/c7ab1b1519825cc2c06f
-    export GOPATH="$HOME/.go"
+    export GOPATH="$HOME/go"
   fi
 
   path=($GOPATH/bin(N-/) $path)
