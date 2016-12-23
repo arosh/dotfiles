@@ -116,10 +116,10 @@ unalias sl
 unalias rm
 
 # disable alias l='ls -1A'
-alias l='ll'
+# alias l='ll'
 
-alias lla='la'
-alias rmdir="${aliases[rm]:-rm} -rf"
+# alias lla='la'
+# alias rmdir="${aliases[rm]:-rm} -rf"
 
 if (( $+commands[vim] )); then
   alias view='${aliases[vim]:-vim} -R'
