@@ -13,3 +13,5 @@ export HOMEBREW_TEMP="${LOCAL}/tmp"
 export HOMEBREW_CASK_OPTS="--caskroom=${LOCAL}/homebrew-cask --appdir=${HOME}/Applications"
 # brew info pyenv
 export PYENV_ROOT=/private/var/netboot/Users/Shared/sho-ii/homebrew/var/pyenv
+# https://github.com/docker/machine/issues/630#issuecomment-76235930
+export MACHINE_STORAGE_PATH=/private/var/netboot/Users/Shared/sho-ii/docker
