@@ -2,6 +2,7 @@
 LOCAL=/private/var/netboot/Users/Shared/sho-ii
 # $HOME/binは最初にする
 path=($HOME/bin(N-/) ${LOCAL}/homebrew/bin(N-/) $path)
+fpath=(${LOCAL}/homebrew/share/zsh/site-functions $fpath)
 # RStanのインストール時に悪影響があったので，一旦無効化
 # cpath=(${LOCAL}/homebrew/include(N-/) $cpath)
 # library_path=(${LOCAL}/homebrew/lib(N-/) $library_path)
