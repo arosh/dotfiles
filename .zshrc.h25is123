@@ -13,6 +13,7 @@ export HOMEBREW_TEMP="${LOCAL}/tmp"
 # homebrew-caskのインストール先
 export HOMEBREW_CASK_OPTS="--caskroom=${LOCAL}/homebrew-cask --appdir=${HOME}/Applications"
 # brew info pyenv
-export PYENV_ROOT=/private/var/netboot/Users/Shared/sho-ii/homebrew/var/pyenv
+export PYENV_ROOT=${LOCAL}/homebrew/var/pyenv
 # https://github.com/docker/machine/issues/630#issuecomment-76235930
-export MACHINE_STORAGE_PATH=/private/var/netboot/Users/Shared/sho-ii/docker
+export MACHINE_STORAGE_PATH=${LOCAL}/docker
+export GOPATH=${LOCAL}/go

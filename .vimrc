@@ -23,6 +23,7 @@ call dein#add('Shougo/neomru.vim')
 call dein#add('vim-jp/vim-cpp', {'on_ft' : 'cpp'})
 call dein#add('plasticboy/vim-markdown', {'on_ft' : 'markdown'})
 " call dein#add('davidhalter/jedi-vim', {'on_ft' : 'python'})
+call dein#add('fatih/vim-go', {'on_ft' : 'go'})
 
 " Required:
 call dein#end()
