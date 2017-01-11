@@ -18,21 +18,20 @@
   # パスワードを15分間キャッシュする
   # http://qiita.com/usamik26/items/c655abcaeee02ea59695
   helper = cache
-[push]
-  default = simple
 [url "git@github.com:"]
-  # GitHubにはhttpsではなくssh (gitプロトコル) で接続する
-  # (公開鍵認証を行う)
+  # GitHubにはhttpsではなくssh (gitプロトコル) で接続して公開鍵認証を行う
   # http://qiita.com/nysalor/items/f779898eb88c1ce7be12
   pushinsteadof = https://github.com/
-# http://qiita.com/takyam/items/d6afacc7934de9b0e85e
 [diff]
+  # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
   # compactionHeuristic = true
 [pager]
+  # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
   # log = diff-highlight | less
   # show = diff-highlight | less
   # diff = diff-highlight | less
+[fetch]
+  # リモートで消されたブランチはローカルからも消す
+	prune = true
 [include]
   path = ~/.gitconfig.local
-[fetch]
-	prune = true

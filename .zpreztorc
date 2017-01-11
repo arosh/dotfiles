@@ -30,6 +30,11 @@ zstyle ':prezto:load' pmodule \
   'archive' \
   'command-not-found'
 
+# candidates...
+# 'deer'
+# 'ssh'
+# 'zsh-notify'
+
 #
 # Editor
 #
