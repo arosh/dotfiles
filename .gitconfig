@@ -35,6 +35,6 @@
   # diff = diff-highlight | less
 [fetch]
   # リモートで消されたブランチはローカルからも消す
-	prune = true
+  prune = true
 [include]
   path = ~/.gitconfig.local
