@@ -78,11 +78,14 @@ if (( $+commands[go] )); then
   path=($GOPATH/bin(N-/) $path)
 fi
 
-#
-# brew info pyenv
-#
+# This command was instructed in `pyenv init`.
 if (( $+commands[pyenv] )); then
   eval "$(pyenv init -)"
+fi
+
+# This command was instructed in `rbenv init`.
+if (( $+commands[rbenv] )); then
+  eval "$(rbenv init -)"
 fi
 
 #
