@@ -1,6 +1,10 @@
 .*
-!.gitignore
+!.babelrc
 !.editorconfig
+!.eslintignore
+!.eslintrc.js
+!.gitignore
+!.postcssrc.js
 
 # Created by https://www.gitignore.io/api/archives,linux,osx,windows
 
