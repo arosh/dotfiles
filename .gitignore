@@ -1,8 +1,10 @@
 .*
+!.angular-cli.json
 !.babelrc
 !.editorconfig
 !.eslintignore
 !.eslintrc.js
+!.firebaserc
 !.gitignore
 !.postcssrc.js
 
