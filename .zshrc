@@ -31,6 +31,10 @@ if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   source "${ZDOTDIR:-$HOME}/.zshrc.h25is123"
 fi
 
+if [[ "$OSTYPE" = "linux-gnu" && -d "$HOME/.linuxbrew" ]]; then
+  path=($HOME/.linuxbrew/bin(N-/) $path)
+fi
+
 if [[ -d "/opt/homebrew-cask/Caskroom" ]]; then
   export HOMEBREW_CASK_OPTS="--caskroom=/opt/homebrew-cask/Caskroom"
 fi
