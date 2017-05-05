@@ -125,6 +125,7 @@ let g:vim_markdown_no_default_key_mappings = 1
 
 " ---------- Vim-Racer Scripts ----------
 if executable('racer')
+  " let g:racer_cmd = substitute(system('which racer'), '\n$', '', '')
   let g:racer_cmd = '$HOME/.cargo/bin/racer'
   let g:racer_experimental_completer = 1
   augroup racer
