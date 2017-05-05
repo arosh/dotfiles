@@ -125,7 +125,15 @@ let g:vim_markdown_no_default_key_mappings = 1
 
 " ---------- Vim-Racer Scripts ----------
 if executable('racer')
-  let g:racer_cmd = system('which racer')
+  let g:racer_cmd = '$HOME/.cargo/bin/racer'
+  let g:racer_experimental_completer = 1
+  augroup racer
+    autocmd!
+    autocmd FileType rust nmap gd <Plug>(rust-def)
+    autocmd FileType rust nmap gs <Plug>(rust-def-split)
+    autocmd FileType rust nmap gx <Plug>(rust-def-vertical)
+    autocmd FileType rust nmap <leader>gd <Plug>(rust-doc)
+  augroup END
 endif
 " ---------- End Vim-Racer Scripts ----------
 
