@@ -22,8 +22,11 @@ call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('vim-jp/vim-cpp', {'on_ft' : 'cpp'})
 call dein#add('plasticboy/vim-markdown', {'on_ft' : 'markdown'})
-" call dein#add('davidhalter/jedi-vim', {'on_ft' : 'python'})
+call dein#add('davidhalter/jedi-vim', {'on_ft' : 'python'})
 call dein#add('fatih/vim-go', {'on_ft' : 'go'})
+if executable('racer')
+  call dein#add('racer-rust/vim-racer', {'on_ft' : 'rust'})
+endif
 
 " Required:
 call dein#end()
@@ -68,7 +71,7 @@ if has('lua')
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
   " Enable heavy omni completion.
@@ -119,6 +122,12 @@ augroup END
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_no_default_key_mappings = 1
 " ---------- End Vim-Markdown Scripts ----------
+
+" ---------- Vim-Racer Scripts ----------
+if executable('racer')
+  let g:racer_cmd = system('which racer')
+endif
+" ---------- End Vim-Racer Scripts ----------
 
 " ---------- User Scripts ----------
 set number

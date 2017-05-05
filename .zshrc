@@ -92,9 +92,15 @@ if (( $+commands[rbenv] )); then
   eval "$(rbenv init -)"
 fi
 
-#
+# cargo install racer
+path=($HOME/.cargo/bin(N-/) $path)
+
+# https://github.com/phildawes/racer
+if [[ -d "$HOME/opt/rustc-1.17.0-src/src" ]]; then
+  export RUST_SRC_PATH="$HOME/opt/rustc-1.17.0-src/src"
+fi
+
 # brew cask info google-cloud-sdk
-#
 if [[ -d "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]]; then
   source "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
   source "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
@@ -130,6 +136,10 @@ alias l='ll'
 
 alias lla='la'
 alias rmdir="${aliases[rm]:-rm} -rf"
+
+# if (( $+commands[nvim] )); then
+#   alias vim='${aliases[nvim]:-nvim}'
+# fi
 
 if (( $+commands[vim] )); then
   alias view='${aliases[vim]:-vim} -R'
