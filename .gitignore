@@ -3,6 +3,7 @@
 !.babelrc
 !.editorconfig
 !.eslintignore
+!.eslintrc
 !.eslintrc.js
 !.firebaserc
 !.gitignore
