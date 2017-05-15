@@ -1,6 +1,7 @@
 #
 # Language
 #
+# 『test と [ と [[ コマンドの違い』
 # https://fumiyas.github.io/2013/12/15/test.sh-advent-calendar.html
 if [[ -z "$LANG" ]]; then
   export LANG="ja_JP.UTF-8"
