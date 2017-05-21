@@ -117,6 +117,24 @@ if command -v module >/dev/null 2>&1; then
   modulepath=($HOME/.modulefiles(N-/) $modulepath)
 fi
 
+# https://github.com/peco/peco/wiki/Sample-Usage#zsh-auto-complete-from-history-ctrlr
+# https://gist.github.com/yuttie/2aeaecdba24256c73bf2
+if which peco &> /dev/null; then
+  function peco_select_history() {
+    local tac
+    { which gtac &> /dev/null && tac="gtac" } || \
+      { which tac &> /dev/null && tac="tac" } || \
+      tac="tail -r"
+    BUFFER=$(fc -l -n 1 | eval $tac | \
+                peco --layout=bottom-up --query "$LBUFFER")
+    CURSOR=$#BUFFER # move cursor
+    zle -R -c       # refresh
+  }
+
+  zle -N peco_select_history
+  bindkey '^r' peco_select_history
+fi
+
 #
 # modules/utility/init.zsh
 #
