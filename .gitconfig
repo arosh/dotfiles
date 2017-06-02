@@ -38,3 +38,5 @@
   prune = true
 [include]
   path = ~/.gitconfig.local
+[status]
+  showUntrackedFiles = all
