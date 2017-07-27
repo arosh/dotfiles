@@ -165,10 +165,11 @@ if (( $+commands[vim] )); then
 fi
 
 # http://qiita.com/delphinus/items/b04752bb5b64e6cc4ea9
+# -g: hlsearch
 # -i: ignorecase smartcase
 # -M: verbose prompt
 # -R: ANSI color escape sequences will be displayed
-export LESS='-i -M -R'
+export LESS='-g -i -M -R'
 
 # diff-highlight
 # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
