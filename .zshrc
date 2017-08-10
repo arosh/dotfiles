@@ -173,9 +173,9 @@ export LESS='-g -i -M -R'
 
 # diff-highlight
 # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
-# if (( $+commands[git] )); then
-#   path=($(dirname `which git`)/$(dirname $(readlink `which git`))/../share/git-core/contrib/diff-highlight(N-/) $path)
-# fi
+if [[ -d "/usr/local/share/git-core/contrib/diff-highlight" ]]; then
+  path=("/usr/local/share/git-core/contrib/diff-highlight" $path)
+fi
 
 #
 # modules/history/init.zsh

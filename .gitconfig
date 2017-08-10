@@ -27,12 +27,12 @@
   followRedirects = true
 [diff]
   # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
-  # compactionHeuristic = true
+  compactionHeuristic = true
 [pager]
   # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
-  # log = diff-highlight | less
-  # show = diff-highlight | less
-  # diff = diff-highlight | less
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
 [fetch]
   # リモートで消されたブランチはローカルからも消す
   prune = true
