@@ -36,10 +36,6 @@ if [[ "$OSTYPE" = "linux-gnu" && -d "$HOME/.linuxbrew" ]]; then
   path=($HOME/.linuxbrew/bin(N-/) $path)
 fi
 
-if [[ -d "/opt/homebrew-cask/Caskroom" ]]; then
-  export HOMEBREW_CASK_OPTS="--caskroom=/opt/homebrew-cask/Caskroom"
-fi
-
 #
 # Prezto
 #
@@ -93,19 +89,11 @@ if (( $+commands[rbenv] )); then
   eval "$(rbenv init -)"
 fi
 
-# cargo install racer
-path=($HOME/.cargo/bin(N-/) $path)
-
-# https://github.com/phildawes/racer
-if [[ -d "$HOME/opt/rustc-1.17.0-src/src" ]]; then
-  export RUST_SRC_PATH="$HOME/opt/rustc-1.17.0-src/src"
-fi
-
 # brew cask info google-cloud-sdk
-if [[ -d "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]]; then
-  source "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-  source "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-fi
+# if [[ -d "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]]; then
+#   source "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+#   source "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+# fi
 
 #
 # Modules
@@ -143,12 +131,6 @@ unsetopt CORRECT
 
 # disable alias sl=ls
 unalias sl
-
-# disable alias rm='nocorrect rm -i'
-unalias rm
-
-# disable alias p='${(z)PAGER}'
-unalias p
 
 # disable alias l='ls -1A'
 alias l='ll'
@@ -224,18 +206,3 @@ clip() {
 if [[ -s "${ZDOTDIR:-$HOME}/.zshrc.vcs_info" ]]; then
   source "${ZDOTDIR:-$HOME}/.zshrc.vcs_info"
 fi
-
-#
-# zcoredump
-#
-# https://github.com/sorin-ionescu/prezto/blob/master/runcoms/zlogin
-# Execute code that does not affect the current session in the background.
-{
-  # Compile the completion dump to increase startup speed.
-  zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
-  # if sizeof($zcompdump) > 0 and (sizeof(${zcompdump}.zwc) == 0 or $zcompdump is newer than ${zcompdump}.zwc)
-  # http://zsh.sourceforge.net/Doc/Release/Conditional-Expressions.html
-  if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
-    zcompile "$zcompdump"
-  fi
-} &!
