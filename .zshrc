@@ -132,6 +132,9 @@ unsetopt CORRECT
 # disable alias sl=ls
 unalias sl
 
+# disable alias rm='nocorrect rm -i'
+unalias rm
+
 # disable alias l='ls -1A'
 alias l='ll'
 
