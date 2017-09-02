@@ -32,7 +32,7 @@ if [[ "$HOST" = "h25is123.naist.jp" ]]; then
   source "${ZDOTDIR:-$HOME}/.zshrc.h25is123"
 fi
 
-if [[ "$OSTYPE" = "linux-gnu" && -d "$HOME/.linuxbrew" ]]; then
+if [[ "$OSTYPE" = "linux-gnu" ]]; then
   path=($HOME/.linuxbrew/bin(N-/) $path)
 fi
 
@@ -60,6 +60,10 @@ if (( $+commands[brew] )); then
   if [[ -s "`brew --prefix`/etc/profile.d/z.sh" ]]; then
     source "`brew --prefix`/etc/profile.d/z.sh"
   fi
+
+  # diff-highlight
+  # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
+  path=($(brew --prefix)/share/git-core/contrib/diff-highlight(N-/) $path)
 fi
 
 #
@@ -155,12 +159,6 @@ fi
 # -M: verbose prompt
 # -R: ANSI color escape sequences will be displayed
 export LESS='-g -i -M -R'
-
-# diff-highlight
-# http://qiita.com/takyam/items/d6afacc7934de9b0e85e
-if [[ -d "/usr/local/share/git-core/contrib/diff-highlight" ]]; then
-  path=("/usr/local/share/git-core/contrib/diff-highlight" $path)
-fi
 
 #
 # modules/history/init.zsh
