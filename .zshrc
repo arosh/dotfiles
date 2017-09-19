@@ -140,10 +140,11 @@ unalias sl
 unalias rm
 
 # disable alias l='ls -1A'
-alias l='ll'
+unalias l
 
-alias lla='la'
 alias rmdir="${aliases[rm]:-rm} -rf"
+
+export EDITOR='vim'
 
 # if (( $+commands[nvim] )); then
 #   alias vim='${aliases[nvim]:-nvim}'
