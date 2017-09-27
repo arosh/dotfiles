@@ -93,6 +93,11 @@ if (( $+commands[rbenv] )); then
   eval "$(rbenv init -)"
 fi
 
+# brew cask info android-sdk
+if [[ -d "/usr/local/share/android-sdk" ]]; then
+  export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
+fi
+
 # brew cask info google-cloud-sdk
 # if [[ -d "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]]; then
 #   source "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
