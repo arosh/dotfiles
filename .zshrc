@@ -193,12 +193,23 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
 
+# https://qiita.com/yuyuchu3333/items/b01536fa63d9f8fadf4f
+function call_hook_precmd() {
+  if type precmd > /dev/null 2>&1; then
+    precmd
+  fi
+  local precmd_func
+  for precmd_func in $precmd_functions; do
+    $precmd_func
+  done
+}
+
 # Ctrl-^ で cd ..
 # https://github.com/arael/configs/blob/master/zshrc.prezto#L140
 function cdup() {
   echo
   cd ..
-  prompt_${prompt_theme}_precmd
+  call_hook_precmd
   zle reset-prompt
   return 0
 }
