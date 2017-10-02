@@ -63,7 +63,7 @@ if (( $+commands[brew] )); then
 
   # diff-highlight
   # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
-  path=($(brew --prefix)/share/git-core/contrib/diff-highlight(N-/) $path)
+  path=(`brew --prefix`/share/git-core/contrib/diff-highlight(N-/) $path)
 fi
 
 #
