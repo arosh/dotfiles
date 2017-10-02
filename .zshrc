@@ -83,9 +83,12 @@ if (( $+commands[go] )); then
   path=($GOPATH/bin(N-/) $path)
 fi
 
-# This command was instructed in `pyenv init`.
-if (( $+commands[pyenv] )); then
-  eval "$(pyenv init -)"
+if (( $+commands[direnv] )); then
+  eval "$(direnv hook zsh)"
+fi
+
+if [[ -d "$HOME/.virtualenvs/default" ]]; then
+  VIRTUAL_ENV_DISABLE_PROMPT=true source $HOME/.virtualenvs/default/bin/activate
 fi
 
 # This command was instructed in `rbenv init`.
