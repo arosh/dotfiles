@@ -98,7 +98,7 @@ fi
 
 # brew cask info android-sdk
 if [[ -d "/usr/local/share/android-sdk" ]]; then
-  export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
+  export ANDROID_HOME=/usr/local/share/android-sdk
 fi
 
 # brew cask info google-cloud-sdk
