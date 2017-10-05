@@ -36,6 +36,10 @@ if [[ "$OSTYPE" = "linux-gnu" ]]; then
   path=($HOME/.linuxbrew/bin(N-/) $path)
 fi
 
+if [[ -s "${ZDOTDIR:-$HOME}/.zshrc.local" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zshrc.local"
+fi
+
 #
 # Prezto
 #
@@ -66,14 +70,10 @@ if (( $+commands[brew] )); then
   path=(`brew --prefix`/share/git-core/contrib/diff-highlight(N-/) $path)
 fi
 
-#
 # MacTeX
-#
 path=(/Library/TeX/texbin(N-/) $path)
 
-#
 # Go
-#
 if (( $+commands[go] )); then
   if [[ -z "$GOPATH" ]]; then
     # http://qiita.com/yuku_t/items/c7ab1b1519825cc2c06f
@@ -83,33 +83,36 @@ if (( $+commands[go] )); then
   path=($GOPATH/bin(N-/) $path)
 fi
 
+# diff-highlight
+path=(/usr/share/doc/git/contrib/diff-highlight(N-/) $path)
+
+# direnv
 if (( $+commands[direnv] )); then
   eval "$(direnv hook zsh)"
 fi
 
+# Python
 if [[ -d "$HOME/.virtualenvs/default" ]]; then
   VIRTUAL_ENV_DISABLE_PROMPT=true source $HOME/.virtualenvs/default/bin/activate
 fi
 
-# This command was instructed in `rbenv init`.
+# Ruby
 if (( $+commands[rbenv] )); then
   eval "$(rbenv init -)"
 fi
 
-# brew cask info android-sdk
+# android-sdk
 if [[ -d "/usr/local/share/android-sdk" ]]; then
   export ANDROID_HOME=/usr/local/share/android-sdk
 fi
 
-# brew cask info google-cloud-sdk
+# google-cloud-sdk
 # if [[ -d "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]]; then
 #   source "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 #   source "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 # fi
 
-#
-# Modules
-#
+# modules
 # moduleはコマンドではなくシェル関数なので $+commands[module] は使えない
 # http://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script
 if command -v module >/dev/null 2>&1; then
@@ -117,6 +120,7 @@ if command -v module >/dev/null 2>&1; then
   modulepath=($HOME/.modulefiles(N-/) $modulepath)
 fi
 
+# peco
 # https://github.com/peco/peco/wiki/Sample-Usage#zsh-auto-complete-from-history-ctrlr
 # https://gist.github.com/yuttie/2aeaecdba24256c73bf2
 if which peco &> /dev/null; then
@@ -179,8 +183,8 @@ SAVEHIST=100000
 #
 # modules/directory/init.zsh
 #
-setopt MULTIOS              # Write to multiple descriptors.
-setopt EXTENDED_GLOB        # Use extended globbing syntax.
+setopt MULTIOS       # Write to multiple descriptors.
+setopt EXTENDED_GLOB # Use extended globbing syntax.
 
 #
 # User Settings
