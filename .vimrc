@@ -22,11 +22,7 @@ call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('vim-jp/vim-cpp', {'on_ft' : 'cpp'})
 call dein#add('plasticboy/vim-markdown', {'on_ft' : 'markdown'})
-" call dein#add('davidhalter/jedi-vim', {'on_ft' : 'python'})
 call dein#add('fatih/vim-go', {'on_ft' : 'go'})
-if executable('racer')
-  call dein#add('racer-rust/vim-racer', {'on_ft' : 'rust'})
-endif
 
 " Required:
 call dein#end()
@@ -113,30 +109,12 @@ augroup unite
   " ウィンドウを縦に分割して開く
   autocmd FileType unite inoremap <silent><buffer><expr> <C-K> unite#do_action('vsplit')
 augroup END
-
-" enable mru in /mnt
-" let g:neomru#file_mru_ignore_pattern = substitute(g:neomru#file_mru_ignore_pattern, '|\/mnt\/\\', '', '')
 " ---------- End Unite Scripts ----------
 
 " ---------- Vim-Markdown Scripts ----------
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_no_default_key_mappings = 1
 " ---------- End Vim-Markdown Scripts ----------
-
-" ---------- Vim-Racer Scripts ----------
-if executable('racer')
-  " let g:racer_cmd = substitute(system('which racer'), '\n$', '', '')
-  let g:racer_cmd = '$HOME/.cargo/bin/racer'
-  let g:racer_experimental_completer = 1
-  augroup racer
-    autocmd!
-    autocmd FileType rust nmap gd <Plug>(rust-def)
-    autocmd FileType rust nmap gs <Plug>(rust-def-split)
-    autocmd FileType rust nmap gx <Plug>(rust-def-vertical)
-    autocmd FileType rust nmap <leader>gd <Plug>(rust-doc)
-  augroup END
-endif
-" ---------- End Vim-Racer Scripts ----------
 
 " ---------- User Scripts ----------
 set number
