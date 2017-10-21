@@ -151,6 +151,9 @@ unalias sl
 # disable alias l='ls -1A'
 unalias l
 
+# disable alias rm='rm -i'
+unalias rm
+
 alias rmdir="${aliases[rm]:-rm} -rf"
 
 export EDITOR='vim'
