@@ -12,7 +12,7 @@ fpath=(${LOCAL}/homebrew/share/zsh/site-functions $fpath)
 export HOMEBREW_TEMP="${LOCAL}/tmp"
 
 # homebrew-caskのインストール先
-export HOMEBREW_CASK_OPTS="--caskroom=${LOCAL}/homebrew-cask --appdir=${HOME}/Applications"
+export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications"
 
 # https://github.com/docker/machine/issues/630#issuecomment-76235930
 export MACHINE_STORAGE_PATH=${LOCAL}/docker
