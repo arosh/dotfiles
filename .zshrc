@@ -34,6 +34,7 @@ fi
 
 if [[ "$OSTYPE" = "linux-gnu" ]]; then
   path=($HOME/.linuxbrew/bin(N-/) $path)
+  # ld_library_path=($HOME/.linuxbrew/lib(N-/) $ld_library_path)
 fi
 
 if [[ -s "${ZDOTDIR:-$HOME}/.zshrc.local" ]]; then
