@@ -97,6 +97,10 @@ if [[ -d "$HOME/.virtualenvs/default" ]]; then
   VIRTUAL_ENV_DISABLE_PROMPT=true source $HOME/.virtualenvs/default/bin/activate
 fi
 
+pip-upgrade() {
+  pip list --outdated --format=legacy | awk '{print $1}' | xargs pip install -U
+}
+
 # Ruby
 if (( $+commands[rbenv] )); then
   eval "$(rbenv init -)"
