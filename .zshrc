@@ -60,12 +60,6 @@ if (( $+commands[brew] )); then
   fi
   manpath=(`brew --prefix`/share/man(N-/) $manpath)
 
-  # brew info z
-  # https://github.com/rupa/z
-  if [[ -s "`brew --prefix`/etc/profile.d/z.sh" ]]; then
-    source "`brew --prefix`/etc/profile.d/z.sh"
-  fi
-
   # diff-highlight
   # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
   path=(`brew --prefix`/share/git-core/contrib/diff-highlight(N-/) $path)
@@ -143,6 +137,9 @@ if which peco &> /dev/null; then
   zle -N peco_select_history
   bindkey '^r' peco_select_history
 fi
+
+# Fasd
+alias z='fasd_cd -d' # cd, same functionality as j in autojump
 
 #
 # modules/utility/init.zsh

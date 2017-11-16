@@ -28,7 +28,8 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'prompt' \
   'archive' \
-  'command-not-found'
+  'command-not-found' \
+  'fasd'
 
 # candidates...
 # 'deer'
