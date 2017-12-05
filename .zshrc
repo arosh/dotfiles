@@ -227,9 +227,7 @@ clip() {
   cat $1 | pbcopy
 }
 
-#
 # vcs_info
-#
 if [[ -s "${ZDOTDIR:-$HOME}/.zshrc.vcs_info" ]]; then
   source "${ZDOTDIR:-$HOME}/.zshrc.vcs_info"
 fi
