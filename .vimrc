@@ -26,6 +26,7 @@ call dein#add('fatih/vim-go', {'on_ft' : 'go'})
 
 " Required:
 call dein#end()
+call dein#save_state()
 
 " Required:
 filetype plugin indent on
@@ -37,7 +38,7 @@ endif
 " ---------- End Dein Scripts ----------
 
 " ---------- NeoComplete Scripts ----------
-if has('lua')
+if dein#tap('Shougo/neocomplete.vim')
   " Use neocomplete.
   let g:neocomplete#enable_at_startup = 1
   " Use smartcase.
@@ -77,7 +78,7 @@ if has('lua')
   let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
   let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
   let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-endif " has('lua')
+endif " dein#tap('Shougo/neocomplete.vim')
 " ---------- End NeoComplete Scripts ----------
 
 " ---------- Unite Scripts ----------
