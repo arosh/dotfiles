@@ -28,10 +28,6 @@ typeset -gU path fpath manpath cpath ld_library_path library_path modulepath
 # http://qiita.com/mollifier/items/42ae46ff4140251290a7
 path=($HOME/bin(N-/) /usr/local/bin(N-/) /usr/sbin(N-/) /sbin(N-/) $path)
 
-if [[ "$HOST" = "h25is123.naist.jp" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zshrc.h25is123"
-fi
-
 if [[ "$OSTYPE" = "linux-gnu" ]]; then
   path=($HOME/.linuxbrew/bin(N-/) $path)
   # ld_library_path=($HOME/.linuxbrew/lib(N-/) $ld_library_path)
@@ -110,14 +106,6 @@ fi
 #   source "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 #   source "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 # fi
-
-# modules
-# moduleはコマンドではなくシェル関数なので $+commands[module] は使えない
-# http://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script
-if command -v module >/dev/null 2>&1; then
-  # http://d.hatena.ne.jp/earth2001y/20130205/modules
-  modulepath=($HOME/.modulefiles(N-/) $modulepath)
-fi
 
 # peco
 # https://github.com/peco/peco/wiki/Sample-Usage#zsh-auto-complete-from-history-ctrlr
