@@ -96,6 +96,9 @@ if (( $+commands[rbenv] )); then
   eval "$(rbenv init -)"
 fi
 
+# Node
+path=($HOME/.npm-packages/bin(N-/) $path)
+
 # android-sdk
 if [[ -d "/usr/local/share/android-sdk" ]]; then
   export ANDROID_HOME=/usr/local/share/android-sdk
