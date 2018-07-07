@@ -149,16 +149,4 @@ augroup vimrc
   " Golang
   autocmd FileType go setlocal noexpandtab tabstop=4
 augroup END
-
-" http://d.hatena.ne.jp/seuzo/20090309/12365250901
-" http://thinca.hatenablog.com/entry/20100201/1265009821
-" http://deris.hatenablog.jp/entry/2013/05/15/024932
-if hostname() =~# '\v(bda1node\d{2}|tesla\d|galaxy\d{2}|grid-dev\d)\.naist\.jp'
-  " http://vimblog.hatenablog.com/entry/vimrc_key_mapping
-  " http://ysmt.blog21.fc2.com/blog-entry-257.html
-  " ^? みたいな文字は Ctrl+V -> BackSpace
-  " ^H みたいな文字は Ctrl+V -> Ctrl+H
-  noremap  
-  noremap!  
-endif
 " ---------- End User Scripts ----------

@@ -28,11 +28,6 @@
 [diff]
   # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
   compactionHeuristic = true
-[pager]
-  # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
-  log = diff-highlight | less
-  show = diff-highlight | less
-  diff = diff-highlight | less
 [fetch]
   # リモートで消されたブランチはローカルからも消す
   prune = true
@@ -40,8 +35,3 @@
   path = ~/.gitconfig.local
 [status]
   showUntrackedFiles = all
-[filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
