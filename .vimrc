@@ -117,6 +117,10 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_no_default_key_mappings = 1
 " ---------- End Vim-Markdown Scripts ----------
 
+" ---------- Vim-Go Scripts ----------
+let g:go_version_warning = 0
+" ---------- End Vim-Go Scripts ----------
+
 " ---------- User Scripts ----------
 set number
 syntax on

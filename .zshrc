@@ -28,11 +28,6 @@ typeset -gU path fpath manpath cpath ld_library_path library_path modulepath
 # http://qiita.com/mollifier/items/42ae46ff4140251290a7
 path=($HOME/bin(N-/) /usr/local/bin(N-/) /usr/sbin(N-/) /sbin(N-/) $path)
 
-if [[ "$OSTYPE" = "linux-gnu" ]]; then
-  path=($HOME/.linuxbrew/bin(N-/) $path)
-  # ld_library_path=($HOME/.linuxbrew/lib(N-/) $ld_library_path)
-fi
-
 if [[ -s "${ZDOTDIR:-$HOME}/.zshrc.local" ]]; then
   source "${ZDOTDIR:-$HOME}/.zshrc.local"
 fi
@@ -61,9 +56,6 @@ if (( $+commands[brew] )); then
   path=(`brew --prefix`/share/git-core/contrib/diff-highlight(N-/) $path)
 fi
 
-# MacTeX
-path=(/Library/TeX/texbin(N-/) $path)
-
 # Go
 if (( $+commands[go] )); then
   if [[ -z "$GOPATH" ]]; then
@@ -73,9 +65,6 @@ if (( $+commands[go] )); then
 
   path=($GOPATH/bin(N-/) $path)
 fi
-
-# diff-highlight
-path=(/usr/share/doc/git/contrib/diff-highlight(N-/) $path)
 
 # direnv
 if (( $+commands[direnv] )); then
@@ -103,12 +92,6 @@ path=($HOME/.npm-packages/bin(N-/) $path)
 if [[ -d "/usr/local/share/android-sdk" ]]; then
   export ANDROID_HOME=/usr/local/share/android-sdk
 fi
-
-# google-cloud-sdk
-# if [[ -d "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]]; then
-#   source "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-#   source "/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-# fi
 
 # peco
 # https://github.com/peco/peco/wiki/Sample-Usage#zsh-auto-complete-from-history-ctrlr
