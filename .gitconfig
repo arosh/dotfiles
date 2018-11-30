@@ -1,12 +1,5 @@
 [core]
-  editor = vim
   excludesfile = ~/.gitignore
-[merge]
-  tool = vimdiff
-  ff = false
-[pull]
-  # mergeをno-ffにするとpullでもマージコミットが作られてしまうのを回避する
-  rebase = true
 [color]
   ui = auto
 [alias]
@@ -14,6 +7,19 @@
   st = status
   co = checkout
   graph = log --graph --decorate --all
+[merge]
+  ff = false
+[pull]
+  # mergeをno-ffにするとpullでもマージコミットが作られてしまうのを回避する
+  rebase = true
+[fetch]
+  # リモートで消されたブランチはローカルからも消す
+  prune = true
+[diff]
+  # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
+  compactionHeuristic = true
+[status]
+  showUntrackedFiles = all
 [credential]
   # パスワードを15分間キャッシュする
   # http://qiita.com/usamik26/items/c655abcaeee02ea59695
@@ -25,13 +31,5 @@
 [http "https://gopkg.in"]
   # https://github.com/niemeyer/gopkg/issues/50#issuecomment-273299592
   followRedirects = true
-[diff]
-  # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
-  compactionHeuristic = true
-[fetch]
-  # リモートで消されたブランチはローカルからも消す
-  prune = true
 [include]
   path = ~/.gitconfig.local
-[status]
-  showUntrackedFiles = all
