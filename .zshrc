@@ -1,32 +1,15 @@
-#
-# Language
-#
 # 『test と [ と [[ コマンドの違い』
 # https://fumiyas.github.io/2013/12/15/test.sh-advent-calendar.html
 if [[ -z "$LANG" ]]; then
   export LANG="ja_JP.UTF-8"
 fi
 
-#
-# Paths
-#
-
-# http://d.hatena.ne.jp/yascentur/20111111/1321015289
-export CPATH
-[ -z "$cpath" ] && typeset -T CPATH cpath
-export LD_LIBRARY_PATH
-[ -z "$ld_library_path" ] && typeset -T LD_LIBRARY_PATH ld_library_path
-export LIBRARY_PATH
-[ -z "$library_path" ] && typeset -T LIBRARY_PATH library_path
-export MODULEPATH
-[ -z "$modulepath" ] && typeset -T MODULEPATH modulepath
-
 # Ensure path arrays do not contain duplicates.
 # http://zsh.sourceforge.net/Doc/Release/Shell-Builtin-Commands.html
-typeset -gU path fpath manpath cpath ld_library_path library_path modulepath
+typeset -gU path
 
 # http://qiita.com/mollifier/items/42ae46ff4140251290a7
-path=($HOME/bin(N-/) /usr/local/bin(N-/) /usr/sbin(N-/) /sbin(N-/) $path)
+path=(${HOME}/bin(N-/) /usr/local/bin(N-/) $path)
 
 if [[ -s "${ZDOTDIR:-$HOME}/.zshrc.local" ]]; then
   source "${ZDOTDIR:-$HOME}/.zshrc.local"
@@ -39,31 +22,17 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# Go
 # Check if a program exists from a Zsh script
 # http://stackoverflow.com/q/592620
 # See .zprezto/modules/utility/init.zsh
-if (( $+commands[brew] )); then
-  # MANPATH
-  # http://qiita.com/mollifier/items/2dc274244ac698bb943b
-  # https://linuxjm.osdn.jp/html/man-db/man1/manpath.1.html
-  if [[ -z "$MANPATH" ]]; then
-    export MANPATH=`manpath`
-  fi
-  manpath=(`brew --prefix`/share/man(N-/) $manpath)
-
-  # diff-highlight
-  # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
-  path=(`brew --prefix`/share/git-core/contrib/diff-highlight(N-/) $path)
-fi
-
-# Go
 if (( $+commands[go] )); then
   if [[ -z "$GOPATH" ]]; then
     # http://qiita.com/yuku_t/items/c7ab1b1519825cc2c06f
-    export GOPATH="$HOME/go"
+    export GOPATH="${HOME}/go"
   fi
 
-  path=($GOPATH/bin(N-/) $path)
+  path=(${GOPATH}/bin(N-/) $path)
 fi
 
 # direnv
@@ -72,7 +41,7 @@ if (( $+commands[direnv] )); then
 fi
 
 # Python
-if [[ -d "$HOME/.virtualenvs/default" ]]; then
+if [[ -d "${HOME}/.virtualenvs/default" ]]; then
   VIRTUAL_ENV_DISABLE_PROMPT=true source $HOME/.virtualenvs/default/bin/activate
 fi
 
@@ -134,10 +103,6 @@ alias rmdir="${aliases[rm]:-rm} -rf"
 
 export EDITOR='vim'
 
-# if (( $+commands[nvim] )); then
-#   alias vim='${aliases[nvim]:-nvim}'
-# fi
-
 if (( $+commands[vim] )); then
   alias view='${aliases[vim]:-vim} -R'
 fi
@@ -152,14 +117,15 @@ export LESS='-g -i -M -R'
 #
 # modules/history/init.zsh
 #
-HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
+if [[ -s "${ZDOTDIR:-$HOME}/.zsh_history" ]]; then
+  HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
+fi
 HISTSIZE=100000 # 10000 is too small
 SAVEHIST=100000
 
 #
 # modules/directory/init.zsh
 #
-setopt MULTIOS       # Write to multiple descriptors.
 setopt EXTENDED_GLOB # Use extended globbing syntax.
 
 #
