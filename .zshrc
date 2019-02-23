@@ -15,6 +15,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zshrc.local" ]]; then
   source "${ZDOTDIR:-$HOME}/.zshrc.local"
 fi
 
+if (( $+commands[dircolors] )) && [[ -s "$HOME/.dir_colors" ]]; then
+  eval "$(dircolors --sh "$HOME/.dir_colors")"
+fi
+
 #
 # Prezto
 #
@@ -65,7 +69,7 @@ fi
 # peco
 # https://github.com/peco/peco/wiki/Sample-Usage#zsh-auto-complete-from-history-ctrlr
 # https://gist.github.com/yuttie/2aeaecdba24256c73bf2
-if which peco &> /dev/null; then
+if (( $+commands[peco] )); then
   function peco_select_history() {
     local tac
     { which gtac &> /dev/null && tac="gtac" } || \
@@ -96,10 +100,12 @@ unalias sl
 # disable alias l='ls -1A'
 unalias l
 
+# append indicator (one of */=>@|) to entries
+# https://unix.stackexchange.com/a/82358
+alias ls="${aliases[ls]:-ls} -F"
+
 # disable alias rm='rm -i'
 unalias rm
-
-alias rmdir="${aliases[rm]:-rm} -rf"
 
 export EDITOR='vim'
 

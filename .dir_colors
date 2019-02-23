@@ -1,0 +1,52 @@
+# https://github.com/mavnn/mintty-colors-solarized
+
+# global default
+NORMAL 00
+# normal file
+FILE 00
+# directory
+DIR 34
+# symbolic link
+LINK 35
+
+# Orphaned symlinks
+ORPHAN  37;41
+MISSING 37;41
+
+# files with execute permission
+EXEC 01;31  # Unix
+.cmd 01;31  # Win
+.exe 01;31  # Win
+.com 01;31  # Win
+.bat 01;31  # Win
+.reg 01;31  # Win
+.app 01;31  # OSX
+
+# For WSL
+OTHER_WRITABLE 34
+
+# For testing
+.ANSI-01;30-brblack 01;30
+.ANSI-30-black 30
+.ANSI-01;32-brgreen 01;32
+.ANSI-01;33-bryellow 01;33
+.ANSI-01;34-brblue 01;34
+.ANSI-01;36-brcyan 01;36
+.ANSI-37-white 37
+.ANSI-01;37-brwhite 01;37
+.ANSI-33-yellow 33
+.ANSI-01;31-brred 01;31
+.ANSI-31-red 31
+.ANSI-35-magenta 35
+.ANSI-01;35-brmagenta 01;35
+.ANSI-34-blue 34
+.ANSI-36-cyan 36
+.ANSI-32-green 32
+.ANSI-40-bg-black 37;40
+.ANSI-41-bg-red 37;41
+.ANSI-42-bg-green 37;42
+.ANSI-43-bg-yellow 37;43
+.ANSI-44-bg-blue 37;44
+.ANSI-45-bg-magenta 37;45
+.ANSI-46-bg-cyan 37;46
+.ANSI-47-bg-white 30;47
