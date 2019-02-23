@@ -36,13 +36,15 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'prompt' \
   'archive' \
-  'command-not-found' \
   'fasd'
+
+# DO NOT use command-not-found: no error messages are shown in WSL environment.
 
 # candidates...
 # 'deer'
 # 'ssh'
 # 'zsh-notify'
+
 #
 # Completions
 #
