@@ -1,0 +1,29 @@
+ForegroundColour=101, 123, 131
+BackgroundColour=253, 246, 227
+CursorColour    =101, 123, 131
+
+BoldBlack=         0,  43,  54
+Black=             7,  54,  66
+BoldGreen=        88, 110, 117
+BoldYellow=      101, 123, 131
+BoldBlue=        131, 148, 150
+BoldCyan=        147, 161, 161
+White=           238, 232, 213
+BoldWhite=       253, 246, 227
+Yellow=          181, 137,   0
+BoldRed=         203,  75,  22
+Red=             220,  50,  47
+Magenta=         211,  54, 130
+BoldMagenta=     108, 113, 196
+Blue=             38, 139, 210
+Cyan=             42, 161, 152
+Green=           133, 153,   0
+
+CursorType=block
+CursorBlinks=no
+Font=源真ゴシック等幅 Regular
+FontHeight=12
+Columns=140
+Rows=36
+BellType=0
+BoldAsFont=no
