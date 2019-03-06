@@ -1,6 +1,6 @@
 # 『test と [ と [[ コマンドの違い』
 # https://fumiyas.github.io/2013/12/15/test.sh-advent-calendar.html
-if [[ -z "$LANG" ]]; then
+if [[ -z "${LANG}" ]]; then
   export LANG="ja_JP.UTF-8"
 fi
 
@@ -11,19 +11,23 @@ typeset -gU path
 # http://qiita.com/mollifier/items/42ae46ff4140251290a7
 path=(${HOME}/bin(N-/) /usr/local/bin(N-/) $path)
 
-if [[ -s "${ZDOTDIR:-$HOME}/.zshrc.local" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zshrc.local"
+if [[ -s "${HOME}/.zshrc.local" ]]; then
+  source "${HOME}/.zshrc.local"
 fi
 
-if (( $+commands[dircolors] )) && [[ -s "$HOME/.dir_colors" ]]; then
-  eval "$(dircolors --sh "$HOME/.dir_colors")"
+# 1. On a WSL environment, a login shell cannot be changed from /bin/bash.
+# 2. In a default setting of /bin/bash on WSL, `LS_COLORS` is configured.
+# 3. Prezto load ${HOME}/.dir_colors IF `LS_COLORS` IS NOT CONFIGURED.
+# Thus, `LS_COLORS` is cleared here to let Prezto to load `LS_COLORS`.
+if [[ -s "${HOME}/.dir_colors" ]]; then
+  export LS_COLORS=
 fi
 
 #
 # Prezto
 #
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+if [[ -s "${HOME}/.zprezto/init.zsh" ]]; then
+  source "${HOME}/.zprezto/init.zsh"
 fi
 
 # Go
@@ -45,13 +49,9 @@ if (( $+commands[direnv] )); then
 fi
 
 # Python
-if [[ -d "${HOME}/.virtualenvs/default" ]]; then
-  VIRTUAL_ENV_DISABLE_PROMPT=true source $HOME/.virtualenvs/default/bin/activate
+if [[ -d "${HOME}/venv/default" ]]; then
+  VIRTUAL_ENV_DISABLE_PROMPT=true source ${HOME}/venv/default/bin/activate
 fi
-
-pip-upgrade() {
-  pip list --outdated --format=legacy | awk '{print $1}' | xargs pip install -U
-}
 
 # Ruby
 if (( $+commands[rbenv] )); then
@@ -59,7 +59,7 @@ if (( $+commands[rbenv] )); then
 fi
 
 # Node
-path=($HOME/.npm-packages/bin(N-/) $path)
+path=(${HOME}/.npm-packages/bin(N-/) $path)
 
 # android-sdk
 if [[ -d "/usr/local/share/android-sdk" ]]; then
@@ -123,8 +123,8 @@ export LESS='-g -i -M -R'
 #
 # modules/history/init.zsh
 #
-if [[ -s "${ZDOTDIR:-$HOME}/.zsh_history" ]]; then
-  HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
+if [[ -s "${HOME}/.zsh_history" ]]; then
+  HISTFILE="${HOME}/.zsh_history"
 fi
 HISTSIZE=100000 # 10000 is too small
 SAVEHIST=100000
@@ -146,13 +146,13 @@ bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
 
 # https://qiita.com/yuyuchu3333/items/b01536fa63d9f8fadf4f
-function call_hook_precmd() {
+function call_precmd() {
   if type precmd > /dev/null 2>&1; then
     precmd
   fi
   local precmd_func
-  for precmd_func in $precmd_functions; do
-    $precmd_func
+  for precmd_func in ${precmd_functions}; do
+    ${precmd_func}
   done
 }
 
@@ -161,7 +161,7 @@ function call_hook_precmd() {
 function cdup() {
   echo
   cd ..
-  call_hook_precmd
+  call_precmd
   zle reset-prompt
   return 0
 }
@@ -174,6 +174,6 @@ clip() {
 }
 
 # vcs_info
-if [[ -s "${ZDOTDIR:-$HOME}/.zshrc.vcs_info" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zshrc.vcs_info"
+if [[ -s "${HOME}/.zshrc.vcs_info" ]]; then
+  source "${HOME}/.zshrc.vcs_info"
 fi
