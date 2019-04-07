@@ -9,23 +9,20 @@ DIR 34
 # symbolic link
 LINK 35
 
-# Orphaned symlinks
-ORPHAN  37;41
-MISSING 37;41
+# For Windows subsystem on Linux
+OTHER_WRITABLE 34
+
+# broken symlinks
+ORPHAN  37;41 # a symbolic link which point to a nonexistent file
+MISSING 37;41 # a file pointed by an orphan symlink (displayed as `orphan -> missing` in `ls -l`)
 
 # files with execute permission
 EXEC 01;31  # Unix
-.cmd 01;31  # Win
 .exe 01;31  # Win
-.com 01;31  # Win
 .bat 01;31  # Win
-.reg 01;31  # Win
 .app 01;31  # OSX
 
-# For WSL
-OTHER_WRITABLE 34
-
-# For testing
+# For testing by https://unix.stackexchange.com/a/20742
 .ANSI-01;30-brblack 01;30
 .ANSI-30-black 30
 .ANSI-01;32-brgreen 01;32

@@ -1,4 +1,4 @@
-# 『test と [ と [[ コマンドの違い』
+# Differences between `test`, `[`, and `[[`
 # https://fumiyas.github.io/2013/12/15/test.sh-advent-calendar.html
 if [[ -z "${LANG}" ]]; then
   export LANG="ja_JP.UTF-8"
@@ -17,8 +17,8 @@ fi
 
 # 1. On a WSL environment, a login shell cannot be changed from /bin/bash.
 # 2. In a default setting of /bin/bash on WSL, `LS_COLORS` is configured.
-# 3. Prezto load ${HOME}/.dir_colors IF `LS_COLORS` IS NOT CONFIGURED.
-# Thus, `LS_COLORS` is cleared here to let Prezto to load `LS_COLORS`.
+# 3. Prezto load ${HOME}/.dir_colors ONLY IF `LS_COLORS` is not configured.
+# Therefore, `LS_COLORS` should be cleared here to let Prezto to load `LS_COLORS`.
 if [[ -s "${HOME}/.dir_colors" ]]; then
   export LS_COLORS=
 fi
@@ -110,7 +110,7 @@ unalias rm
 export EDITOR='vim'
 
 if (( $+commands[vim] )); then
-  alias view='${aliases[vim]:-vim} -R'
+  alias view="${aliases[vim]:-vim} -R"
 fi
 
 # http://qiita.com/delphinus/items/b04752bb5b64e6cc4ea9
