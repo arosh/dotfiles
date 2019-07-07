@@ -14,7 +14,7 @@ OTHER_WRITABLE 34
 
 # broken symlinks
 ORPHAN  37;41 # a symbolic link which point to a nonexistent file
-MISSING 37;41 # a file pointed by an orphan symlink (displayed as `orphan -> missing` in `ls -l`)
+MISSING 37;41 # a file pointed by an orphan symlink (`ls -l` displays as `ORPHAN -> MISSING`)
 
 # files with execute permission
 EXEC 01;31  # Unix

@@ -1,4 +1,4 @@
-# Differences between `test`, `[`, and `[[`
+# differences between test, [, and [[
 # https://fumiyas.github.io/2013/12/15/test.sh-advent-calendar.html
 if [[ -z "${LANG}" ]]; then
   export LANG="ja_JP.UTF-8"
@@ -17,7 +17,7 @@ fi
 
 # 1. On a WSL environment, a login shell cannot be changed from /bin/bash.
 # 2. In a default setting of /bin/bash on WSL, `LS_COLORS` is configured.
-# 3. Prezto load ${HOME}/.dir_colors ONLY IF `LS_COLORS` is not configured.
+# 3. Prezto load ${HOME}/.dir_colors only if `LS_COLORS` is not configured.
 # Therefore, `LS_COLORS` should be cleared here to let Prezto to load `LS_COLORS`.
 if [[ -s "${HOME}/.dir_colors" ]]; then
   export LS_COLORS=
@@ -61,11 +61,6 @@ fi
 # Node
 path=(${HOME}/.npm-packages/bin(N-/) $path)
 
-# android-sdk
-if [[ -d "/usr/local/share/android-sdk" ]]; then
-  export ANDROID_HOME=/usr/local/share/android-sdk
-fi
-
 # peco
 # https://github.com/peco/peco/wiki/Sample-Usage#zsh-auto-complete-from-history-ctrlr
 # https://gist.github.com/yuttie/2aeaecdba24256c73bf2
@@ -104,9 +99,6 @@ unalias l
 # https://unix.stackexchange.com/a/82358
 alias ls="${aliases[ls]:-ls} -F"
 
-# disable alias rm='rm -i'
-unalias rm
-
 export EDITOR='vim'
 
 if (( $+commands[vim] )); then
@@ -123,6 +115,8 @@ export LESS='-g -i -M -R'
 #
 # modules/history/init.zsh
 #
+# Prezto use ~/.zhistory as history file, but use ~/.zsh_history for
+# compatibility if it already exists.
 if [[ -s "${HOME}/.zsh_history" ]]; then
   HISTFILE="${HOME}/.zsh_history"
 fi
