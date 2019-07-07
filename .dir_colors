@@ -9,7 +9,8 @@ DIR 34
 # symbolic link
 LINK 35
 
-# For Windows subsystem on Linux
+# For WSL
+# https://qiita.com/shora_kujira16/items/01fa8f759db2db275a6d
 OTHER_WRITABLE 34
 
 # broken symlinks
