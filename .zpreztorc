@@ -22,18 +22,18 @@ zstyle ':prezto:load' pmodule \
 # **DANGER**
 # DO NOT use command-not-found: no error messages are shown in a WSL environment.
 
-#
-# Editor
-#
-
+### Editor ###
 # Set the key mapping style to 'emacs' or 'vi'.
 zstyle ':prezto:module:editor' key-bindings 'emacs'
 
-#
-# Prompt
-#
-
+### Prompt ###
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
 zstyle ':prezto:module:prompt' theme 'sorin'
+
+### Utility ###
+# Enabled safe options. This aliases cp, ln, mv and rm so that they prompt
+# before deleting or overwriting files. Set to 'no' to disable this safer
+# behavior.
+ zstyle ':prezto:module:utility' safe-ops 'no'
