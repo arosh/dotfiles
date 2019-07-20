@@ -19,7 +19,7 @@ zstyle ':prezto:load' pmodule \
   'archive' \
   'fasd'
 
-# **DANGER**
+### DANGER ###
 # DO NOT use command-not-found: no error messages are shown in a WSL environment.
 
 ### Editor ###
@@ -33,7 +33,8 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 zstyle ':prezto:module:prompt' theme 'sorin'
 
 ### Utility ###
-# Enabled safe options. This aliases cp, ln, mv and rm so that they prompt
-# before deleting or overwriting files. Set to 'no' to disable this safer
-# behavior.
- zstyle ':prezto:module:utility' safe-ops 'no'
+# disable aliases for safer behavior of cp, ln, mv and rm.
+zstyle ':prezto:module:utility' safe-ops 'no'
+
+# disable setopt CORRECT
+zstyle ':prezto:module:utility' correct 'no'

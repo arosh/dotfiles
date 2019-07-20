@@ -86,8 +86,6 @@ alias z='fasd_cd -d' # cd, same functionality as j in autojump
 #
 # modules/utility/init.zsh
 #
-# https://github.com/sorin-ionescu/prezto/issues/622
-unsetopt CORRECT
 
 # disable alias sl=ls
 unalias sl
@@ -124,20 +122,8 @@ HISTSIZE=100000 # 10000 is too small
 SAVEHIST=100000
 
 #
-# modules/directory/init.zsh
-#
-setopt EXTENDED_GLOB # Use extended globbing syntax.
-
-#
 # User Settings
 #
-
-# Ctrl-PとCtrl-Nで前方一致検索
-autoload -Uz history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^p" history-beginning-search-backward-end
-bindkey "^n" history-beginning-search-forward-end
 
 # https://qiita.com/yuyuchu3333/items/b01536fa63d9f8fadf4f
 function call_precmd() {
@@ -164,7 +150,7 @@ bindkey '^\^' cdup
 
 # Use `pbcopy` in modules/utility/init.zsh
 clip() {
-  cat $1 | pbcopy
+  cat "$1" | pbcopy
 }
 
 # vcs_info
