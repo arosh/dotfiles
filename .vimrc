@@ -121,36 +121,4 @@ let g:vim_markdown_no_default_key_mappings = 1
 let g:go_version_warning = 0
 " ---------- End Vim-Go Scripts ----------
 
-" ---------- User Scripts ----------
-set number
-syntax on
-filetype plugin indent on
-" When 'shiftwidth' is zero, the value of 'ts' will be used.
-" When 'softtabstop' is negative, the value of 'shiftwidth' will be used.
-set tabstop=2 shiftwidth=0 softtabstop=-1 expandtab
-set incsearch hlsearch ignorecase
-set showmatch matchtime=0
-set backspace=indent,eol,start
-" http://magicant.txt-nifty.com/main/2009/03/vim-modeline-fi.html
-set fileencodings=ucs-bom,utf-8,iso-2022-jp,sjis,cp932,euc-jp,cp20932
-set fileformats=unix,dos,mac
-set laststatus=2
-set statusline=%(%r\ %)%f%(\ %m%)%=%(%{&ff}\ \|\ %)%(%{&fenc}\ \|\ %)%(%{&ft}\ \|\ %)%(%p%%\ \|\ %)%(%l/%L:%c\ %)
-set completeopt=menuone
-
-" http://qiita.com/s_of_p/items/b61e4c3a0c7ee279848a
-" http://thinca.hatenablog.com/entry/20100205/1265307642
-augroup vimrc
-  autocmd!
-  autocmd BufReadPost *
-        \ if line("'\"") > 1 && line("'\"") <= line("$") |
-        \   exe "normal! g`\"" |
-        \ endif
-  " コメント行の継続を無効化
-  autocmd FileType * setlocal formatoptions-=ro
-  " Makefile
-  autocmd FileType make setlocal noexpandtab tabstop=4
-  " Golang
-  autocmd FileType go setlocal noexpandtab tabstop=4
-augroup END
-" ---------- End User Scripts ----------
+source '.vimrc.tiny'
