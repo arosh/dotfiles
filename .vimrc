@@ -121,4 +121,4 @@ let g:vim_markdown_no_default_key_mappings = 1
 let g:go_version_warning = 0
 " ---------- End Vim-Go Scripts ----------
 
-source '.vimrc.tiny'
+source ${HOME}/.vimrc.tiny
