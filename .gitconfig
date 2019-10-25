@@ -4,7 +4,6 @@
   br = branch
   st = status
   co = checkout
-  graph = log --graph --decorate --all
 [merge]
   ff = false
 [pull]
