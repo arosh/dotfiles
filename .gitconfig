@@ -1,7 +1,5 @@
 [core]
   excludesfile = ~/.gitignore
-[color]
-  ui = auto
 [alias]
   br = branch
   st = status
