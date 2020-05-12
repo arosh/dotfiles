@@ -53,6 +53,11 @@ if [[ -d "${HOME}/venv/default" ]]; then
   VIRTUAL_ENV_DISABLE_PROMPT=true source ${HOME}/venv/default/bin/activate
 fi
 
+if [[ -d "${HOME}/.local/bin" ]]; then
+  # for `pip install --user`
+  path=(${HOME}/.local/bin(N-/) $path)
+fi
+
 # Ruby
 if (( $+commands[rbenv] )); then
   eval "$(rbenv init -)"
