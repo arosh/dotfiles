@@ -65,6 +65,11 @@ fi
 # Node
 path=(${HOME}/.npm-packages/bin(N-/) $path)
 
+# Kubectl
+if (( $+commands[kubectl] )); then
+  source <(kubectl completion zsh)
+fi
+
 # peco
 # https://github.com/peco/peco/wiki/Sample-Usage#zsh-auto-complete-from-history-ctrlr
 # https://gist.github.com/yuttie/2aeaecdba24256c73bf2
