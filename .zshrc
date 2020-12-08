@@ -34,14 +34,7 @@ fi
 # See http://stackoverflow.com/q/592620 and .zprezto/modules/utility/init.zsh
 
 # Go
-if (( $+commands[go] )); then
-  if [[ -z "$GOPATH" ]]; then
-    # http://qiita.com/yuku_t/items/c7ab1b1519825cc2c06f
-    export GOPATH="${HOME}/go"
-  fi
-
-  path=(${GOPATH}/bin(N-/) $path)
-fi
+path=(${HOME}/go/bin(N-/) $path)
 
 # direnv
 if (( $+commands[direnv] )); then
