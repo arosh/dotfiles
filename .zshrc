@@ -30,10 +30,10 @@ if [[ -s "${HOME}/.zprezto/init.zsh" ]]; then
   source "${HOME}/.zprezto/init.zsh"
 fi
 
+# When you want to check if a program exists, $+commands is helpful.
+# See http://stackoverflow.com/q/592620 and .zprezto/modules/utility/init.zsh
+
 # Go
-# Check if a program exists from a Zsh script
-# http://stackoverflow.com/q/592620
-# See .zprezto/modules/utility/init.zsh
 if (( $+commands[go] )); then
   if [[ -z "$GOPATH" ]]; then
     # http://qiita.com/yuku_t/items/c7ab1b1519825cc2c06f
