@@ -1,7 +1,6 @@
-.direnv
-.envrc
 
-# Created by https://www.gitignore.io/api/archives,linux,osx,windows
+# Created by https://www.toptal.com/developers/gitignore/api/archives,linux,osx,windows
+# Edit at https://www.toptal.com/developers/gitignore?templates=archives,linux,osx,windows
 
 ### Archives ###
 # It's better to unpack these files and commit the raw source because
@@ -11,18 +10,21 @@
 *.rar
 *.zip
 *.gz
+*.gzip
 *.tgz
 *.bzip
+*.bzip2
 *.bz2
 *.xz
 *.lzma
 *.cab
+*.xar
 
-#packing-only formats
+# Packing-only formats
 *.iso
 *.tar
 
-#package management formats
+# Package management formats
 *.dmg
 *.xpi
 *.gem
@@ -32,6 +34,7 @@
 *.msi
 *.msm
 *.msp
+*.txz
 
 ### Linux ###
 *~
@@ -49,12 +52,13 @@
 .nfs*
 
 ### OSX ###
-*.DS_Store
+# General
+.DS_Store
 .AppleDouble
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
 
 # Thumbnails
 ._*
@@ -78,18 +82,23 @@ Temporary Items
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
+Thumbs.db:encryptable
 ehthumbs.db
 ehthumbs_vista.db
 
+# Dump file
+*.stackdump
+
 # Folder config file
-Desktop.ini
+[Dd]esktop.ini
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
 # Windows Installer files
+*.msix
 
 # Windows shortcuts
 *.lnk
 
-# End of https://www.gitignore.io/api/archives,linux,osx,windows
+# End of https://www.toptal.com/developers/gitignore/api/archives,linux,osx,windows
