@@ -29,6 +29,6 @@
   # https://github.com/niemeyer/gopkg/issues/50#issuecomment-273299592
   followRedirects = true
 [ghq]
-	root = ~/workspace
+  root = ~/workspace
 [include]
   path = ~/.gitconfig.local
