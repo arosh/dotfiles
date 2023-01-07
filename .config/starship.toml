@@ -1,0 +1,19 @@
+add_newline = false
+format = """$directory$character"""
+right_format = """$all"""
+
+[directory]
+format = '[$path]($style) '
+truncate_to_repo = false
+fish_style_pwd_dir_length = 1
+truncation_length = 2
+
+[line_break]
+disabled = true
+
+[git_branch]
+format = '[\(git\)-\($branch(:$remote_branch)\)]($style) '
+symbol = '\(git\)'
+
+[cmd_duration]
+disabled = true
