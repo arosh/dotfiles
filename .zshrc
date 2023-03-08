@@ -63,6 +63,9 @@ if (( $+commands[kubectl] )); then
   source <(kubectl completion zsh)
 fi
 
+# aqua
+path=(${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin(N-/) $path)
+
 # peco
 # https://github.com/peco/peco/wiki/Sample-Usage#zsh-auto-complete-from-history-ctrlr
 # https://gist.github.com/yuttie/2aeaecdba24256c73bf2
