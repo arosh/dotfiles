@@ -22,9 +22,9 @@
   # http://qiita.com/usamik26/items/c655abcaeee02ea59695
   helper = cache
 [url "git@github.com:"]
-  # GitHubにはhttpsではなくssh (gitプロトコル) で接続して公開鍵認証を行う
-  # http://qiita.com/nysalor/items/f779898eb88c1ce7be12
-  pushinsteadof = https://github.com/
+  # プライベートリポジトリを go get するため
+  # https://go.dev/doc/faq#git_https
+  insteadOf = https://github.com/
 [http "https://gopkg.in"]
   # https://github.com/niemeyer/gopkg/issues/50#issuecomment-273299592
   followRedirects = true
