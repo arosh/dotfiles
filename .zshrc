@@ -92,9 +92,6 @@ alias z='fasd_cd -d' # cd, same functionality as j in autojump
 # modules/utility/init.zsh
 #
 
-# disable alias sl=ls
-unalias sl
-
 # disable alias l='ls -1A'
 unalias l
 
