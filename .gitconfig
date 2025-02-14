@@ -31,4 +31,4 @@
 [ghq]
   root = ~/workspace
 [include]
-  path = ~/.gitconfig.local
+  path = ~/.gitconfig.private
