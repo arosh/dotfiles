@@ -13,8 +13,11 @@
   # リモートで消されたブランチはローカルからも消す
   prune = true
 [diff]
-  # http://qiita.com/takyam/items/d6afacc7934de9b0e85e
-  compactionHeuristic = true
+  # https://blog.gitbutler.com/how-git-core-devs-configure-git/
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
 [status]
   showUntrackedFiles = all
 [credential]
