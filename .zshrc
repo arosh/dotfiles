@@ -65,6 +65,7 @@ fi
 
 # aqua
 path=(${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin(N-/) $path)
+export AQUA_GLOBAL_CONFIG=${AQUA_GLOBAL_CONFIG:-}:${XDG_CONFIG_HOME:-$HOME/.config}/aquaproj-aqua/aqua.yaml
 
 # peco
 # https://github.com/peco/peco/wiki/Sample-Usage#zsh-auto-complete-from-history-ctrlr
